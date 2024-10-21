@@ -7,11 +7,9 @@
   ... 
 } : {
   imports = [ 
-    ./modules/i3.nix
+    ./modules/i3
     ./modules/git.nix
-    ./modules/polybar
     ./modules/zsh.nix
-    ./modules/rofi.nix
   ];
 
   home = {

@@ -7,6 +7,11 @@
   mod = "Mod4";
   terminal = "kitty";
 in {
+  imports = [
+    ./polybar
+    ./rofi.nix
+  ];
+
   xsession.windowManager.i3 = {
     enable = true;
     config = {
