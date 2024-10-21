@@ -2,7 +2,9 @@
   description = "Default flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-24.05";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
@@ -12,6 +14,7 @@
 
   outputs = { 
     nixpkgs,
+    home-manager,
     ...
   } @ inputs: {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
@@ -20,7 +23,7 @@
       };
       modules = [
         ./nixos/configuration.nix
-        inputs.home-manager.nixosModules.default
+        home-manager.nixosModules.default
       ];
     };
   };

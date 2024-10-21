@@ -7,12 +7,16 @@
   mod = "Mod4";
   terminal = "kitty";
 in {
-  home.packages = with pkgs; [
-    rofi
-    i3blocks
-  ];
+  home = {
+    packages = with pkgs; [
+      rofi
+      i3blocks
+    ];
+  };
 
-  services.network-manager-applet.enable = true;
+  services = {
+    network-manager-applet.enable = true;
+  };
   
   xsession.windowManager.i3 = {
     enable = true;
