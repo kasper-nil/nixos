@@ -1,0 +1,7 @@
+{
+  services = {
+    polybar = {
+      enable = true;
+    };
+  };
+}

@@ -22,6 +22,34 @@ in {
     enable = true;
     config = {
       modifier = "${mod}";
+
+      window = {
+        titlebar = false;
+        border = 2;
+        commands = [
+          {
+            command = "border pixel 2";
+            criteria = {
+              class = "^.*";
+            };
+          }
+        ];
+      };
+
+      gaps = {
+        smartBorders = "on";
+        smartGaps = true;
+        inner = 10;
+        outer = 0;
+      };
+
+      bars = [
+        {
+          position = "top";
+          statusCommand = "i3status";
+        }
+      ];
+
       keybindings = {
         "${mod}+T" = "exec ${terminal}";
         "${mod}+d" = "exec rofi -show drun";
@@ -76,12 +104,6 @@ in {
         "${mod}+Shift+9" = "move container to workspace 9";
         "${mod}+Shift+0" = "move container to workspace 10";
       };
-      bars = [
-        {
-          position = "top";
-          statusCommand = "i3status";
-        }
-      ];
     };
   };
 }
