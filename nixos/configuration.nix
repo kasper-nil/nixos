@@ -11,6 +11,8 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
 
+      ./modules/graphics.nix
+
       # Import home-manager's NixOS module
       inputs.home-manager.nixosModules.home-manager
     ];
@@ -22,7 +24,6 @@
       kasper = import ../home-manager/home.nix;
     };
   };
-
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
@@ -122,27 +123,7 @@
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Enable xfce desktop manager and i3 window manager
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xterm.enable = false;
-      xfce = {
-        enable = true;
-        noDesktop = true;
-        enableXfwm = false;
-      };
-    };
-    windowManager = {
-      i3.enable = true;
-    };
-  };
-
   services.libinput.touchpad = {
     naturalScrolling = true;
-  };
-
-  services.displayManager = {
-    defaultSession = "xfce+i3";
   };
 }

@@ -4,6 +4,6 @@
   ];
   
   programs.rofi = {
-    theme = "gruvbox-dark-hard"
+    theme = "gruvbox-dark-hard";
   };
 }
