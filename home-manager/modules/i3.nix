@@ -7,10 +7,6 @@
   mod = "Mod4";
   terminal = "kitty";
 in {
-  services = {
-    network-manager-applet.enable = true;
-  };
-  
   xsession.windowManager.i3 = {
     enable = true;
     config = {
