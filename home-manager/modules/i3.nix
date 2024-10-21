@@ -21,6 +21,19 @@ in {
   xsession.windowManager.i3 = {
     enable = true;
     config = {
+      startup = [
+        {
+          command = "polybar-msg cmd quit";
+          always = true;
+          notification = false;
+        }
+        {
+          command = "polybar bar";
+          always = true;
+          notification = false;
+        }
+      ];
+
       modifier = "${mod}";
 
       window = {
@@ -43,12 +56,7 @@ in {
         outer = 0;
       };
 
-      bars = [
-        {
-          position = "top";
-          statusCommand = "i3status";
-        }
-      ];
+      bars = [ ]; # use polybar instead
 
       keybindings = {
         "${mod}+T" = "exec ${terminal}";

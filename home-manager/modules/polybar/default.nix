@@ -3,13 +3,12 @@
   services.polybar = {
     enable = true;
 
-    script = "polybar bar &";
+    script = ''
+      for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
+        MONITOR=$m polybar bar &
+      done
+    '';
 
     config = ./config.ini;
-
-    package = pkgs.polybar.override {
-      i3Support = true;
-      pulseSupport = true;
-    };
   };
 }
