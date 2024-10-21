@@ -10,6 +10,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
+    # Import nixos modules
     ./modules/home-manager.nix
     ./modules/bootloader.nix
     ./modules/graphics.nix
