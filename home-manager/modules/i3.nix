@@ -7,13 +7,6 @@
   mod = "Mod4";
   terminal = "kitty";
 in {
-  home = {
-    packages = with pkgs; [
-      rofi
-      i3blocks
-    ];
-  };
-
   services = {
     network-manager-applet.enable = true;
   };

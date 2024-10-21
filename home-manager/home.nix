@@ -11,6 +11,7 @@
     ./modules/git.nix
     ./modules/polybar
     ./modules/zsh.nix
+    ./modules/rofi.nix
   ];
 
   home = {

@@ -1,15 +1,18 @@
 { config, pkgs, ... } : {
-
-    users.defaultUserShell = pkgs.zsh;
-
     programs.zsh = {
-      enable = true;
-      
       enableCompletion = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
 
       shellAliases = {
+        ll = "ls -a";
+      };
+
+      zplug = {
+        enable = true;
+        plugins = [
+          { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; } 
+        ];
       };
 
       oh-my-zsh = {
