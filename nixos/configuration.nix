@@ -14,30 +14,24 @@
     ./modules/graphics.nix
     ./modules/i18n.nix
     ./modules/sound.nix
+    ./modules/networking.nix
+    ./modules/keyboard.nix
   ];
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  security.polkit.enable = true;
-
-  # TODO: figure out what this actually does, i3 didn't work before setting this in
-  home-manager.backupFileExtension = "backup";
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    home-manager
+    kitty
+    vscode
+    brave
+    htop
+    networkmanagerapplet
+    gnumake
+  ];
 
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "no";
-    variant = "nodeadkeys";
-  };
-
-  # Configure console keymap
-  console.keyMap = "no";
 
   programs = {
     zsh.enable = true;
@@ -56,18 +50,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    home-manager
-    kitty
-    vscode
-    brave
-    htop
-    networkmanagerapplet
-    gnumake
-  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
