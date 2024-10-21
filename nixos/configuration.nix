@@ -13,8 +13,6 @@
 
       # Import home-manager's NixOS module
       inputs.home-manager.nixosModules.home-manager
-
-      ./modules/zsh.nix
     ];
 
   # Home manager
@@ -83,6 +81,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kasper = {
+    defaultUserShell = "zsh";
     isNormalUser = true;
     description = "kasper";
     extraGroups = [ "networkmanager" "wheel" "audio" ];
