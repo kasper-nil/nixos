@@ -1,4 +1,7 @@
-{ } : {
+{ config, ... } : {
+
+    users.defaultUserShell = pkgs.zsh;
+
     programs.zsh = {
       enable = true;
       
@@ -7,6 +10,11 @@
       syntaxHighlighting.enable = true;
 
       shellAliases = {
+      };
+
+      oh-my-zsh = {
+        enable = true;
+        theme = "robbyrussell";
       };
 
       history = {

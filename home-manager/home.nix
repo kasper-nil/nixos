@@ -10,6 +10,7 @@
     ./modules/i3.nix
     ./modules/git.nix
     ./modules/polybar
+    ./modules/zsh.nix
   ];
 
   home = {

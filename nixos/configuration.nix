@@ -13,6 +13,8 @@
 
       # Import home-manager's NixOS module
       inputs.home-manager.nixosModules.home-manager
+
+      ./modules/zsh.nix
     ];
 
   # Home manager
@@ -22,6 +24,7 @@
       kasper = import ../home-manager/home.nix;
     };
   };
+
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
