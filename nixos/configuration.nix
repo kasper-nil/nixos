@@ -13,6 +13,7 @@
 
       ./modules/bootloader.nix
       ./modules/graphics.nix
+      ./modules/i18n.nix
 
       # Import home-manager's NixOS module
       inputs.home-manager.nixosModules.home-manager
@@ -52,21 +53,6 @@
     pulse.enable = true;
     jack.enable = true;
     wireplumber.enable = true;
-  };
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "nb_NO.UTF-8";
-    LC_IDENTIFICATION = "nb_NO.UTF-8";
-    LC_MEASUREMENT = "nb_NO.UTF-8";
-    LC_MONETARY = "nb_NO.UTF-8";
-    LC_NAME = "nb_NO.UTF-8";
-    LC_NUMERIC = "nb_NO.UTF-8";
-    LC_PAPER = "nb_NO.UTF-8";
-    LC_TELEPHONE = "nb_NO.UTF-8";
-    LC_TIME = "nb_NO.UTF-8";
   };
 
   # Configure keymap in X11
