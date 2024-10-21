@@ -14,6 +14,7 @@
       ./modules/bootloader.nix
       ./modules/graphics.nix
       ./modules/i18n.nix
+      ./modules/sound.nix
 
       # Import home-manager's NixOS module
       inputs.home-manager.nixosModules.home-manager
@@ -41,19 +42,6 @@
 
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
-
-  # Enable sound with pipewire.
-  sound.enable = false;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-    wireplumber.enable = true;
-  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -85,8 +73,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
     home-manager
     kitty
     vscode
