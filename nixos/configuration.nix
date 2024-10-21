@@ -6,28 +6,15 @@
   callPackage, 
   ... 
 } : {
-  imports =
-    [ 
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-
-      ./modules/bootloader.nix
-      ./modules/graphics.nix
-      ./modules/i18n.nix
-      ./modules/sound.nix
-
-      # Import home-manager's NixOS module
-      inputs.home-manager.nixosModules.home-manager
-    ];
-
-  # Home manager
-  home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
-    users = {
-      kasper = import ../home-manager/home.nix;
-    };
-  };
-
+  imports = [ 
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./modules/home-manager.nix
+    ./modules/bootloader.nix
+    ./modules/graphics.nix
+    ./modules/i18n.nix
+    ./modules/sound.nix
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

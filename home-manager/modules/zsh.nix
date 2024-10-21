@@ -6,6 +6,8 @@
 
       shellAliases = {
         ll = "ls -a";
+        rebuild = "sudo nixos-rebuild switch --flake .#default";
+        clean = "sudo nix-collect-garbage -d";
       };
 
       zplug = {
