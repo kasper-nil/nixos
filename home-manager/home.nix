@@ -9,7 +9,7 @@
   imports = [ 
     ./modules/i3.nix
     ./modules/git.nix
-    ./modules/polybar.nix
+    ./modules/polybar
   ];
 
   home = {

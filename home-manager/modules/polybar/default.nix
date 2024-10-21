@@ -1,15 +1,19 @@
 { inputs, pkgs, config, ... } : {
 
   xdg.configFile = {
-    "polybar/modules.ini".source = ./modules.ini;
+    "polybar/bars.ini".source = ./bars.ini;
   };
 
   services.polybar = {
     enable = true;
 
+    script = "polybar laptop &";
+
+    config = ./config.ini;
+
     package = pkgs.polybar.override {
       i3Support = true;
       pulseSupport = true;
     };
-  }
+  };
 }

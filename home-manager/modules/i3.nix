@@ -16,7 +16,6 @@ in {
 
   services = {
     network-manager-applet.enable = true;
-    polybar.script = "polybar laptop &";
   };
   
   xsession.windowManager.i3 = {
