@@ -12,6 +12,7 @@
       
       windowManager = {
         i3.enable = true;
+        i3.configFile = ./i3-config;
       };
 
       desktopManager = {
