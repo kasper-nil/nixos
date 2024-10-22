@@ -4,16 +4,14 @@
   pkgs, 
   ... 
 } : let
-  mod = "Mod4";
-  terminal = "kitty";
 in {
   home = {
     packages = with pkgs; [
       rofi
-    ]
+    ];
 
     file = {
-      ".config/i3/config".source = ./dotfiles/i3
+      ".config/i3/config".source = ./dotfiles/i3;
     };
   };
 
@@ -26,6 +24,6 @@ in {
       done
     '';
 
-    config = ./dotfiles/polybar-config.ini;
+    config = ./dotfiles/polybar.ini;
   };
 }
