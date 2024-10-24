@@ -25,7 +25,8 @@ in
   };
 
   programs.rofi = {
-    theme = ../../dotfiles/rofi.rasi
+    enable = true;
+    theme = ../../dotfiles/rofi/rounded-nord-dark.rasi;
   };
 
   xsession.windowManager.i3 = {
