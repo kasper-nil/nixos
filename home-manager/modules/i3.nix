@@ -26,7 +26,7 @@ in
 
   programs.rofi = {
     enable = true;
-    theme = ../../dotfiles/rofi/rounded-nord-dark.rasi;
+    theme = ../../dotfiles/rofi/simple-tokyonight.rasi;
   };
 
   xsession.windowManager.i3 = {
