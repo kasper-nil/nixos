@@ -24,6 +24,10 @@ in
     '';
   };
 
+  programs.rofi = {
+    theme = ../../dotfiles/rofi.rasi
+  };
+
   xsession.windowManager.i3 = {
     enable = true;
 
