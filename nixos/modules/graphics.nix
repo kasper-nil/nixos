@@ -4,7 +4,7 @@
 
   services = {
     displayManager = {
-      defaultSession = "none+i3";
+      defaultSession = "xfce+i3";
     };
 
     xserver = {

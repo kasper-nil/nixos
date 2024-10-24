@@ -35,6 +35,7 @@
     blueman
     nixd
     nixfmt-rfc-style
+    starship
   ];
 
   # Stuff for nixd LSP
