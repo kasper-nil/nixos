@@ -1,12 +1,13 @@
-{ 
+{
   inputs,
-  outputs, 
-  config, 
-  pkgs, 
-  callPackage, 
-  ... 
-} : {
-  imports = [ 
+  outputs,
+  config,
+  pkgs,
+  callPackage,
+  ...
+}:
+{
+  imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
@@ -30,12 +31,30 @@
     brave
     htop
     gnumake
+    blueman
+    nixd
+    nixfmt-rfc-style
   ];
 
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
+  services.blueman.enable = true;
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+        Experimental = true;
+      };
+    };
+  };
+
   # Enable experimental features
-  nix.settings.experimental-features = [ 
+  nix.settings.experimental-features = [
     "nix-command"
-    "flakes" 
+    "flakes"
   ];
 
   # Set your time zone.

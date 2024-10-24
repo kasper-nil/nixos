@@ -1,4 +1,5 @@
-{ config, pkgs, ... } : {
+{ config, pkgs, ... }:
+{
   programs.zsh = {
     enableCompletion = true;
     autosuggestion.enable = true;
@@ -13,7 +14,13 @@
     zplug = {
       enable = true;
       plugins = [
-        { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; } 
+        {
+          name = "romkatv/powerlevel10k";
+          tags = [
+            "as:theme"
+            "depth:1"
+          ];
+        }
       ];
     };
 

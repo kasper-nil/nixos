@@ -1,12 +1,13 @@
-{ 
+{
   inputs,
   outputs,
   lib,
   config,
   pkgs,
-  ... 
-} : {
-  imports = [ 
+  ...
+}:
+{
+  imports = [
     ./modules/i3
     ./modules/git.nix
     ./modules/zsh.nix
