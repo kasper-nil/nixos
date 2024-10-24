@@ -15,7 +15,7 @@ in
   ];
 
   services.polybar = {
-    enable = true;
+    enable = false;
     config = ../../dotfiles/polybar.ini;
     script = ''
       for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
@@ -26,7 +26,10 @@ in
 
   programs.rofi = {
     enable = true;
-    theme = ../../dotfiles/rofi/simple-tokyonight.rasi;
+  };
+
+  home.file."${builtins.unsafeDiscardStringContext pkgs.rofi}/share/rofi/themes/rofi.rasi" = {
+    source = ../../dotfiles/rofi-themes/rofi.rasi;
   };
 
   xsession.windowManager.i3 = {
@@ -81,11 +84,16 @@ in
         outer = 0;
       };
 
-      bars = [ ]; # use polybar instead
+      bars = [
+        {
+          statusCommand = "i3status";
+          position = "top";
+        }
+      ]; # use polybar instead
 
       keybindings = {
         "${mod}+T" = "exec ${terminal}";
-        "${mod}+d" = "exec rofi -show drun";
+        "${mod}+d" = "exec rofi -show drun -theme ${pkgs.rofi}/share/rofi/themes/rofi.rasi";
 
         # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
         "${mod}+Shift+r" = "restart";
