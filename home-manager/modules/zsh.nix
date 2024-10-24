@@ -5,16 +5,11 @@
 
     enableZshIntegration = true;
 
+    presets = [ "nerd-font-symbols" ];
+
     # Configuration written to ~/.config/starship.toml
-    settings = {
-      presets = [ "nerd-font-symbols" ];
-
-      # character = {
-      #   success_symbol = "[➜](bold green)";
-      #   error_symbol = "[➜](bold red)";
-      # };
-
-      # package.disabled = true;
+    settings = (with builtins; fromTOML (readFile ../dotfiles/staship.toml)) // {
+      # overrides here, may be empty
     };
 
   };
