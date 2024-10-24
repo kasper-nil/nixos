@@ -40,6 +40,10 @@ in
     source = ../../dotfiles/rofi/launchers/shared/fonts.rasi;
   };
 
+  home.file."${config.home.homeDirectory}/.config/rofi/colors/onedark.rasi" = {
+    source = ../../dotfiles/rofi/colors/onedark.rasi;
+  };
+
   xsession.windowManager.i3 = {
     enable = true;
 
