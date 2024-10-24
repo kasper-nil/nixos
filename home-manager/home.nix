@@ -8,9 +8,8 @@
 }:
 {
   imports = [
-    ./modules/i3
+    ./modules/i3.nix
     ./modules/git.nix
-    ./modules/zsh.nix
   ];
 
   home = {

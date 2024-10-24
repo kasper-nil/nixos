@@ -22,6 +22,7 @@
     ./modules/users.nix
     ./modules/shell.nix
     ./modules/bluetooth.nix
+    ./modules/fonts.nix
   ];
 
   # System packages
