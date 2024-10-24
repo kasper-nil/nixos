@@ -21,6 +21,7 @@
     ./modules/keyboard.nix
     ./modules/users.nix
     ./modules/shell.nix
+    ./modules/bluetooth.nix
   ];
 
   # System packages
@@ -36,20 +37,8 @@
     nixfmt-rfc-style
   ];
 
+  # Stuff for nixd LSP
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-
-  services.blueman.enable = true;
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    settings = {
-      General = {
-        Enable = "Source,Sink,Media,Socket";
-        Experimental = true;
-      };
-    };
-  };
 
   # Enable experimental features
   nix.settings.experimental-features = [

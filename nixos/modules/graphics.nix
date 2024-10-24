@@ -4,14 +4,14 @@
 
   services = {
     displayManager = {
-      defaultSession = "xfce+i3";
+      defaultSession = "none+i3";
     };
 
     xserver = {
       enable = true;
 
       windowManager = {
-        i3.enable = false;
+        i3.enable = true;
       };
 
       desktopManager = {
