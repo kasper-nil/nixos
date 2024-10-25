@@ -37,6 +37,7 @@
     nixfmt-rfc-style
     pavucontrol
     alsa-utils
+    ranger
   ];
 
   # Stuff for nixd LSP
