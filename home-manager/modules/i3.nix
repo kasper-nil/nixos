@@ -26,22 +26,7 @@ in
 
   programs.rofi = {
     enable = true;
-  };
-
-  home.file."${config.home.homeDirectory}/.config/rofi/launchers/default.rasi" = {
-    source = ../../dotfiles/rofi/launchers/default.rasi;
-  };
-
-  home.file."${config.home.homeDirectory}/.config/rofi/launchers/shared/colors.rasi" = {
-    source = ../../dotfiles/rofi/launchers/shared/colors.rasi;
-  };
-
-  home.file."${config.home.homeDirectory}/.config/rofi/launchers/shared/fonts.rasi" = {
-    source = ../../dotfiles/rofi/launchers/shared/fonts.rasi;
-  };
-
-  home.file."${config.home.homeDirectory}/.config/rofi/colors/onedark.rasi" = {
-    source = ../../dotfiles/rofi/colors/onedark.rasi;
+    theme = "gruvbox-dark";
   };
 
   xsession.windowManager.i3 = {
@@ -105,7 +90,7 @@ in
 
       keybindings = {
         "${mod}+T" = "exec ${terminal}";
-        "${mod}+d" = "exec rofi -show drun -theme ${config.home.homeDirectory}/.config/rofi/launchers/default.rasi";
+        "${mod}+d" = "exec rofi -show drun -show-icons";
 
         # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
         "${mod}+Shift+r" = "restart";

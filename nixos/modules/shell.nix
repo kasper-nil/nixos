@@ -1,13 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.zsh = {
-    # Enable zsh, this needs to happen in the nixos configuration
     enable = true;
+
     shellInit = ''
       eval "$(starship init zsh)" 
     '';
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
+
+    shellAliases = {
+      update = "sudo nixos-rebuild switch --flake /etc/nixos#default";
+    };
   };
 
   programs.starship = {
