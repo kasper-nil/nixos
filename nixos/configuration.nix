@@ -12,17 +12,17 @@
     ./hardware-configuration.nix
 
     # Import nixos modules
-    ./modules/home-manager.nix
-    ./modules/bootloader.nix
-    ./modules/graphics.nix
-    ./modules/i18n.nix
-    ./modules/sound.nix
-    ./modules/networking.nix
-    ./modules/keyboard.nix
-    ./modules/users.nix
-    ./modules/shell.nix
-    ./modules/bluetooth.nix
-    ./modules/fonts.nix
+    ../modules/nixos/home-manager.nix
+    ../modules/nixos/bootloader.nix
+    ../modules/nixos/graphics.nix
+    ../modules/nixos/i18n.nix
+    ../modules/nixos/sound.nix
+    ../modules/nixos/networking.nix
+    ../modules/nixos/keyboard.nix
+    ../modules/nixos/users.nix
+    ../modules/nixos/shell.nix
+    ../modules/nixos/bluetooth.nix
+    ../modules/nixos/fonts.nix
   ];
 
   # System packages
