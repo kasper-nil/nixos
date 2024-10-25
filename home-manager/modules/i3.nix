@@ -6,7 +6,7 @@
 }:
 let
   mod = "Mod4";
-  terminal = "kitty";
+  terminal = "alacritty";
 in
 {
   home.packages = with pkgs; [

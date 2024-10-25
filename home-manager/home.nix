@@ -11,6 +11,7 @@
     ./modules/i3.nix
     ./modules/git.nix
     ./modules/zsh.nix
+    ./modules/alacritty.nix
   ];
 
   home = {

@@ -28,7 +28,6 @@
   # System packages
   environment.systemPackages = with pkgs; [
     home-manager
-    kitty
     vscode
     brave
     htop
@@ -36,7 +35,6 @@
     blueman
     nixd
     nixfmt-rfc-style
-    starship
   ];
 
   # Stuff for nixd LSP
