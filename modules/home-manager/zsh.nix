@@ -11,7 +11,8 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      update = "sudo nixos-rebuild switch --flake /etc/nixos#default";
+      rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#default";
+      collect-garbage = "sudo nix-collect-garbage -d";
     };
 
     history = {
