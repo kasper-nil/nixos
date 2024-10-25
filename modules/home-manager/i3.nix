@@ -1,9 +1,4 @@
-{
-  inputs,
-  config,
-  pkgs,
-  ...
-}:
+{ config, ... }:
 let
   mod = "Mod4";
   terminal = "alacritty";
@@ -51,10 +46,17 @@ in
 
       bars = [
         {
+          fonts = {
+            names = [
+              "DejaVu Sans Mono"
+              "FontAwesome6Free"
+            ];
+            size = 12.0;
+          };
           statusCommand = "i3status-rs ${i3status-rs-config}";
           position = "top";
         }
-      ]; # use polybar instead
+      ];
 
       keybindings = {
         "${mod}+T" = "exec ${terminal}";

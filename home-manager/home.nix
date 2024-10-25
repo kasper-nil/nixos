@@ -1,12 +1,4 @@
 {
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}:
-{
   imports = [
     ../modules/home-manager/i3.nix
     ../modules/home-manager/git.nix

@@ -11,7 +11,6 @@
         "wheel"
         "audio"
       ];
-      packages = with pkgs; [ ];
     };
   };
 }
