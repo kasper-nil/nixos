@@ -35,6 +35,8 @@
     blueman
     nixd
     nixfmt-rfc-style
+    pavucontrol
+    alsa-utils
   ];
 
   # Stuff for nixd LSP

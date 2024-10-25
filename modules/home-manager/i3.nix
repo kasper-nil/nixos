@@ -15,13 +15,14 @@ in
   ];
 
   services.polybar = {
-    enable = false;
+    enable = true;
     config = ../../dotfiles/polybar.ini;
-    script = ''
-      for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
-        MONITOR=$m polybar bar &
-      done
-    '';
+    script = ''polybar bar &'';
+    #script = ''
+    #  for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
+    #    MONITOR=$m polybar bar &
+    #  done
+    #'';
   };
 
   programs.rofi = {
@@ -119,6 +120,14 @@ in
 
         # Kill focused window
         "${mod}+q" = "kill";
+
+        # Pulse Audio controls
+        # increase sound volume
+        "XF86AudioRaiseVolume" = "exec amixer -q set Master 5%+ unmute";
+        # decrease sound volume
+        "XF86AudioLowerVolume" = "exec amixer -q set Master 5%- unmute";
+        # mute sound
+        "XF86AudioMute" = "exec amixer -q set Master toggle";
 
         # Switch to workspace
         "${mod}+1" = "workspace 1";
