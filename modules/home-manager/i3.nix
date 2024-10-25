@@ -7,29 +7,9 @@
 let
   mod = "Mod4";
   terminal = "alacritty";
+  i3status-rs-config = "${config.home.homeDirectory}/.config/i3status-rust/config-default.toml";
 in
 {
-  home.packages = with pkgs; [
-    polybar
-    rofi
-  ];
-
-  services.polybar = {
-    enable = true;
-    config = ../../dotfiles/polybar.ini;
-    script = ''polybar bar &'';
-    #script = ''
-    #  for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
-    #    MONITOR=$m polybar bar &
-    #  done
-    #'';
-  };
-
-  programs.rofi = {
-    enable = true;
-    theme = "gruvbox-dark";
-  };
-
   xsession.windowManager.i3 = {
     enable = true;
 
@@ -47,19 +27,6 @@ in
     '';
 
     config = {
-      startup = [
-        {
-          command = "polybar-msg cmd quit";
-          always = true;
-          notification = false;
-        }
-        {
-          command = "polybar bar";
-          always = true;
-          notification = false;
-        }
-      ];
-
       modifier = "${mod}";
 
       window = {
@@ -84,7 +51,7 @@ in
 
       bars = [
         {
-          statusCommand = "i3status";
+          statusCommand = "i3status-rs ${i3status-rs-config}";
           position = "top";
         }
       ]; # use polybar instead
