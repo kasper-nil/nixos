@@ -1,10 +1,19 @@
 { pkgs, ... }:
 {
+  systemd.user.services.plasma-i3 = {
+    enable = true;
+  };
+
+  systemd.user.services.plasma-kwin_x11 = {
+    enable = false;
+  };
+
   # Options for all of the graphical aspects of the OS
   # Configures display manager, window manager and desktop manager
   services = {
     displayManager = {
       defaultSession = "xfce+i3";
+      sddm.enable = true;
     };
 
     desktopManager = {
@@ -19,6 +28,8 @@
       };
 
       desktopManager = {
+        plasma5.enable = true;
+
         xterm.enable = false;
 
         xfce = {
