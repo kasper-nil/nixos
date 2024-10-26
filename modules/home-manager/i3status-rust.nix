@@ -25,6 +25,7 @@
             block = "battery";
             format = " $icon $percentage ";
             full_format = " $icon $percentage ";
+            empty_format = " $icon $percentage ";
           }
           {
             block = "time";
