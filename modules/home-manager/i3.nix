@@ -59,8 +59,8 @@ in
       ];
 
       keybindings = {
-        "${mod}+T" = "exec ${terminal}";
-        "${mod}+d" = "exec rofi -show drun -show-icons";
+        "${mod}+T" = "exec --no-startup-id ${terminal}";
+        "${mod}+d" = "exec --no-startup-id rofi -show drun -show-icons";
 
         # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
         "${mod}+Shift+r" = "restart";
@@ -70,7 +70,7 @@ in
 
         "${mod}+r" = "mode resize";
 
-        "${mod}+Shift+s" = "exec systemctl suspend";
+        "${mod}+Shift+s" = "exec --no-startup-id systemctl suspend";
 
         # Change focus
         "${mod}+Left" = "focus left";
@@ -92,11 +92,11 @@ in
 
         # Pulse Audio controls
         # increase sound volume
-        "XF86AudioRaiseVolume" = "exec amixer -q set Master 5%+ unmute";
+        "XF86AudioRaiseVolume" = "exec --no-startup-id amixer -q set Master 5%+ unmute";
         # decrease sound volume
-        "XF86AudioLowerVolume" = "exec amixer -q set Master 5%- unmute";
+        "XF86AudioLowerVolume" = "exec --no-startup-id amixer -q set Master 5%- unmute";
         # mute sound
-        "XF86AudioMute" = "exec amixer -q set Master toggle";
+        "XF86AudioMute" = "exec --no-startup-id amixer -q set Master toggle";
 
         # Switch to workspace
         "${mod}+1" = "workspace 1";

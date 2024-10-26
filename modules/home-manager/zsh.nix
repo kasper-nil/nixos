@@ -13,6 +13,7 @@
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#default";
       collect-garbage = "sudo nix-collect-garbage -d";
+      develop = "nix develop /etc/nixos";
     };
 
     history = {
@@ -38,9 +39,7 @@
 
     # Configuration written to ~/.config/starship.toml
     settings =
-      (
-        with builtins; fromTOML (readFile "${pkgs.starship}/share/starship/presets/bracketed-segments.toml")
-      )
+      (with builtins; fromTOML (readFile "${pkgs.starship}/share/starship/presets/gruvbox-rainbow.toml"))
       // {
         # overrides here, may be empty
       };
