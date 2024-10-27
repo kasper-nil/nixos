@@ -5,14 +5,15 @@ let
   i3status-rs-config = "${config.home.homeDirectory}/.config/i3status-rust/config-default.toml";
 in
 {
-  home.packages = with pkgs; [ feh ];
+  home.packages = with pkgs; [
+    feh
+    picom
+  ];
 
   xsession.windowManager.i3 = {
     enable = true;
 
     extraConfig = ''
-      exec --no-startup-id feh --bg-scale ../../assets/backgrounds/road.jpeg
-
       # resize window
       mode "resize" {
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -23,26 +24,31 @@ in
         bindsym Escape mode "default"
       }
 
-      # Plasma compatibility improvements
+      # Kill the wallpaper window set by Plasma*
+      for_window [title="Desktop — Plasma"] kill; floating enable; border none
+
+      # Set Plasma dialogs and pop ups as floating so they won't get tiled
       for_window [window_role="pop-up"] floating enable
       for_window [window_role="task_dialog"] floating enable
-
-      for_window [class="yakuake"] floating enable
       for_window [class="systemsettings"] floating enable
       for_window [class="plasmashell"] floating enable;
       for_window [class="Plasma"] floating enable; border none
       for_window [title="plasma-desktop"] floating enable; border none
-      for_window [title="win7"] floating enable; border none
       for_window [class="krunner"] floating enable; border none
       for_window [class="Kmix"] floating enable; border none
       for_window [class="Klipper"] floating enable; border none
       for_window [class="Plasmoidviewer"] floating enable; border none
-      for_window [class="(?i)*nextcloud*"] floating disable
-      for_window [class="plasmashell" window_type="notification"] border none, move position 70 ppt 81 ppt
-      no_focus [class="plasmashell" window_type="notification"]
+      for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
+      no_focus [class="plasmashell" window_type="notification"
 
-      # Disable the window that blocks everything
-      for_window [class="plasmashell" window_type="notification"] border none, move position 70 ppt 81 ppt
+      # Set other stuff as floating
+      for_window [class="(?i)*nextcloud*"] floating disable
+
+      # Set the desktop background
+      exec --no-startup-id feh --bg-scale /etc/nixos/assets/backgrounds/road.jpeg
+
+      # Start the compositor daemonizing it (-b) and enabling shadows (-c)
+      exec_always --no-startup-id picom -cb
     '';
 
     config = {
@@ -68,6 +74,8 @@ in
         outer = 0;
       };
 
+      bars = [ ];
+
       # bars = [
       #   {
       #     fonts = {
@@ -90,7 +98,7 @@ in
         "${mod}+Shift+r" = "restart";
 
         # Using plasma's logout screen instead of i3's
-        "${mod}+Shift+e" = "exec --no-startup-id qdbus-qt5 org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1";
+        # "${mod}+Shift+e" = "exec --no-startup-id qdbus-qt5 org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1";
 
         "${mod}+r" = "mode resize";
 
@@ -122,10 +130,10 @@ in
         # mute sound
         #"XF86AudioMute" = "exec --no-startup-id amixer -q set Master toggle";
 
-        "XF86AudioRaiseVolume" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'increase_volume'";
-        "XF86AudioLowerVolume" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'decrease_volume'";
-        "XF86AudioMute" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'mute'";
-        "XF86AudioMicMute" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'mic_mute'";
+        # "XF86AudioRaiseVolume" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'increase_volume'";
+        # "XF86AudioLowerVolume" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'decrease_volume'";
+        # "XF86AudioMute" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'mute'";
+        # "XF86AudioMicMute" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'mic_mute'";
 
         # Switch to workspace
         "${mod}+1" = "workspace 1";

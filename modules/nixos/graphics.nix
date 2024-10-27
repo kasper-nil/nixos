@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 {
   systemd.user.services.plasma-kwin_x11 = {
-    enable = lib.mkForce false;
+    # enable = lib.mkForce false;
     wantedBy = lib.mkForce [ ];
   };
 
@@ -14,6 +14,10 @@
       ExecStart = ''${pkgs.i3}/bin/i3'';
       Restart = "on-failure";
     };
+  };
+
+  qt = {
+    enable = true;
   };
 
   # Options for all of the graphical aspects of the OS
@@ -29,7 +33,7 @@
 
       windowManager = {
         i3.enable = true;
-        i3.package = pkgs.i3-gaps;
+        # i3.package = pkgs.i3-gaps;
       };
 
       desktopManager = {
