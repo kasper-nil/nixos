@@ -6,7 +6,7 @@
     ../modules/home-manager/zsh.nix
     ../modules/home-manager/alacritty.nix
     #../modules/home-manager/i3status-rust.nix
-    #../modules/home-manager/rofi.nix
+    ../modules/home-manager/rofi.nix
   ];
 
   home = {

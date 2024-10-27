@@ -8,6 +8,7 @@ in
   home.packages = with pkgs; [
     feh
     picom
+    wmctrl
   ];
 
   xsession.windowManager.i3 = {
@@ -24,10 +25,8 @@ in
         bindsym Escape mode "default"
       }
 
-      # Kill the wallpaper window set by Plasma*
       for_window [title="Desktop — Plasma"] kill; floating enable; border none
 
-      # Set Plasma dialogs and pop ups as floating so they won't get tiled
       for_window [window_role="pop-up"] floating enable
       for_window [window_role="task_dialog"] floating enable
       for_window [class="systemsettings"] floating enable
@@ -39,7 +38,8 @@ in
       for_window [class="Klipper"] floating enable; border none
       for_window [class="Plasmoidviewer"] floating enable; border none
       for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
-      no_focus [class="plasmashell" window_type="notification"
+
+      no_focus [class="plasmashell" window_type="notification"] 
 
       # Set other stuff as floating
       for_window [class="(?i)*nextcloud*"] floating disable
@@ -49,6 +49,10 @@ in
 
       # Start the compositor daemonizing it (-b) and enabling shadows (-c)
       exec_always --no-startup-id picom -cb
+
+      # Kill the Plasma desktop view
+      exec --no-startup-id wmctrl -c Plasma
+      for_window [title="Desktop — Plasma"] kill; floating enable; border none
     '';
 
     config = {
@@ -91,7 +95,7 @@ in
       # ];
 
       keybindings = {
-        "${mod}+T" = "exec --no-startup-id ${terminal}";
+        "${mod}+t" = "exec --no-startup-id ${terminal}";
         "${mod}+d" = "exec --no-startup-id rofi -show drun -show-icons";
 
         # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
