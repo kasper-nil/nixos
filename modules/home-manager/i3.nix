@@ -1,14 +1,18 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   mod = "Mod4";
   terminal = "alacritty";
   i3status-rs-config = "${config.home.homeDirectory}/.config/i3status-rust/config-default.toml";
 in
 {
+  home.packages = with pkgs; [ feh ];
+
   xsession.windowManager.i3 = {
     enable = true;
 
     extraConfig = ''
+      exec --no-startup-id feh --bg-scale ../../assets/backgrounds/road.jpeg
+
       # resize window
       mode "resize" {
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -19,37 +23,26 @@ in
         bindsym Escape mode "default"
       }
 
-      exec --no-startup-id wmctrl -c Plasma
-      for_window [title="Desktop — Plasma"] kill; floating enable; border none
-
-      # Compositor (Animations, Shadows, Transparency)
-      exec --no-startup-id picom -cCFb
-
-      # >>> Window rules <<<
-      # >>> Avoid tiling Plasma popups, dropdown windows, etc. <<<
-      # For the first time, manually resize them, i3 will remember the setting for floating windows
-      for_window [class="yakuake"] floating enable;
-      for_window [class="lattedock"] floating enable;
-      for_window [class="plasmashell"] floating enable;
-      for_window [class="Kmix"] floating enable; border none
-      for_window [class="kruler"] floating enable; border none
-      for_window [class="Plasma"] floating enable; border none
-      for_window [class="Klipper"] floating enable; border none
-      for_window [class="krunner"] floating enable; border none
-      for_window [class="Plasmoidviewer"] floating enable; border none
-      for_window [title="plasma-desktop"] floating enable; border none
-      for_window [class="plasmashell" window_type="notification"] floating enable, border none, move position 1450px 20px
-      no_focus [class="plasmashell" window_type="notification"] 
-
-      # >>> Avoid tiling for non-Plasma stuff <<<
+      # Plasma compatibility improvements
       for_window [window_role="pop-up"] floating enable
-      for_window [window_role="bubble"] floating enable
       for_window [window_role="task_dialog"] floating enable
-      for_window [window_role="Preferences"] floating enable
-      for_window [window_role="About"] floating enable
-      for_window [window_type="dialog"] floating enable
-      for_window [window_type="menu"] floating enable
-      for_window [instance="__scratchpad"] floating enable
+
+      for_window [class="yakuake"] floating enable
+      for_window [class="systemsettings"] floating enable
+      for_window [class="plasmashell"] floating enable;
+      for_window [class="Plasma"] floating enable; border none
+      for_window [title="plasma-desktop"] floating enable; border none
+      for_window [title="win7"] floating enable; border none
+      for_window [class="krunner"] floating enable; border none
+      for_window [class="Kmix"] floating enable; border none
+      for_window [class="Klipper"] floating enable; border none
+      for_window [class="Plasmoidviewer"] floating enable; border none
+      for_window [class="(?i)*nextcloud*"] floating disable
+      for_window [class="plasmashell" window_type="notification"] border none, move position 70 ppt 81 ppt
+      no_focus [class="plasmashell" window_type="notification"]
+
+      # Disable the window that blocks everything
+      for_window [class="plasmashell" window_type="notification"] border none, move position 70 ppt 81 ppt
     '';
 
     config = {
@@ -75,19 +68,19 @@ in
         outer = 0;
       };
 
-      bars = [
-        {
-          fonts = {
-            names = [
-              "DejaVu Sans Mono"
-              "FontAwesome6Free"
-            ];
-            size = 12.0;
-          };
-          statusCommand = "i3status-rs ${i3status-rs-config}";
-          position = "top";
-        }
-      ];
+      # bars = [
+      #   {
+      #     fonts = {
+      #       names = [
+      #         "DejaVu Sans Mono"
+      #         "FontAwesome6Free"
+      #       ];
+      #       size = 12.0;
+      #     };
+      #     statusCommand = "i3status-rs ${i3status-rs-config}";
+      #     position = "top";
+      #   }
+      # ];
 
       keybindings = {
         "${mod}+T" = "exec --no-startup-id ${terminal}";
@@ -96,8 +89,8 @@ in
         # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
         "${mod}+Shift+r" = "restart";
 
-        # Exit i3 (logs you out of your X session
-        "${mod}+Shift+e" = "exit";
+        # Using plasma's logout screen instead of i3's
+        "${mod}+Shift+e" = "exec --no-startup-id qdbus-qt5 org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1";
 
         "${mod}+r" = "mode resize";
 
@@ -123,11 +116,16 @@ in
 
         # Pulse Audio controls
         # increase sound volume
-        "XF86AudioRaiseVolume" = "exec --no-startup-id amixer -q set Master 5%+ unmute";
+        #"XF86AudioRaiseVolume" = "exec --no-startup-id amixer -q set Master 5%+ unmute";
         # decrease sound volume
-        "XF86AudioLowerVolume" = "exec --no-startup-id amixer -q set Master 5%- unmute";
+        #"XF86AudioLowerVolume" = "exec --no-startup-id amixer -q set Master 5%- unmute";
         # mute sound
-        "XF86AudioMute" = "exec --no-startup-id amixer -q set Master toggle";
+        #"XF86AudioMute" = "exec --no-startup-id amixer -q set Master toggle";
+
+        "XF86AudioRaiseVolume" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'increase_volume'";
+        "XF86AudioLowerVolume" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'decrease_volume'";
+        "XF86AudioMute" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'mute'";
+        "XF86AudioMicMute" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'mic_mute'";
 
         # Switch to workspace
         "${mod}+1" = "workspace 1";
