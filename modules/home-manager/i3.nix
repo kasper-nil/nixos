@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 let
   mod = "Mod4";
-  terminal = "${pkgs.alacritty}/bin/alacritty";
-  rofi = "${pkgs.rofi}/bin/rofi";
+  terminal = "alacritty";
+  rofi = "rofi";
   i3status-rs-config = "${config.home.homeDirectory}/.config/i3status-rust/config-default.toml";
 in
 {

@@ -1,5 +1,24 @@
 { pkgs, lib, ... }:
 {
+  systemd.user.services.plasma-kwin_x11 = {
+    wantedBy = lib.mkForce [ ];
+  };
+  systemd.user.services.plasma-i3 = {
+    enable = true;
+    description = "Plasma custom window manager";
+    wantedBy = [ "default.target" ];
+    before = [ "plasma-workspace.target" ];
+    serviceConfig = {
+      User = "kasper";
+      Group = "root";
+      ExecStart = "${pkgs.writeShellScript "start-i3" ''
+        #!/usr/bin/env bash
+        ${pkgs.i3}/bin/i3
+      ''}";
+      Restart = "on-failure";
+    };
+  };
+
   qt = {
     enable = true;
   };
