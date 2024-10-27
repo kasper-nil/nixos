@@ -1,34 +1,37 @@
 { pkgs, lib, ... }:
 {
+
+  systemd.services.plasma-kwin_x11 = {
+    enable = lib.mkForce false;
+    wantedBy = lib.mkForce [ ];
+  };
+
+  systemd.services.plasma-i3 = {
+    enable = true;
+    description = "Plasma custom window manager";
+    wantedBy = [ "plasma-workspace.target" ];
+    before = [ "plasma-workspace.target" ];
+    serviceConfig = {
+      ExecStart = ''${pkgs.i3-gaps}/bin/i3'';
+      Slice = "session.slice";
+      Restart = "on-failure";
+    };
+  };
+
   # Options for all of the graphical aspects of the OS
   # Configures display manager, window manager and desktop manager
   services = {
     displayManager = {
-      #defaultSession = "none+i3";
-      #sddm.enable = true;
+      defaultSession = "none+i3";
       sddm.enable = true;
-      defaultSession = "plasma5+i3+whatever";
-    };
-
-    desktopManager = {
-      # plasma6.enable = true;
     };
 
     xserver = {
       enable = true;
 
-      displayManager = {
-        session = [
-          {
-            manage = "desktop";
-            name = "plasma5+i3+whatever";
-            start = ''exec env KDEWM=${pkgs.i3-gaps}/bin/i3 ${pkgs.plasma-workspace}/bin/startplasma-x11'';
-          }
-        ];
-      };
-
       windowManager = {
         i3.enable = true;
+        i3.package = pkgs.i3-gaps;
       };
 
       desktopManager = {
@@ -44,28 +47,4 @@
       };
     };
   };
-
-  # xfce + i3 setup
-  #services = {
-  #  displayManager = {
-  #    defaultSession = "xfce+i3";
-  #    };
-  #
-  #  xserver = {
-  #      enable = true;
-  #
-  #    windowManager = {
-  #      i3.enable = true;
-  #      };
-  #
-  #    desktopManager = {
-  #      xterm.enable = false;
-  #      xfce = {
-  #        enable = true;
-  #        noDesktop = true;
-  #        enableXfwm = false;
-  #      };
-  #    };
-  #  };
-  #};
 }

@@ -8,10 +8,21 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }@inputs:
+    {
+      nixpkgs,
+      home-manager,
+      plasma-manager,
+      ...
+    }@inputs:
     let
       nixos-configuration = ./nixos/configuration.nix;
       system = "x86_64-linux";
@@ -24,6 +35,7 @@
         modules = [
           nixos-configuration
           home-manager.nixosModules.default
+          { home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ]; }
         ];
       };
 
