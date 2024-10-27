@@ -34,8 +34,7 @@
     pavucontrol
     alsa-utils
     ranger
-    # i3-gaps
-    # plasma-workspace
+    qt5Full
   ];
 
   # Stuff for nixd LSP
