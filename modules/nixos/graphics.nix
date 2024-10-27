@@ -38,10 +38,20 @@
         i3.enable = true;
       };
 
+      displayManager = {
+        session = [
+          {
+            manage = "desktop";
+            name = "plasma";
+            start = ''exec env KDEWM=${pkgs.i3}/bin/i3 ${pkgs.plasma-workspace}/bin/startplasma-x11'';
+          }
+        ];
+      };
+
       desktopManager = {
         plasma5 = {
           enable = true;
-          runUsingSystemd = true;
+          runUsingSystemd = false;
         };
 
         xterm.enable = false;
