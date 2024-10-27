@@ -1,18 +1,17 @@
 { pkgs, lib, ... }:
 {
-  systemd.services."plasma-kwin_x11" = {
+  systemd.user.services.plasma-kwin_x11 = {
     enable = lib.mkForce false;
     wantedBy = lib.mkForce [ ];
   };
 
-  systemd.services."plasma-i3" = {
+  systemd.user.services.plasma-i3 = {
     enable = true;
     description = "Plasma custom window manager";
     wantedBy = [ "plasma-workspace.target" ];
     before = [ "plasma-workspace.target" ];
     serviceConfig = {
       ExecStart = ''${pkgs.i3}/bin/i3'';
-      Slice = "session.slice";
       Restart = "on-failure";
     };
   };
@@ -21,7 +20,7 @@
   # Configures display manager, window manager and desktop manager
   services = {
     displayManager = {
-      defaultSession = "none+i3";
+      defaultSession = "plasma";
       sddm.enable = true;
     };
 
@@ -30,10 +29,14 @@
 
       windowManager = {
         i3.enable = true;
+        i3.package = pkgs.i3-gaps;
       };
 
       desktopManager = {
-        plasma5.enable = true;
+        plasma5 = {
+          enable = true;
+          runUsingSystemd = true;
+        };
 
         xterm.enable = false;
 

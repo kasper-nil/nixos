@@ -1,9 +1,8 @@
 {
   inputs,
-  outputs,
   config,
   pkgs,
-  callPackage,
+  lib,
   ...
 }:
 {
@@ -35,6 +34,8 @@
     pavucontrol
     alsa-utils
     ranger
+    i3-gaps
+    plasma-workspace
   ];
 
   # Stuff for nixd LSP
