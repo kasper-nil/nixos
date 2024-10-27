@@ -1,11 +1,11 @@
 { pkgs, lib, ... }:
 {
-  systemd.services.plasma-kwin_x11 = {
+  systemd.services."plasma-kwin_x11" = {
     enable = lib.mkForce false;
     wantedBy = lib.mkForce [ ];
   };
 
-  systemd.services.plasma-i3 = {
+  systemd.services."plasma-i3" = {
     enable = true;
     description = "Plasma custom window manager";
     wantedBy = [ "plasma-workspace.target" ];

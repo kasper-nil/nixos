@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ../modules/home-manager/i3.nix

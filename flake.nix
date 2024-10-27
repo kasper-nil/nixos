@@ -1,11 +1,11 @@
 {
   inputs = {
     nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-24.05";
+      url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,37 +25,36 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      lib = nixpkgs.lib;
+      nixos-configuration = ./nixos/configuration.nix;
+      hardware-configuration = ./hardware-configuration.nix;
     in
     {
       nixosConfigurations = {
-        default = lib.nixosSystem {
-          inherit system;
-
+        default = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
           };
 
           modules = [
-            ./hardware-configuration.nix
-            ./nixos/configuration.nix
+            hardware-configuration
+            nixos-configuration
             home-manager.nixosModules.default
             { home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ]; }
           ];
         };
       };
 
-      devShells."${system}".default = pkgs.mkShell {
-        packages = with pkgs; [
-          nodejs
-          corepack
-        ];
-        shellHook = ''$SHELL'';
-      };
+      devShells."${system}".default =
+        let
+          pkgs = import nixpkgs { inherit system; };
+        in
+        pkgs.mkShell {
+          packages = with pkgs; [
+            nodejs
+            corepack
+          ];
+          shellHook = ''$SHELL'';
+        };
     };
 
 }
