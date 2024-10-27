@@ -28,7 +28,7 @@
   # Configures display manager, window manager and desktop manager
   services = {
     displayManager = {
-      defaultSession = "plasma";
+      defaultSession = "plasma+i3";
       sddm.enable = true;
     };
 

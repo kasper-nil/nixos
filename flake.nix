@@ -39,7 +39,7 @@
             hardware-configuration
             nixos-configuration
             home-manager.nixosModules.default
-            { home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ]; }
+            plasma-manager.homeManagerModules.plasma-manager
           ];
         };
       };
