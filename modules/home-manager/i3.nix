@@ -1,16 +1,11 @@
 { config, pkgs, ... }:
 let
   mod = "Mod4";
-  terminal = "alacritty";
+  terminal = "${pkgs.alacritty}/bin/alacritty";
+  rofi = "${pkgs.rofi}/bin/rofi";
   i3status-rs-config = "${config.home.homeDirectory}/.config/i3status-rust/config-default.toml";
 in
 {
-  home.packages = with pkgs; [
-    feh
-    picom
-    wmctrl
-  ];
-
   xsession.windowManager.i3 = {
     enable = true;
 
@@ -80,23 +75,9 @@ in
 
       bars = [ ];
 
-      # bars = [
-      #   {
-      #     fonts = {
-      #       names = [
-      #         "DejaVu Sans Mono"
-      #         "FontAwesome6Free"
-      #       ];
-      #       size = 12.0;
-      #     };
-      #     statusCommand = "i3status-rs ${i3status-rs-config}";
-      #     position = "top";
-      #   }
-      # ];
-
       keybindings = {
         "${mod}+t" = "exec --no-startup-id ${terminal}";
-        "${mod}+d" = "exec --no-startup-id rofi -show drun -show-icons";
+        "${mod}+d" = "exec --no-startup-id ${rofi} -show drun -show-icons";
 
         # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
         "${mod}+Shift+r" = "restart";

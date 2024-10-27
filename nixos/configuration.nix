@@ -34,6 +34,9 @@
     pavucontrol
     alsa-utils
     ranger
+    feh
+    picom
+    wmctrl
     qt5Full
   ];
 

@@ -1,7 +1,6 @@
 { pkgs, lib, ... }:
 {
-  systemd.user.services.plasma-kwin_x11 = {
-    # enable = lib.mkForce false;
+  systemd.services.plasma-kwin_x11 = {
     wantedBy = lib.mkForce [ ];
   };
 
@@ -33,7 +32,6 @@
 
       windowManager = {
         i3.enable = true;
-        # i3.package = pkgs.i3-gaps;
       };
 
       desktopManager = {
@@ -43,12 +41,6 @@
         };
 
         xterm.enable = false;
-
-        xfce = {
-          enable = true;
-          noDesktop = true;
-          enableXfwm = false;
-        };
       };
     };
   };
