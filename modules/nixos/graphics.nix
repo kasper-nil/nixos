@@ -1,6 +1,5 @@
 { pkgs, lib, ... }:
 {
-
   systemd.services.plasma-kwin_x11 = {
     enable = lib.mkForce false;
     wantedBy = lib.mkForce [ ];
@@ -12,7 +11,7 @@
     wantedBy = [ "plasma-workspace.target" ];
     before = [ "plasma-workspace.target" ];
     serviceConfig = {
-      ExecStart = ''${pkgs.i3-gaps}/bin/i3'';
+      ExecStart = ''${pkgs.i3}/bin/i3'';
       Slice = "session.slice";
       Restart = "on-failure";
     };
@@ -31,7 +30,6 @@
 
       windowManager = {
         i3.enable = true;
-        i3.package = pkgs.i3-gaps;
       };
 
       desktopManager = {

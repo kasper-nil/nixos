@@ -8,9 +8,6 @@
 }:
 {
   imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-
     # Import nixos modules
     ../modules/nixos/home-manager.nix
     ../modules/nixos/bootloader.nix

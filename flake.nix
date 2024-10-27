@@ -24,32 +24,38 @@
       ...
     }@inputs:
     let
-      nixos-configuration = ./nixos/configuration.nix;
       system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      lib = nixpkgs.lib;
     in
     {
-      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
+      nixosConfigurations = {
+        default = lib.nixosSystem {
+          inherit system;
+
+          specialArgs = {
+            inherit inputs;
+          };
+
+          modules = [
+            ./hardware-configuration.nix
+            ./nixos/configuration.nix
+            home-manager.nixosModules.default
+            { home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ]; }
+          ];
         };
-        modules = [
-          nixos-configuration
-          home-manager.nixosModules.default
-          { home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ]; }
-        ];
       };
 
-      devShells."${system}".default =
-        let
-          pkgs = import nixpkgs { inherit system; };
-        in
-        pkgs.mkShell {
-          packages = with pkgs; [
-            nodejs
-            corepack
-          ];
-          shellHook = ''$SHELL'';
-        };
+      devShells."${system}".default = pkgs.mkShell {
+        packages = with pkgs; [
+          nodejs
+          corepack
+        ];
+        shellHook = ''$SHELL'';
+      };
     };
 
 }
