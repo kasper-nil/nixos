@@ -10,7 +10,7 @@
     };
 
     plasma-manager = {
-      url = "github:nix-community/plasma-manager";
+      url = "github:nix-community/plasma-manager/plasma-5";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
@@ -39,7 +39,7 @@
             hardware-configuration
             nixos-configuration
             home-manager.nixosModules.default
-            plasma-manager.homeManagerModules.plasma-manager
+            { home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ]; }
           ];
         };
       };

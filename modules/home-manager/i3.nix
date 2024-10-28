@@ -40,13 +40,13 @@ in
       for_window [class="(?i)*nextcloud*"] floating disable
 
       # Set the desktop background
-      # exec --no-startup-id feh --bg-scale /etc/nixos/assets/backgrounds/road.jpeg
+      exec --no-startup-id feh --bg-scale /etc/nixos/assets/backgrounds/road.jpeg
 
       # Start the compositor daemonizing it (-b) and enabling shadows (-c)
       exec_always --no-startup-id picom -cb
 
       # Kill the Plasma desktop view
-      exec --no-startup-id wmctrl -c Plasma
+      exec_always --no-startup-id wmctrl -c Plasma
       for_window [title="Desktop — Plasma"] kill; floating enable; border none
     '';
 

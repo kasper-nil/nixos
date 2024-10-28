@@ -37,7 +37,6 @@
     feh
     picom
     wmctrl
-    qt5Full
   ];
 
   # Stuff for nixd LSP
