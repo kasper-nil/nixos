@@ -22,7 +22,18 @@
         location = "top";
         hiding = "none";
         widgets = [
+          #{
+          #  pager = {
+          #    general = {
+          #      showWindowOutlines = true;
+          #      showApplicationIconsOnWindowOutlines = true;
+          #      displayedText = "desktopName";
+          #    };
+          #  };
+          #}
           "org.kde.plasma.pager"
+          "org.kde.plasma.panelspacer"
+          "org.kde.plasma.icontasks"
           "org.kde.plasma.panelspacer"
           {
             systemTray.items = {
