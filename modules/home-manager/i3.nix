@@ -3,7 +3,6 @@ let
   mod = "Mod4";
   terminal = "alacritty";
   rofi = "rofi";
-  i3status-rs-config = "${config.home.homeDirectory}/.config/i3status-rust/config-default.toml";
 in
 {
   xsession.windowManager.i3 = {
@@ -19,8 +18,6 @@ in
         # back to normal
         bindsym Escape mode "default"
       }
-
-      for_window [title="Desktop — Plasma"] kill; floating enable; border none
 
       for_window [window_role="pop-up"] floating enable
       for_window [window_role="task_dialog"] floating enable
@@ -39,16 +36,16 @@ in
       # Set other stuff as floating
       for_window [class="(?i)*nextcloud*"] floating disable
 
+      # Kill the Plasma desktop view
+      exec_always --no-startup-id wmctrl -c Plasma
+      for_window [title="Desktop — Plasma"] kill; floating enable; border none
+      for_window [title="Desktop @ QRect"] kill; floating enable; border none
+
       # Set the desktop background
       exec --no-startup-id feh --bg-scale /etc/nixos/assets/backgrounds/road.jpeg
 
       # Start the compositor daemonizing it (-b) and enabling shadows (-c)
       exec_always --no-startup-id picom -cb
-
-      # Kill the Plasma desktop view
-      exec_always --no-startup-id wmctrl -c Plasma
-      for_window [title="Desktop — Plasma"] kill; floating enable; border none
-      for_window [title="Desktop @ QRect"] kill; floating enable; border none
     '';
 
     config = {
@@ -77,7 +74,10 @@ in
       bars = [ ];
 
       keybindings = {
+        # Launch terminal
         "${mod}+t" = "exec --no-startup-id ${terminal}";
+
+        # Launch rofi
         "${mod}+d" = "exec --no-startup-id ${rofi} -show drun -show-icons";
 
         # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -108,14 +108,7 @@ in
         # Kill focused window
         "${mod}+q" = "kill";
 
-        # Pulse Audio controls
-        # increase sound volume
-        #"XF86AudioRaiseVolume" = "exec --no-startup-id amixer -q set Master 5%+ unmute";
-        # decrease sound volume
-        #"XF86AudioLowerVolume" = "exec --no-startup-id amixer -q set Master 5%- unmute";
-        # mute sound
-        #"XF86AudioMute" = "exec --no-startup-id amixer -q set Master toggle";
-
+        # Media keys
         "XF86AudioRaiseVolume" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'increase_volume'";
         "XF86AudioLowerVolume" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'decrease_volume'";
         "XF86AudioMute" = "exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut 'mute'";

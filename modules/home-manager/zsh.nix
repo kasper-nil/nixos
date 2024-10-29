@@ -29,7 +29,7 @@
     zplug = {
       enable = true;
       plugins = [
-        { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
+        { name = "zsh-users/zsh-autosuggestions"; }
       ];
     };
   };
@@ -39,7 +39,9 @@
 
     # Configuration written to ~/.config/starship.toml
     settings =
-      (with builtins; fromTOML (readFile "${pkgs.starship}/share/starship/presets/gruvbox-rainbow.toml"))
+      (
+        with builtins; fromTOML (readFile "${pkgs.starship}/share/starship/presets/nerd-font-symbols.toml")
+      )
       // {
         # overrides here, may be empty
       };

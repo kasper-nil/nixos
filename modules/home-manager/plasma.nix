@@ -64,7 +64,7 @@
               font = {
                 family = "Noto Sans";
                 bold = false;
-                size = 6;
+                size = 8;
               };
             };
           }

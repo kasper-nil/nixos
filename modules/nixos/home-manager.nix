@@ -7,7 +7,6 @@
       inherit inputs outputs;
     };
 
-    # TODO: figure out what this actually does, i3 didn't work before setting this in
     backupFileExtension = "backup";
 
     users = {
