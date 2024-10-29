@@ -19,6 +19,7 @@
     ../modules/nixos/shell.nix
     ../modules/nixos/bluetooth.nix
     ../modules/nixos/fonts.nix
+    ../modules/nixos/steam.nix
   ];
 
   # System packages
@@ -37,6 +38,7 @@
     feh
     picom
     wmctrl
+    discord
   ];
 
   # Stuff for nixd LSP
