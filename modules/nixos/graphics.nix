@@ -4,25 +4,29 @@
     wantedBy = lib.mkForce [ ];
   };
 
-  #systemd.user.services.plasma-i3 = {
-  #  enable = true;
-  #  description = "Plasma custom window manager";
-  #  wantedBy = [ "default.target" ];
-  #  before = [ "plasma-workspace.target" ];
-  #  serviceConfig = {
-  #    User = "kasper";
-  #    Group = "root";
-  #    ExecStart = "${pkgs.writeShellScript "start-i3" ''
-  #      #!/usr/bin/env bash
-  #      ${pkgs.i3}/bin/i3
-  #    ''}";
-  #    Restart = "on-failure";
-  #  };
-  #};
+  # systemd.user.services.plasma-i3 = {
+  #   enable = true;
+  #   description = "Plasma custom window manager";
+  #   wantedBy = [ "default.target" ];
+  #   before = [ "plasma-workspace.target" ];
+  #   serviceConfig = {
+  #     User = "kasper";
+  #     Group = "root";
+  #     ExecStart = "${pkgs.writeShellScript "start-i3" ''
+  #       #!/usr/bin/env bash
+  #       ${pkgs.i3}/bin/i3
+  #     ''}";
+  #     Restart = "on-failure";
+  #   };
+  # };
 
   qt = {
     enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
   };
+
+  programs.dconf.enable = true;
 
   # Options for all of the graphical aspects of the OS
   # Configures display manager, window manager and desktop manager
@@ -31,6 +35,11 @@
       defaultSession = "plasma+i3";
       sddm.enable = true;
     };
+
+    # desktopManager = {
+    #   plasma6.enable = true;
+    #   plasma6.enableQt5Integration = true;
+    # };
 
     xserver = {
       enable = true;
@@ -45,18 +54,16 @@
             manage = "desktop";
             name = "plasma";
             start = ''
-              exec env KDEWM=${pkgs.i3}/bin/i3 
-              ${pkgs.plasma-workspace}/bin/startplasma-x11
+              export KDEWM=${pkgs.i3}/bin/i3
+              export QT_QPA_PLATFORMTHEME="qt5ct"
+              exec ${pkgs.plasma-workspace}/bin/startplasma-x11
             '';
           }
         ];
       };
 
       desktopManager = {
-        plasma5 = {
-          enable = true;
-          runUsingSystemd = false;
-        };
+        plasma5.enable = true;
 
         xterm.enable = false;
       };
