@@ -48,6 +48,7 @@ in
       # Kill the Plasma desktop view
       exec_always --no-startup-id wmctrl -c Plasma
       for_window [title="Desktop — Plasma"] kill; floating enable; border none
+      for_window [title="Desktop @ QRect"] kill; floating enable; border none
     '';
 
     config = {

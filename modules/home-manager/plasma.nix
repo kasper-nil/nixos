@@ -11,10 +11,10 @@
     };
 
     fonts = {
-      general = {
-        family = "JetBrains Mono";
-        pointSize = 12;
-      };
+      # general = {
+      #   family = "JetBrains Mono";
+      #   pointSize = 12;
+      # };
     };
 
     panels = [
@@ -23,48 +23,32 @@
         hiding = "none";
         widgets = [
           {
-            name = "org.kde.plasma.pager";
-            config = {
-              General = {
+            pager = {
+              general = {
                 showWindowOutlines = true;
                 showApplicationIconsOnWindowOutlines = true;
+                showOnlyCurrentScreen = false;
                 displayedText = "desktopName";
               };
             };
           }
-          "org.kde.plasma.panelspacer"
+          {
+            name = "org.kde.plasma.panelspacer";
+          }
           {
             name = "org.kde.plasma.icontasks";
             config = {
-              launchers = [ ];
-              showTasks = "onlyInCurrentDesktop";
+              General = {
+                launchers = [ ];
+                showTasks = "onlyInCurrentDesktop";
+              };
             };
           }
-          "org.kde.plasma.panelspacer"
           {
-            plasmusicToolbar = {
-              panelIcon = {
-                albumCover = {
-                  useAsIcon = false;
-                  radius = 8;
-                };
-                icon = "view-media-track";
-              };
-              preferredSource = "spotify";
-              musicControls.showPlaybackControls = true;
-              songText = {
-                displayInSeparateLines = true;
-                maximumWidth = 640;
-                scrolling = {
-                  behavior = "alwaysScroll";
-                  speed = 3;
-                };
-              };
-            };
+            name = "org.kde.plasma.panelspacer";
           }
           {
             systemTray.items = {
-              # We explicitly show bluetooth and battery
               shown = [
                 "org.kde.plasma.bluetooth"
                 "org.kde.plasma.volume"
@@ -77,6 +61,11 @@
             digitalClock = {
               calendar.firstDayOfWeek = "monday";
               time.format = "24h";
+              font = {
+                family = "Noto Sans";
+                bold = false;
+                size = 6;
+              };
             };
           }
         ];

@@ -56,6 +56,7 @@
             start = ''
               export KDEWM=${pkgs.i3}/bin/i3
               export QT_QPA_PLATFORMTHEME="qt5ct"
+
               exec ${pkgs.plasma-workspace}/bin/startplasma-x11
             '';
           }
@@ -64,7 +65,6 @@
 
       desktopManager = {
         plasma5.enable = true;
-
         xterm.enable = false;
       };
     };
