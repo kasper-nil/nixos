@@ -10,7 +10,7 @@
     # Import nixos modules
     ../modules/nixos/home-manager.nix
     ../modules/nixos/bootloader.nix
-    ../modules/nixos/graphics.nix
+    ../modules/nixos/display-manager.nix
     ../modules/nixos/i18n.nix
     ../modules/nixos/sound.nix
     ../modules/nixos/networking.nix
@@ -21,6 +21,9 @@
     ../modules/nixos/fonts.nix
     ../modules/nixos/steam.nix
   ];
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # System packages
   environment.systemPackages = with pkgs; [
@@ -39,6 +42,8 @@
     picom
     wmctrl
     discord
+    spotify
+    inputs.zen-browser.packages."${system}".default
   ];
 
   # Stuff for nixd LSP
@@ -49,12 +54,6 @@
     "nix-command"
     "flakes"
   ];
-
-  # Set your time zone.
-  time.timeZone = "Europe/Oslo";
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "24.05";
 }

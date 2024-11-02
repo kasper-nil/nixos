@@ -1,5 +1,7 @@
 {
   inputs = {
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
+
     nixpkgs = {
       # url = "github:nixos/nixpkgs/nixos-24.05";
       url = "github:nixos/nixpkgs/nixos-unstable";
