@@ -21,6 +21,12 @@
       # };
     };
 
+    krunner = {
+      position = "center";
+      activateWhenTypingOnDesktop = true;
+      historyBehavior = "enableAutoComplete";
+    };
+
     panels = [
       {
         location = "top";
@@ -60,7 +66,6 @@
                 };
                 icon = "view-media-track";
               };
-              playbackSource = "auto";
               musicControls.showPlaybackControls = true;
               songText = {
                 displayInSeparateLines = true;
