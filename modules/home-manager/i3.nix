@@ -29,7 +29,7 @@ in
       for_window [class="Kmix"] floating enable; border none
       for_window [class="Klipper"] floating enable; border none
       for_window [class="Plasmoidviewer"] floating enable; border none
-      for_window [class="plasmashell" window_type="notification"] border none, move position 70 ppt 81 ppt
+      for_window [class="plasmashell" window_type="notification"] border none, move position 80 ppt 10 ppt
 
       no_focus [class="plasmashell" window_type="notification"] 
 
@@ -37,12 +37,12 @@ in
       for_window [class="(?i)*nextcloud*"] floating disable
 
       # Kill the Plasma desktop view
-      exec_always --no-startup-id wmctrl -c Plasma
+      # exec_always --no-startup-id wmctrl -c Plasma
       for_window [title="Desktop — Plasma"] kill; floating enable; border none
       for_window [title="Desktop @ QRect"] kill; floating enable; border none
 
       # Set the desktop background
-      exec --no-startup-id feh --bg-scale /etc/nixos/assets/backgrounds/road.jpeg
+      exec_always --no-startup-id feh --bg-scale /etc/nixos/assets/backgrounds/road.jpeg
 
       # Start the compositor daemonizing it (-b) and enabling shadows (-c)
       # exec_always --no-startup-id picom -cb

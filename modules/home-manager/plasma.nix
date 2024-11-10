@@ -27,6 +27,16 @@
       historyBehavior = "enableAutoComplete";
     };
 
+    shortcuts = {
+      "org.kde.krunner.desktop"._launch = [
+        "Alt+Space"
+        "Meta"
+        "Alt+Q"
+      ];
+    };
+
+    hotkeys.commands = { };
+
     panels = [
       {
         location = "top";

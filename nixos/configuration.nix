@@ -8,9 +8,9 @@
 {
   imports = [
     # Import nixos modules
-    ../modules/nixos/home-manager.nix
     ../modules/nixos/bootloader.nix
-    ../modules/nixos/display-manager.nix
+    ../modules/nixos/display-manager/plasma-awesome.nix
+    ../modules/nixos/home-manager.nix
     ../modules/nixos/i18n.nix
     ../modules/nixos/sound.nix
     ../modules/nixos/networking.nix
@@ -45,6 +45,15 @@
     spotify
     inputs.zen-browser.packages."${system}".default
   ];
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      # Add any missing dynamic libraries for unpackaged programs
+      # here, NOT in environment.systemPackages
+      luaformatter
+    ];
+  };
 
   # Stuff for nixd LSP
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
