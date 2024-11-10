@@ -4,26 +4,30 @@
     wantedBy = lib.mkForce [ ];
   };
 
-  qt = {
-    enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme = "gnome";
+  #   style = "adwaita-dark";
+  # };
 
-  programs.dconf.enable = true;
+  # programs.dconf.enable = true;
 
   # Options for all of the graphical aspects of the OS
   # Configures display manager, window manager and desktop manager
   services = {
     displayManager = {
       defaultSession = "plasma+i3";
-      sddm.enable = true;
+      sddm = {
+        enable = true;
+        wayland.enable = false;
+      };
     };
 
-    # desktopManager = {
-    #   plasma6.enable = true;
-    #   plasma6.enableQt5Integration = true;
-    # };
+    desktopManager = {
+      plasma6 = {
+        enable = true;
+      };
+    };
 
     xserver = {
       enable = true;
@@ -48,7 +52,7 @@
       };
 
       desktopManager = {
-        plasma5.enable = true;
+        # plasma5.enable = true;
         xterm.enable = false;
       };
     };

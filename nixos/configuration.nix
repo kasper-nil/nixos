@@ -9,7 +9,7 @@
   imports = [
     # Import nixos modules
     ../modules/nixos/bootloader.nix
-    ../modules/nixos/display-manager/plasma-awesome.nix
+    ../modules/nixos/display-manager/plasma-i3.nix
     ../modules/nixos/home-manager.nix
     ../modules/nixos/i18n.nix
     ../modules/nixos/sound.nix
