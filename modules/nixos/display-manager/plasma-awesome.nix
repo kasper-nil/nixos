@@ -32,6 +32,21 @@
         };
       };
 
+      displayManager = {
+        session = [
+          {
+            manage = "desktop";
+            name = "plasma";
+            start = ''
+              export KDEWM=${pkgs.awesome}/bin/awesome
+              export QT_QPA_PLATFORMTHEME="qt5ct"
+
+              exec ${pkgs.plasma-workspace}/bin/startplasma-x11
+            '';
+          }
+        ];
+      };
+
       desktopManager = {
         plasma5.enable = true;
       };
