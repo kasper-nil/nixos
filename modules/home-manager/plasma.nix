@@ -104,7 +104,7 @@
               font = {
                 family = "Noto Sans";
                 bold = false;
-                size = 8;
+                # size = 8;
               };
             };
           }
