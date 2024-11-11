@@ -6,26 +6,28 @@
 set $mod                             Mod4
 set $smod                            Shift
 
-set $wm_setting_gap_inner            8
-set $wm_setting_gap_outer	         0
-set $wm_setting_border_size          2
+set $setting_gap_inner            8
+set $setting_gap_outer	         0
+set $setting_border_size          2
 
-set $wm_setting_key_left             Left
-set $wm_setting_key_down             Down
-set $wm_setting_key_up               Up
-set $wm_setting_key_right            Right
+set $setting_key_left             Left
+set $setting_key_down             Down
+set $setting_key_up               Up
+set $setting_key_right            Right
 
-set $wm_setting_app_terminal         alacritty
-set $wm_setting_app_compositor       picom
+set $setting_app_terminal         alacritty
+set $setting_app_compositor       picom
 
-set $wm_setting_font                 pango:Source Sans Pro, Semibold 11
+set $setting_font                 pango:Source Sans Pro, Semibold 11
+
+set $setting_main_screen			 eDP-1
 
 ### Applications ###
 # Start a terminal emulator
-bindsym $mod+t exec --no-startup-id $wm_setting_app_terminal
+bindsym $mod+t exec --no-startup-id $setting_app_terminal
 
 # Run a window compositor (for effects like transparency or full VSync)
-exec --no-startup-id $wm_setting_app_compositor
+exec --no-startup-id $setting_app_compositor
 
 # Set up background
 exec_always --no-startup-id feh --bg-scale /etc/nixos/assets/backgrounds/road.jpeg
@@ -70,16 +72,16 @@ bindsym $mod+$smod+0 move container to workspace $ws10
 
 ### Window sizes and positions ###
 # Cange focus
-bindsym $mod+$wm_setting_key_left        focus left
-bindsym $mod+$wm_setting_key_down        focus down
-bindsym $mod+$wm_setting_key_up          focus up
-bindsym $mod+$wm_setting_key_right       focus right
+bindsym $mod+$setting_key_left        focus left
+bindsym $mod+$setting_key_down        focus down
+bindsym $mod+$setting_key_up          focus up
+bindsym $mod+$setting_key_right       focus right
 
 # Move focused window
-bindsym $mod+$smod+$wm_setting_key_left  move left
-bindsym $mod+$smod+$wm_setting_key_down  move down
-bindsym $mod+$smod+$wm_setting_key_up    move up
-bindsym $mod+$smod+$wm_setting_key_right move right
+bindsym $mod+$smod+$setting_key_left  move left
+bindsym $mod+$smod+$setting_key_down  move down
+bindsym $mod+$smod+$setting_key_up    move up
+bindsym $mod+$smod+$setting_key_right move right
 
 # Resize window (you can also use the mouse for that)
 mode "resize" {
@@ -89,16 +91,16 @@ mode "resize" {
 #	Pressing right will grow the window’s width.
 #	Pressing up will shrink the window’s height.
 #	Pressing down will grow the window’s height.
-	bindsym $wm_setting_key_left  resize shrink width 10 px or 10 ppt
-	bindsym $wm_setting_key_down  resize grow height 10 px or 10 ppt
-	bindsym $wm_setting_key_up    resize shrink height 10 px or 10 ppt
-	bindsym $wm_setting_key_right resize grow width 10 px or 10 ppt
+	bindsym $setting_key_left  resize shrink width 10 px or 10 ppt
+	bindsym $setting_key_down  resize grow height 10 px or 10 ppt
+	bindsym $setting_key_up    resize shrink height 10 px or 10 ppt
+	bindsym $setting_key_right resize grow width 10 px or 10 ppt
 
 #	Resize the gap width and height
-	bindsym $smod+$wm_setting_key_left  gaps horizontal minus 5
-	bindsym $smod+$wm_setting_key_down  gaps horizontal plus 5
-	bindsym $smod+$wm_setting_key_up    gaps vertical minus 5
-	bindsym $smod+$wm_setting_key_right gaps vertical plus 5
+	bindsym $smod+$setting_key_left  gaps horizontal minus 5
+	bindsym $smod+$setting_key_down  gaps horizontal plus 5
+	bindsym $smod+$setting_key_up    gaps vertical minus 5
+	bindsym $smod+$setting_key_right gaps vertical plus 5
 
 #	Back to normal: Enter or Escape or $mod+r
 	bindsym Return mode "default"
@@ -108,19 +110,25 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+### Screen config ###
+workspace $ws1 output $setting_main_screen
+workspace $ws2 output $setting_main_screen
+workspace $ws3 output $setting_main_screen
+workspace $ws4 output $setting_main_screen
+
 ### Gaps ###
-gaps inner 	$wm_setting_gap_inner
-gaps outer 	$wm_setting_gap_outer
+gaps inner 	$setting_gap_inner
+gaps outer 	$setting_gap_outer
 smart_gaps 	on
 
 ### Borders ###
-default_border pixel $wm_setting_border_size
-default_floating_border pixel $wm_setting_border_size
+default_border pixel $setting_border_size
+default_floating_border pixel $setting_border_size
 smart_borders on
 
 ### Miscellaneous settings ###
 # Set the font used for titlebars (which are hidden here)
-font $wm_setting_font
+font $setting_font
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

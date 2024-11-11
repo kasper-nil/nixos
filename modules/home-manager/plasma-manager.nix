@@ -40,8 +40,8 @@
           {
             pager = {
               general = {
-                # showWindowOutlines = true;
-                # showApplicationIconsOnWindowOutlines = true;
+                showWindowOutlines = true;
+                showApplicationIconsOnWindowOutlines = true;
                 showOnlyCurrentScreen = false;
                 displayedText = "desktopName";
               };

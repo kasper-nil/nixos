@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
+  home.file."${config.home.homeDirectory}/.config/kwinrc" = {
+    source = ../../dotfiles/kwinrc;
+  };
+
   # Setup systemd services
   systemd.user.services = {
     # Disable kwin
