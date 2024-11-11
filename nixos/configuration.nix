@@ -39,11 +39,13 @@
     alsa-utils
     ranger
     feh
-    picom
     wmctrl
     discord
     spotify
     inputs.zen-browser.packages."${system}".default
+    arandr
+    neofetch
+    i3
   ];
 
   programs.nix-ld = {

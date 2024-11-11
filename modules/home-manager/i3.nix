@@ -5,54 +5,95 @@ let
   rofi = "rofi";
 in
 {
+  home.packages = with pkgs; [
+    picom
+  ];
+
+  home.file."${config.home.homeDirectory}/.config/picom.conf" = {
+    source = "../../dotfiles/picom.conf";
+  };
+
+  systemd.user.services = {
+    plasma-kwin_x11 = {
+      Install = {
+        WantedBy = [ ];
+      };
+    };
+    plasma-i3_x11 = {
+      Install = {
+        WantedBy = [ "plasma-workspace.target" ];
+      };
+      Unit = {
+        Description = "KDE Plasma with i3wm";
+        Before = "plasma-workspace.target";
+      };
+      Service = {
+        ExecStart = ''
+          ${pkgs.i3}/bin/i3
+        '';
+        Slice = "session.slice";
+        Restart = "on-failure";
+      };
+    };
+  };
+
   xsession.windowManager.i3 = {
     enable = true;
 
     extraConfig = ''
-      # resize window
-      mode "resize" {
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-        # back to normal
-        bindsym Escape mode "default"
-      }
+      # Start the compositor daemonizing it (-b) and enabling shadows (-c)
+      exec_always --no-startup-id picom -cb
+
+      # Set the desktop background
+      exec_always --no-startup-id feh --bg-scale /etc/nixos/assets/backgrounds/road.jpeg
 
       for_window [window_role="pop-up"] floating enable
-      for_window [window_role="task_dialog"] floating enable
-      for_window [class="systemsettings"] floating enable
-      for_window [class="plasmashell"] floating enable;
-      for_window [class="Plasma"] floating enable; border none
-      for_window [title="plasma-desktop"] floating enable; border none
-      for_window [class="krunner"] floating enable; border none
-      for_window [class="Kmix"] floating enable; border none
-      for_window [class="Klipper"] floating enable; border none
-      for_window [class="Plasmoidviewer"] floating enable; border none
-      for_window [class="plasmashell" window_type="notification"] border none, move position 80 ppt 10 ppt
 
-      no_focus [class="plasmashell" window_type="notification"] 
+      for_window [window_role="task_dialog"] floating enable
+
+      for_window [class="systemsettings"] floating enable
+
+      for_window [class="plasmashell"] floating enable
+
+      for_window [class="krunner"] floating enable
+      for_window [class="krunner"] border none
+
+      for_window [class="Kmix"] floating enable
+      for_window [class="Kmix"] border none
+
+      for_window [class="Klipper"] floating enable;
+      for_window [class="Klipper"] border none
+
+      for_window [class="Plasmoidviewer"] floating enable
+      for_window [class="Plasmoidviewer"] border none
+
+      for_window [class="Plasma"] floating enable
+      for_window [class="Plasma"] border none
+
+      for_window [title="plasma-desktop"] floating enable
+      for_window [title="plasma-desktop"] border none
+
+      for_window [class="plasmashell" window_type="notification"] border none
+      for_window [class="plasmashell" window_type="notification"] move position 80 ppt 10 ppt
+
+      # no_focus [class="plasmashell" window_type="notification"]
+      no_focus [class="plasmashell"]
 
       # Set other stuff as floating
-      for_window [class="(?i)*nextcloud*"] floating disable
+      # for_window [class="(?i)*nextcloud*"] floating disable
+      for_window [class="(?i)nextcloud"] floating disable
 
       # Kill the Plasma desktop view
       # exec_always --no-startup-id wmctrl -c Plasma
       for_window [title="Desktop — Plasma"] kill; floating enable; border none
       for_window [title="Desktop @ QRect"] kill; floating enable; border none
-
-      # Set the desktop background
-      exec_always --no-startup-id feh --bg-scale /etc/nixos/assets/backgrounds/road.jpeg
-
-      # Start the compositor daemonizing it (-b) and enabling shadows (-c)
-      # exec_always --no-startup-id picom -cb
     '';
 
     config = {
       modifier = "${mod}";
 
       window = {
-        titlebar = false;
+        titlebar = true;
         border = 2;
         commands = [
           {
