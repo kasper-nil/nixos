@@ -1,5 +1,30 @@
 { pkgs, ... }:
 {
+  # Setup systemd services, replacing kwin with i3
+  systemd.user.services = {
+    plasma-kwin_x11 = {
+      Install = {
+        WantedBy = [ ];
+      };
+    };
+    plasma-i3_x11 = {
+      Install = {
+        WantedBy = [ "plasma-workspace.target" ];
+      };
+      Unit = {
+        Description = "KDE Plasma with i3wm";
+        Before = "plasma-workspace.target";
+      };
+      Service = {
+        ExecStart = ''
+          ${pkgs.i3}/bin/i3
+        '';
+        Slice = "session.slice";
+        Restart = "on-failure";
+      };
+    };
+  };
+
   programs.plasma = {
     enable = true;
 
@@ -7,26 +32,15 @@
 
     workspace = {
       lookAndFeel = "org.kde.breezedark.desktop";
-      # iconTheme = "Papirus-Dark";
     };
-
-    # fonts = {
-    #   general = {
-    #     family = "JetBrains Mono";
-    #     pointSize = 12;
-    #   };
-    # };
 
     krunner = {
       position = "center";
-      historyBehavior = "enableAutoComplete";
     };
 
     shortcuts = {
       "org.kde.krunner.desktop"._launch = [
-        "Alt+Space"
-        "Meta"
-        "Alt+Q"
+        "Meta+D"
       ];
     };
 
@@ -36,6 +50,7 @@
       {
         location = "top";
         hiding = "none";
+        floating = true;
         widgets = [
           {
             pager = {

@@ -10,31 +10,7 @@ in
   ];
 
   home.file."${config.home.homeDirectory}/.config/picom.conf" = {
-    source = "../../dotfiles/picom.conf";
-  };
-
-  systemd.user.services = {
-    plasma-kwin_x11 = {
-      Install = {
-        WantedBy = [ ];
-      };
-    };
-    plasma-i3_x11 = {
-      Install = {
-        WantedBy = [ "plasma-workspace.target" ];
-      };
-      Unit = {
-        Description = "KDE Plasma with i3wm";
-        Before = "plasma-workspace.target";
-      };
-      Service = {
-        ExecStart = ''
-          ${pkgs.i3}/bin/i3
-        '';
-        Slice = "session.slice";
-        Restart = "on-failure";
-      };
-    };
+    source = ../../dotfiles/picom.conf;
   };
 
   xsession.windowManager.i3 = {
@@ -108,7 +84,7 @@ in
       gaps = {
         smartBorders = "on";
         smartGaps = true;
-        inner = 10;
+        inner = 8;
         outer = 0;
       };
 
@@ -119,7 +95,7 @@ in
         "${mod}+t" = "exec --no-startup-id ${terminal}";
 
         # Launch rofi
-        "${mod}+d" = "exec --no-startup-id ${rofi} -show drun -show-icons";
+        # "${mod}+d" = "exec --no-startup-id ${rofi} -show drun -show-icons";
 
         # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
         "${mod}+Shift+r" = "restart";

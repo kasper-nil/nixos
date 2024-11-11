@@ -1,10 +1,7 @@
-{ pkgs, lib, ... }:
 {
-  # qt = {
-  #   enable = true;
-  #   platformTheme = "gnome";
-  #   style = "adwaita-dark";
-  # };
+  qt = {
+    enable = true;
+  };
 
   services = {
     displayManager = {
@@ -16,7 +13,6 @@
 
     desktopManager = {
       plasma6 = {
-        # enableQt5Integration = true;
         enable = true;
       };
     };
