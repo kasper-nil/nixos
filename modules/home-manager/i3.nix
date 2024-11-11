@@ -1,18 +1,9 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 let
   mod = "Mod4";
   terminal = "alacritty";
-  rofi = "rofi";
 in
 {
-  home.packages = with pkgs; [
-    picom
-  ];
-
-  home.file."${config.home.homeDirectory}/.config/picom.conf" = {
-    source = ../../dotfiles/picom.conf;
-  };
-
   xsession.windowManager.i3 = {
     enable = true;
 
