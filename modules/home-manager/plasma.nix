@@ -7,6 +7,14 @@
       Install = {
         WantedBy = [ ];
       };
+      Unit = {
+        Before = [ ];
+        After = [ ];
+      };
+      Service = {
+        ExecStart = "";
+        Restart = "";
+      };
     };
     # Create a custom service to use i3wm
     plasma-i3_x11 = {

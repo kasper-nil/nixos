@@ -1,52 +1,13 @@
 {
   inputs,
-  config,
   pkgs,
-  lib,
   ...
 }:
 {
-  imports = [
-    # Import nixos modules
-    ../modules/nixos/home-manager.nix
-    ../modules/nixos/bootloader.nix
-    ../modules/nixos/display-manager/plasma-i3.nix
-    ../modules/nixos/i18n.nix
-    ../modules/nixos/sound.nix
-    ../modules/nixos/networking.nix
-    ../modules/nixos/keyboard.nix
-    ../modules/nixos/users.nix
-    ../modules/nixos/shell.nix
-    ../modules/nixos/bluetooth.nix
-    ../modules/nixos/fonts.nix
-    ../modules/nixos/steam.nix
-  ];
+  system.stateVersion = "24.05";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # System packages
-  environment.systemPackages = with pkgs; [
-    home-manager
-    vscode
-    brave
-    htop
-    gnumake
-    blueman
-    nixd
-    nixfmt-rfc-style
-    pavucontrol
-    alsa-utils
-    ranger
-    feh
-    wmctrl
-    discord
-    spotify
-    inputs.zen-browser.packages."${system}".default
-    arandr
-    neofetch
-    i3
-  ];
 
   programs.nix-ld = {
     enable = true;
@@ -66,5 +27,42 @@
     "flakes"
   ];
 
-  system.stateVersion = "24.05";
+  # System packages
+  environment.systemPackages = with pkgs; [
+    home-manager
+    vscode
+    brave
+    htop
+    gnumake
+    # blueman
+    nixd
+    nixfmt-rfc-style
+    # pavucontrol
+    # alsa-utils
+    ranger
+    feh
+    # wmctrl
+    discord
+    spotify
+    inputs.zen-browser.packages."${system}".default
+    arandr
+    neofetch
+  ];
+
+  # NixOS modules
+  imports = [
+    ../modules/nixos/bootloader.nix
+    ../modules/nixos/home-manager.nix
+    ../modules/nixos/desktop-environment.nix
+
+    ../modules/nixos/i18n.nix
+    ../modules/nixos/sound.nix
+    ../modules/nixos/networking.nix
+    ../modules/nixos/keyboard.nix
+    ../modules/nixos/users.nix
+    ../modules/nixos/shell.nix
+    ../modules/nixos/bluetooth.nix
+    ../modules/nixos/fonts.nix
+    ../modules/nixos/steam.nix
+  ];
 }
