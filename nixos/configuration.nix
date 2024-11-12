@@ -6,8 +6,15 @@
 {
   system.stateVersion = "24.05";
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+
+    packageOverrides = pkgs: {
+      polybar = pkgs.polybar.override {
+        i3Support = true;
+      };
+    };
+  };
 
   programs.nix-ld = {
     enable = true;

@@ -23,6 +23,12 @@ set $setting_font                 pango:Source Sans Pro, Semibold 11
 set $setting_main_screen			 eDP-1
 
 ### Applications ###
+# Run rofi
+bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
+
+# Run polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # Start a terminal emulator
 bindsym $mod+t exec --no-startup-id $setting_app_terminal
 
@@ -136,9 +142,6 @@ font $setting_font
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-# Run rofi
-bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
 
 # Enter fullscreen mode for the focused window
 bindsym $mod+f fullscreen toggle
