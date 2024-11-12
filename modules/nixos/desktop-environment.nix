@@ -1,4 +1,7 @@
 {
+  systemd.services."plasma-kwin_x11".enable = false;
+  systemd.user.services."plasma-kwin_x11".enable = false;
+
   qt = {
     enable = true;
   };

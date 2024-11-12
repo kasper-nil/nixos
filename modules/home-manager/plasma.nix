@@ -1,25 +1,29 @@
 { pkgs, config, ... }:
 {
-  home.file."${config.home.homeDirectory}/.config/kwinrc" = {
-    source = ../../dotfiles/kwinrc;
+  home.file = {
+    # Compositor
+    "${config.home.homeDirectory}/.config/kwinrc" = {
+      source = ../../dotfiles/kde/kwinrc;
+    };
+
+    # Global shortcuts
+    "${config.home.homeDirectory}/.config/kglobalshortcutsrc" = {
+      source = ../../dotfiles/kde/kglobalshortcutsrc;
+    };
+
+    # Custom shortcuts
+    "${config.home.homeDirectory}/.config/khotkeysrc" = {
+      source = ../../dotfiles/kde/khotkeysrc;
+    };
+
+    # KWin shortcuts
+    "${config.home.homeDirectory}/.config/kwinshortcutsrc" = {
+      source = ../../dotfiles/kde/kwinshortcutsrc;
+    };
   };
 
   # Setup systemd services
   systemd.user.services = {
-    # Disable kwin
-    plasma-kwin_x11 = {
-      Install = {
-        WantedBy = [ ];
-      };
-      Unit = {
-        Before = [ ];
-        After = [ ];
-      };
-      Service = {
-        ExecStart = "";
-        Restart = "";
-      };
-    };
     # Create a custom service to use i3wm
     plasma-i3_x11 = {
       Install = {

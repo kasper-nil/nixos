@@ -1,3 +1,0 @@
-[Compositing]
-Enabled=false   # Disable the compositor
-OpenGLIsUnsafe=true  # Forces fallback if OpenGL compositing causes issues
