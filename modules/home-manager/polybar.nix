@@ -17,6 +17,11 @@
         recursive = true;
         executable = true;
       };
+
+      "${config.home.homeDirectory}/.config/polybar/launch.sh" = {
+        source = ../../dotfiles/launch.sh;
+        executable = true;
+      };
     };
   };
 }

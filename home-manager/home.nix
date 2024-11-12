@@ -5,9 +5,9 @@
     ../modules/home-manager/zsh.nix
     ../modules/home-manager/alacritty.nix
     ../modules/home-manager/rofi.nix
+    ../modules/home-manager/polybar.nix
     ../modules/home-manager/i3.nix
     ../modules/home-manager/picom.nix
-    ../modules/home-manager/polybar.nix
   ];
 
   home = {
