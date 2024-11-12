@@ -1,6 +1,8 @@
+{ pkgs, ... }:
 {
   programs.eww = {
     enable = true;
-    configDir = ../../dotfiles/eww;
+    configDir = ../../dotfiles/eww-bar;
+    package = pkgs.eww;
   };
 }

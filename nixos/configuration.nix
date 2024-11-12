@@ -51,7 +51,9 @@
     arandr
     neofetch
     i3
+    alsa-utils
     python3
+    wmctrl
   ];
 
   # NixOS modules

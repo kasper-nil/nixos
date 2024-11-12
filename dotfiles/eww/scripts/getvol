@@ -1,6 +1,9 @@
 #!/bin/sh
 
-if command -v pamixer &>/dev/null; then
+if
+    command -v pamixer &
+    >/dev/null
+then
     if [ true == $(pamixer --get-mute) ]; then
         echo 0
         exit
@@ -8,5 +11,5 @@ if command -v pamixer &>/dev/null; then
         pamixer --get-volume
     fi
 else
-    amixer -D pulse sget Master | awk -F '[^0-9]+' '/Left:/{print $3}'
+    amixer -D pipewire sget Master | awk -F '[^0-9]+' '/Left:/{print $3}'
 fi

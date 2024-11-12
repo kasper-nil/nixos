@@ -2,14 +2,16 @@
   (centerbox :orientation "h"
     (workspaces)
     (music)
-    (sidestuff)))
+    (sidestuff)
+  )
+)
 
 (defwidget sidestuff []
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
     (metric :label "🔊"
       :value volume
     :onchange "amixer -D pulse sset Master {}%")
-    (metric :label ""
+    (metric :label "RAM"
       :value {EWW_RAM.used_mem_perc}
     :onchange "")
     (metric :label "💾"
@@ -51,8 +53,6 @@
       :active {onchange != ""}
       :value value
     :onchange onchange)))
-
-
 
 (deflisten music :initial ""
 "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
