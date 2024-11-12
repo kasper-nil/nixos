@@ -28,7 +28,7 @@ set $setting_main_screen			 eDP-1
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
 
 # Run polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Start a terminal emulator
 bindsym $mod+t exec --no-startup-id $setting_app_terminal

@@ -54,6 +54,7 @@
     alsa-utils
     python3
     wmctrl
+    playerctl
   ];
 
   # NixOS modules

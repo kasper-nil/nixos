@@ -1,206 +1,350 @@
-; Add the includes
+;; Variables
+(defpoll clock_time :interval "5m" "date +\%I")
+(defpoll clock_minute :interval "5s" "date +\%M")
+(defpoll clock_date :interval "10h" "date '+%d/%m'")
+(defpoll volume_percent :interval "3s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defpoll mic_percent :interval "3s" "amixer -D pulse sget Capture | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defpoll brightness_percent :interval "5s" "brightnessctl -m -d intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
+(defpoll battery :interval "15s" "./scripts/battery --bat")
+(defpoll battery_status :interval "1m" "./scripts/battery --bat-st")
+(defpoll memory :interval "15s" "scripts/memory")
+(defpoll memory_used_mb :interval "2m" "scripts/mem-ad used")
+(defpoll memory_total_mb :interval "2m" "scripts/mem-ad total")
+(defpoll memory_free_mb :interval "2m" "scripts/mem-ad free")
+(defvar vol_reveal false)
+(defvar br_reveal false)
+(defvar music_reveal false)
+(defvar wifi_rev false)
+(defvar time_rev false)
+(deflisten workspace "scripts/workspace")
 
-(include "variables.yuck")
-(include "controls.yuck")
-(include "listeners.yuck")
-(include "metrics.yuck")
-(include "pollers.yuck")
-(include "revealer.yuck")
+(defvar eww "$HOME/.local/bin/eww/eww -c $HOME/.config/eww/bar")
 
 
-(defwidget bar []
-  (centerbox :orientation "h"
-    (box :orientation "h" :space-evenly false (workspaces) )
-    (box :orientation "h" :space-evenly false (label :text " ${time} - ") (weather) )
-    (sidestuff)
-  )
-)
+(defpoll COL_WLAN :interval "1m" "~/.config/eww/bar/scripts/wifi --COL")
+(defpoll ESSID_WLAN :interval "1m" "~/.config/eww/bar/scripts/wifi --ESSID")
+(defpoll WLAN_ICON :interval "1m" "~/.config/eww/bar/scripts/wifi --ICON")
 
-(defwidget bottombar []
-  (centerbox :orientation "h"
-    (box :halign "start" :orientation "h" :space-evenly false (workspaces))
-    (box :halign "end" :orientation "h" :space-evenly false)
-    (box :orientation "h" :halign "end" :space-evenly false
-      (metric :icon ""
-        :onclick "htop --sort-key PERCENT_MEM"
-      :value {EWW_RAM.used_mem_perc})
-      (metric :icon ""
-        :onclick "htop --sort-key PERCENT_CPU"
-      :value {EWW_CPU.avg})
-      (metric :icon ""
-        :onclick "mc"
-        :value "${round(EWW_DISK["/"].used_perc, 0)}")
-      (network)
-    )
-  )
-)
+
+(defpoll song :interval "2s"  "~/.config/eww/bar/scripts/music_info --song")
+(defpoll song_artist :interval "2s"  "~/.config/eww/bar/scripts/music_info --artist")
+(defpoll current_status :interval "1s"  "~/.config/eww/bar/scripts/music_info --time")
+(defpoll song_status :interval "2s"  "~/.config/eww/bar/scripts/music_info --status")
+(defpoll cover_art :interval "2s"  "~/.config/eww/bar/scripts/music_info --cover")
+
+(defpoll calendar_day :interval "20h" "date '+%d'")
+(defpoll calendar_year :interval "20h" "date '+%Y'")
+
+;; widgets
+
+(defwidget wifi []
+  (eventbox :onhover "${eww} update wifi_rev=true"
+    :onhoverlost "${eww} update wifi_rev=false"
+    (box :vexpand "false" :hexpand "false" :space-evenly "false"
+      (button :class "module-wif" :onclick "networkmanager_dmenu" :wrap "false" :limit-width 12 :style "color: ${COL_WLAN};" WLAN_ICON)
+      (revealer :transition "slideright"
+        :reveal wifi_rev
+        :duration "350ms"
+        (label    :class "module_essid"
+          :text ESSID_WLAN
+          :orientation "h"
+        )))))
+
 
 (defwidget workspaces []
-  (literal :class "workspaces" :content "${workspace}")
-)
+  (literal :content workspace))
 
-(defwidget icon-module [icon ?class ?visible]
-  (box :class "${class} icon-module"
-    :orientation "h"
-    :halign "start"
-    :space-evenly false
-    :visible {visible ?: true} ; because the argument is optional
-    (label :class "icon-module__icon" :text "${icon}")
-    (children)
-  )
-)
 
-(defwidget sidestuff []
-  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end" :spacing 10
-    (box :orientation "h" :spacing 2 :space-evenly false :halign "end"
-      (volume)
-      (spotify)
-      (docker)
-      (github)
-      (notifications)
-    )
-  )
-)
+(defwidget bat []
+  (box :class "bat_module" :vexpand "false" :hexpand "false"
+    (circular-progress :value battery
+      :class "batbar"
+      :thickness 4
+      (button
+        :class "iconbat"
+        :limit-width 2
+        :tooltip "battery on ${battery}%"
+        :show_truncated false
+        :onclick "$HOME/.config/eww/bar/scripts/pop system"
+        :wrap false
+      ""))))
 
-(defwidget weather []
-  (icon-module :icon "${weather.icon}"
-    (label :text "${weather.description}")
-  )
-)
 
+(defwidget mem []
+  (box :class "mem_module" :vexpand "false" :hexpand "false"
+    (circular-progress :value memory
+      :class "membar"
+      :thickness 4
+      (button
+        :class "iconmem"
+        :limit-width 2
+        :tooltip "using ${memory}% ram"
+        :onclick "$HOME/.config/eww/bar/scripts/pop system"
+        :show_truncated false
+        :wrap false
+      ""))))
+
+
+
+(defwidget sep []
+  (box :class "module-2" :vexpand "false" :hexpand "false"
+    (label :class "separ" :text "|")))
+
+(defwidget clock_module []
+  (eventbox :onhover "${eww} update time_rev=true"
+    :onhoverlost "${eww} update time_rev=false"
+    (box :class "module" :space-evenly "false" :orientation "h" :spacing "3"
+      (label :text clock_time :class "clock_time_class" )
+      (label :text "" :class "clock_time_sep" )
+      (label :text clock_minute :class "clock_minute_class")
+      (revealer :transition "slideleft"
+        :reveal time_rev
+        :duration "350ms"
+        (button :class "clock_date_class"
+          :onclick "$HOME/.config/eww/bar/scripts/pop calendar" clock_date
+        )
+      ))))
+
+(defwidget volume []
+  (eventbox :onhover "${eww} update vol_reveal=true"
+    :onhoverlost "${eww} update vol_reveal=false"
+    (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3"
+      (button   :onclick "scripts/pop audio"   :class "volume_icon" "")
+      (revealer :transition "slideleft"
+        :reveal vol_reveal
+        :duration "350ms"
+        (scale    :class "volbar"
+          :value volume_percent
+          :orientation "h"
+          :tooltip "${volume_percent}%"
+          :max 100
+          :min 0
+        :onchange "amixer -D pulse sset Master {}%" )))))
+
+(defwidget bright []
+  (eventbox :onhover "${eww} update br_reveal=true" :onhoverlost "${eww} update br_reveal=false"
+    (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3"
+      (label :text "" :class "bright_icon" :tooltip "brightness")
+      (revealer :transition "slideleft"
+        :reveal br_reveal
+        :duration "350ms"
+        (scale    :class "brightbar"
+          :value brightness_percent
+          :orientation "h"
+          :tooltip "${brightness_percent}%"
+          :max 100
+          :min 0
+        :onchange "brightnessctl set {}%" )))))
+
+
+
+;;  Music
 (defwidget music []
-  (box :class "music"
-    :orientation "h"
+  (eventbox :onhover "${eww} update music_reveal=true"
+    :onhoverlost "${eww} update music_reveal=false"
+    (box :class "module-2" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
+      (box :class "song_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
+      (button :class "song" :wrap "true" :onclick "~/.config/eww/bar/scripts/pop music" song)
+      (revealer :transition "slideright"
+        :reveal music_reveal
+        :duration "350ms"
+        (box :vexpand "false" :hexpand "false" :oreintation "h"
+          (button :class "song_btn_prev" :onclick "~/.config/eww/bar/scripts/music_info --prev" "")
+          (button :class "song_btn_play" :onclick "~/.config/eww/bar/scripts/music_info --toggle" song_status)
+          (button :class "song_btn_next" :onclick "~/.config/eww/bar/scripts/music_info --next" ""))))))
+
+
+
+(defwidget left []
+  (box :orientation "h"
+    :space-evenly false
+    :halign "end"
+    :class "left_modules"
+    (bright)
+    (volume)
+    (wifi)
+    (sep)
+    (bat)
+    (mem)
+    (sep)
+    (clock_module)))
+
+
+(defwidget right []
+  (box :orientation "h"
+    :space-evenly false
+    :halign "start"
+    :class "right_modules"
+    (workspaces)))
+
+
+(defwidget center []
+  (box :orientation "h"
     :space-evenly false
     :halign "center"
-    {music != "" ? "🎵${music}" : ""}
-  )
-)
+    :class "center_modules"
+    (music)))
+
+(defwidget bar_1 []
+  (box :class "bar_class"
+    :orientation "h"
+    (right)
+    (center)
+    (left)
+  ))
+
+(defwindow bar
+  :geometry (geometry :x "0%"
+    :y "9px"
+    :width "98%"
+    :height "30px"
+  :anchor "top center")
+  :stacking "fg"
+  :windowtype "dock"
+  (bar_1))
+
+(defwidget system []
+  (box :class "sys_win" :orientation "v" :space-evenly "false" :hexpand "false" :vexpand "false" :spacing 0
+    (box :class "sys_bat_box" :orientation "h" :space-evenly "false"
+      (circular-progress :value battery
+        :class "sys_bat"
+        :thickness 9
+        (label :text ""
+          :class "sys_icon_bat"
+          :limit-width 2
+          :show_truncated false
+        :wrap false))
+      (box :orientation "v" :space-evenly "false" :spacing 0 :hexpand "false" :vexpand "false"
+        (label :text "battery"
+          :halign "start"
+          :class "sys_text_bat"
+          :limit-width 9
+          :show_truncated false
+        :wrap false)
+        (label :text "${battery}%"
+          :halign "start"
+          :class "sys_text_bat_sub"
+          :limit-width 22
+          :show_truncated false
+        :wrap false)
+        (label :text "${battery_status}"
+          :halign "start"
+          :class "sys_text_bat_sub"
+          :limit-width 22
+          :show_truncated false
+        :wrap false)))
+    (label :text "" :class "sys_sep" :halign "center")
+    (box :class "sys_mem_box" :orientation "h" :space-evenly "false" :halign "start"
+      (circular-progress :value memory
+        :class "sys_mem"
+        :thickness 9
+        (label :text ""
+          :class "sys_icon_mem"
+          :limit-width 2
+          :show_truncated false
+          :wrap false
+        :angle 0.0))
+      (box :orientation "v" :space-evenly "false" :spacing 0 :hexpand "false" :vexpand "false"
+        (label :text "memory"
+          :halign "start"
+          :class "sys_text_mem"
+          :limit-width 9
+          :show_truncated false
+        :wrap false)
+        (label :text "${memory_used_mb} | ${memory_total_mb}mb "
+          :halign "start"
+          :class "sys_text_mem_sub"
+          :limit-width 22
+          :show_truncated false
+        :wrap false)
+        (label :text "${memory_free_mb}mb free"
+          :halign "start"
+          :class "sys_text_mem_sub"
+          :limit-width 22
+          :show_truncated false
+        :wrap false)))))
+
+(defwidget cal []
+  (box :class "cal" :orientation "v"
+    (box :class "cal-in"
+      (calendar :class "cal"
+        :day calendar_day
+      :year calendar_year))))
+
+(defwindow calendar
+  :geometry (geometry :x "-20px"
+    :y "7%"
+    :anchor "top right"
+    :width "270px"
+  :height "60px")
+  (cal))
 
 
-(defwidget volume [?class]
-  (box :space-evenly false
-    :class "hover-module ${class}"
-    (revealer-on-hover :class "hl-on-hover"
-      :var revealVolume
-      :varname "revealVolume"
-      :transition "slideleft"
-      :class "volume"
-      
-      (hovered-sign :var revealVolume
-        (label :text "")
-        (label :text "")
-      )
-      (metric :icon ""
-        :class "volume"
-        :value volume
-      :onchange "amixer -D pulse sset Master {}%")
-    "    ")
-  )
-)
+
+(defwidget audio []
+  (box :class "audio-box" :orientation "v" :space-evenly "false" :vexpand "false" :hexpand "false"
+    (box :halign "v" :space-evenly "false" :hexpand "false" :vexpand "false"
+      (box :class "speaker_icon" :orientation "v")
+      (box :orientation "v" :halign "center" :vexpand "false" :hexpand "false"
+        (label :class "speaker_text" :text "speaker" :valign "center" :halign "left" )
+        (box :class "speaker_bar" :halign "center" :vexpand "false" :hexpand "false"
+          (scale    :value volume_percent
+            :space-evenly "false"
+            :orientation "h"
+            :onchange "amixer -D pulse sset Master {}%"
+            :tooltip "volume on ${volume_percent}%"
+            :max 100
+          :min 0))))
+    (label :text "" :class "audio_sep" :halign "center")
+    (box :halign "v" :space-evenly "false" :hexpand "false" :vexpand "false"
+      (box :class "mic_icon" :orientation "v")
+      (box :orientation "v" :halign "center" :vexpand "false" :hexpand "false"
+        (label :class "mic_text" :text "mic" :valign "center" :halign "left" )
+        (box :class "mic_bar" :halign "center" :vexpand "false" :hexpand "false"
+          (scale    :value mic_percent
+            :space-evenly "false"
+            :orientation "h"
+            :tooltip "mic on ${mic_percent}%"
+            :onchange "amixer -D pulse sset Capture {}%"
+            :max 100
+          :min 0))))))
+
+(defwindow audio_ctl
+  :geometry (geometry :x "-20px"
+    :y "7%"
+    :anchor "top right"
+    :width "280px"
+  :height "60px")
+  (audio))
 
 
-(defwidget notifications [?class]
-  (box :space-evenly false
-    :class "hover-module ${class}"
-    (revealer-on-hover :class "hl-on-hover"
-      :var revealNotify
-      :varname "revealNotify"
-      :transition "slideleft"
-      :class "notifications"
+(defwindow system
+  :geometry (geometry :x "-20px"
+    :y "7%"
+    :anchor "top right"
+    :width "290px"
+  :height "120px")
+  (system))
 
-      (hovered-sign :var revealNotify
-        (label :class "notifications" :text "")
-        (label :class "notifications" :text "")
-      )
-      (button :onclick "playerctl play-pause" (label :class "notifications" :text " ${notifications} "))
-    "    ")
-  )
-)
 
-(defwidget spotify [?class]
-  (box :space-evenly false
-    :class "hover-module ${class}"
-    (revealer-on-hover :class "hl-on-hover"
-      :var revealSpotify
-      :varname "revealSpotify"
-      :transition "slideleft"
-      :class "spotify"
-      
-      (hovered-sign :var revealSpotify
-        (label :class "spotify" :text "")
-        (label :class "spotify" :text "")
-      )
-      (button :onclick "playerctl play-pause" (label :class "spotify" :text " ${music} "))
-    "   - ${ musicStatus == "Playing" ? "" : "" }  ")
-  )
-)
 
-(defwidget docker []
-  (clickbox :var revealDocker :varname "revealDocker" :transition "slideleft"
-    (label :class "docker" :text "  ${dockerContainers} "  )
-    (box
-      :class "docker"
-      :space-evenly false
-      :spacing 10
-      
-      (termbutton :command "eww update revealDocker=false && lazydocker" :class "ok" :width "1400" :text " Lazydocker" :floating true)
-      ;(button :onclick "eww update revealDocker=false && docker system prune -f" :class "good" (label :text " Reclaim space")
-        
-        (button :onclick "eww update revealDocker=false && (docker ps -qa | xargs docker stop || true) " :class "warning" (label :text " Stop all containers")        )
-      )
-    )
-  )
-  
-  (defwidget github []
-    (clickbox :var revealGithub :varname "revealGithub" :transition "slideleft"
-      (label :class "github" :text "    "  )
-      (box
-        :class "github"
-        :space-evenly false
-        :spacing 10
-        (literal :class "github-text" :content "${githubInfo}")
-      )
-    )
-  )
-  
-  (defwidget network []
-    (box :orientation "h" :space-evenly false (label :text "${interfaceId}: ${round(EWW_NET[interfaceId].NET_UP / 1000000, 2)}")
-      (label :class {round(EWW_NET[interfaceId].NET_UP / 1000000, 2) > 0.1 ?
-        round(EWW_NET[interfaceId].NET_UP / 1000000, 2) > 5 ?
-        "veryuplink" : "uplink" : "noactive"} :text "  "
-      )
-      (label :text "${round(EWW_NET[interfaceId].NET_DOWN / 1000000, 2)}")
-      (label :class {round(EWW_NET[interfaceId].NET_DOWN / 1000000, 2) > 0.1 ?
-        round(EWW_NET[interfaceId].NET_DOWN / 1000000, 2) > 10 ?
-        "verydownlink" : "downlink" : "noactive"} :text "  "
-      )
-    )
-  )
-  ;
-  
-  (defwindow bar
-    :monitor 0
-    :windowtype "dock"
-    :geometry (geometry :x "0%"
-      :y "0%"
-      :width "90%"
-      :height "10px"
-    :anchor "top center")
-    :reserve (struts :side "top" :distance "4%")
-    (bar)
-  )
-  
-  (defwindow bottombar
-    :monitor 0
-    :windowtype "dock"
-    :geometry (geometry :x "0%"
-      :y "0%"
-      :width "90%"
-      :height "10px"
-    :anchor "bottom center")
-    :reserve (struts :side "bottom" :distance "4%")
-    (bottombar)
-  )
-  
-  
+;;  Music
+(defwidget music_pop []
+  (box :class "music_pop" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
+    (box :class "music_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
+    (box :orientation "v" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
+      (label :halign "center" :class "music" :wrap "true" :limit-width 13 :text song)
+      (label :halign "center" :class "music_artist" :wrap "true" :limit-width 15 :text song_artist)
+      (box :orientation "h" :spacing 15 :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
+        (button :class "music_btn_prev" :onclick "~/.config/eww/bar/scripts/music_info --prev" "")
+        (button :class "music_btn_play" :onclick "~/.config/eww/bar/scripts/music_info --toggle" song_status)
+        (button :class "music_btn_next" :onclick "~/.config/eww/bar/scripts/music_info --next" ""))
+      (box :class "music_bar" :halign "center" :vexpand "false" :hexpand "false" :space-evenly "false"
+        (scale :onscroll "mpc -q seek {}" :min 0 :active "true" :max 100 :value current_status)))))
+
+
+;;  music
+(defwindow music_win :stacking "fg" :focusable "false" :screen 1
+  :geometry (geometry :x "0" :y "7%" :width 428 :height 104 :anchor "top center")
+  (music_pop))
+
