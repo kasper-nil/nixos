@@ -5,5 +5,7 @@
     font-awesome_6
     jetbrains-mono
     material-icons
+    nerdfonts
+    feather
   ];
 }

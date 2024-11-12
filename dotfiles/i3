@@ -6,8 +6,9 @@
 set $mod                             Mod4
 set $smod                            Shift
 
-set $setting_gap_inner            8
-set $setting_gap_outer	         0
+set $setting_gap_inner            4
+set $setting_gap_outer	          0
+set $setting_gap_top			  34
 set $setting_border_size          2
 
 set $setting_key_left             Left
@@ -125,7 +126,8 @@ workspace $ws4 output $setting_main_screen
 ### Gaps ###
 gaps inner 	$setting_gap_inner
 gaps outer 	$setting_gap_outer
-smart_gaps 	on
+gaps top	$setting_gap_top
+smart_gaps 	off
 
 ### Borders ###
 default_border pixel $setting_border_size

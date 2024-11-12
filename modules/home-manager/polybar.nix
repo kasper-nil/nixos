@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   home = {
     packages = with pkgs; [
@@ -8,19 +13,18 @@
         iwSupport = true;
         githubSupport = true;
         pulseSupport = true;
+        mpdSupport = true;
       })
     ];
 
-    file = {
-      "${config.home.homeDirectory}/.config/polybar" = {
-        source = ../../dotfiles/polybar;
-        recursive = true;
-      };
-
-      "${config.home.homeDirectory}/.config/polybar/launch.sh" = {
-        source = ../../dotfiles/polybar/launch.sh;
-        executable = true;
-      };
+    file."${config.home.homeDirectory}/.config/polybar" = {
+      source = ../../dotfiles/polybar;
+      executable = true;
+      recursive = true;
     };
+
+    activation.myPolybarScriptFix = lib.mkAfter ''
+      find ${config.home.homeDirectory}/.config/polybar -name "*.sh" -exec chmod +x {} \;
+    '';
   };
 }
