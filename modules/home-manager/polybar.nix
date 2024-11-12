@@ -15,11 +15,10 @@
       "${config.home.homeDirectory}/.config/polybar" = {
         source = ../../dotfiles/polybar;
         recursive = true;
-        executable = true;
       };
 
       "${config.home.homeDirectory}/.config/polybar/launch.sh" = {
-        source = ../../dotfiles/launch.sh;
+        source = ../../dotfiles/polybar/launch.sh;
         executable = true;
       };
     };
