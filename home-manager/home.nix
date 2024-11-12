@@ -7,6 +7,7 @@
     ../modules/home-manager/rofi.nix
     ../modules/home-manager/i3.nix
     ../modules/home-manager/picom.nix
+    ../modules/home-manager/polybar.nix
   ];
 
   home = {
