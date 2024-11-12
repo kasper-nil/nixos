@@ -1,42 +1,24 @@
 {
-  systemd.services."plasma-kwin_x11".enable = false;
-  systemd.user.services."plasma-kwin_x11".enable = false;
-
-  qt = {
-    enable = true;
-  };
-
   services = {
     displayManager = {
-      defaultSession = "plasmax11";
-      sddm = {
-        enable = true;
-      };
-    };
-
-    desktopManager = {
-      plasma6 = {
-        enable = true;
-      };
+      defaultSession = "xfce+i3";
     };
 
     xserver = {
       enable = true;
 
-      #displayManager = {
-      #  session = [
-      #    {
-      #      manage = "desktop";
-      #      name = "plasma";
-      #      start = ''
-      #        export KDEWM=${pkgs.awesome}/bin/awesome
-      #        export QT_QPA_PLATFORMTHEME="qt5ct"
-      #
-      #        exec ${pkgs.plasma-workspace}/bin/startplasma-x11
-      #      '';
-      #    }
-      #  ];
-      #};
+      desktopManager = {
+        xterm.enable = false;
+        xfce = {
+          enable = true;
+          noDesktop = true;
+          enableXfwm = false;
+        };
+      };
+
+      windowManager = {
+        i3.enable = true;
+      };
     };
   };
 }

@@ -34,19 +34,16 @@
     brave
     htop
     gnumake
-    # blueman
     nixd
     nixfmt-rfc-style
-    # pavucontrol
-    # alsa-utils
     ranger
     feh
-    # wmctrl
     discord
     spotify
     inputs.zen-browser.packages."${system}".default
     arandr
     neofetch
+    i3
   ];
 
   # NixOS modules

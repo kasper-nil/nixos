@@ -127,11 +127,18 @@ default_floating_border pixel $setting_border_size
 smart_borders on
 
 ### Miscellaneous settings ###
+# XFCE desktop and panel boot
+# exec --no-startup-id xfce4-panel --disable-wm-check
+# exec --no-startup-id xfdesktop --disable-wm-check
+
 # Set the font used for titlebars (which are hidden here)
 font $setting_font
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# Run rofi
+bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
 
 # Enter fullscreen mode for the focused window
 bindsym $mod+f fullscreen toggle
@@ -146,7 +153,7 @@ bindsym $mod+q kill
 bindsym $mod+$smod+r restart
 
 # Exit i3 (logs you out of your X session)
-bindsym $mod+$smod+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+$smod+e exec --no-startup-id xfce4-session-logout
 
 ### Plasma settings ###
 for_window [window_role="pop-up"] floating enable

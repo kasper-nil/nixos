@@ -23,12 +23,7 @@
       allowWindowsToRememberPositions = false;
     };
 
-    shortcuts = {
-      "org.kde.krunner.desktop"._launch = [
-        "Meta+D"
-      ];
-    };
-
+    shortcuts = { };
     hotkeys.commands = { };
 
     panels = [
