@@ -51,6 +51,7 @@
     arandr
     neofetch
     i3
+    python3
   ];
 
   # NixOS modules

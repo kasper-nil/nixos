@@ -4,5 +4,6 @@
     fira-code-nerdfont
     font-awesome_6
     jetbrains-mono
+    material-icons
   ];
 }
