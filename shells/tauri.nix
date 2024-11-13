@@ -5,6 +5,7 @@ let
     with pkgs;
     lib.makeLibraryPath [
       # load external libraries that you need in your rust project here
+      openssl_3_3
     ];
 in
 pkgs.mkShell {
@@ -17,7 +18,6 @@ pkgs.mkShell {
 
   buildInputs = with pkgs; [
     clang
-    # Replace llvmPackages with llvmPackages_X, where X is the latest LLVM version (at the time of writing, 16)
     llvmPackages.bintools
     rustup
     cargo
@@ -37,6 +37,7 @@ pkgs.mkShell {
     webkitgtk_4_1
     webkitgtk_4_1.dev
     pkg-config
+    wget
   ];
 
   RUSTC_VERSION = overrides.toolchain.channel;

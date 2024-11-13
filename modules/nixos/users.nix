@@ -10,6 +10,7 @@
         "networkmanager"
         "wheel"
         "audio"
+        "docker"
       ];
     };
   };
