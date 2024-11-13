@@ -48,11 +48,19 @@
         };
       };
 
-      devShells."${system}" = {
-        default = import ./shells/default.nix {
+      devShells."${system}" =
+        let
           pkgs = import nixpkgs { inherit system; };
+        in
+        # pkgs = nixpkgs.legacyPackages.${system};
+        {
+          default = import ./shells/default.nix {
+            inherit pkgs;
+          };
+          tauri = import ./shells/tauri.nix {
+            inherit pkgs;
+          };
         };
-      };
     };
 
 }

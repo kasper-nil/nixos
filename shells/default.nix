@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs }:
 pkgs.mkShell {
   packages = with pkgs; [
     nodejs
@@ -7,6 +7,7 @@ pkgs.mkShell {
   ];
 
   shellHook = ''
-    SHELL=${pkgs.zsh}
+    export SHELL=${pkgs.zsh}/bin/zsh
+    exec ${pkgs.zsh}/bin/zsh
   '';
 }
