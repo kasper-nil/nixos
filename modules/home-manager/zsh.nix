@@ -15,7 +15,7 @@
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#default";
       collect-garbage = "sudo nix-collect-garbage -d";
-      develop = "nix develop /etc/nixos";
+      develop = "nix develop /etc/nixos.#default";
     };
 
     history = {
