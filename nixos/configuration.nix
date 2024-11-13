@@ -56,6 +56,8 @@
     wmctrl
     starship
     playerctl
+    gcc
+    pkg-config
   ];
 
   # NixOS modules

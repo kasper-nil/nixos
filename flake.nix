@@ -7,6 +7,11 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       # url = "github:nix-community/home-manager/release-24.05";
       url = "github:nix-community/home-manager";
@@ -25,6 +30,7 @@
       nixpkgs,
       home-manager,
       plasma-manager,
+      fenix,
       ...
     }@inputs:
     let
@@ -33,6 +39,8 @@
       hardware-configuration = ./hardware-configuration.nix;
     in
     {
+      packages.${system}.default = fenix.packages.${system}.minimal.toolchain;
+
       nixosConfigurations = {
         default = nixpkgs.lib.nixosSystem {
           specialArgs = {
@@ -44,6 +52,22 @@
             nixos-configuration
             home-manager.nixosModules.default
             { home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ]; }
+            (
+              { pkgs, ... }:
+              {
+                nixpkgs.overlays = [ fenix.overlays.default ];
+                environment.systemPackages = with pkgs; [
+                  (fenix.packages.${system}.complete.withComponents [
+                    "cargo"
+                    "clippy"
+                    "rust-src"
+                    "rustc"
+                    "rustfmt"
+                  ])
+                  rust-analyzer-nightly
+                ];
+              }
+            )
           ];
         };
       };
