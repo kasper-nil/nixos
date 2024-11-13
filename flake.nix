@@ -48,17 +48,11 @@
         };
       };
 
-      devShells."${system}".default =
-        let
+      devShells."${system}" = {
+        default = import ./shells/default.nix {
           pkgs = import nixpkgs { inherit system; };
-        in
-        pkgs.mkShell {
-          packages = with pkgs; [
-            nodejs
-            corepack
-          ];
-          shellHook = ''$SHELL'';
         };
+      };
     };
 
 }

@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 {
-  home.packages = with pkgs; [ starship ];
+  home.packages = with pkgs; [
+    starship
+  ];
 
   programs.zsh = {
     enable = true;
@@ -23,7 +25,6 @@
 
     oh-my-zsh = {
       enable = true;
-      # theme = "robbyrussell";
     };
 
     zplug = {
