@@ -76,6 +76,6 @@
     ../modules/nixos/bluetooth.nix
     ../modules/nixos/fonts.nix
     ../modules/nixos/steam.nix
-    ../modules/nixos/docker.nix
+    ../modules/nixos/virtualisation.nix
   ];
 }
