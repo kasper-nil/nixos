@@ -19,8 +19,9 @@
       configure = "code /etc/nixos";
 
       # Nix shells
-      develop = "nix develop /etc/nixos#default";
-      "develop-tauri" = "nix develop /etc/nixos#tauri --impure";
+      dev = "nix develop /etc/nixos#default";
+      dev-tauri = "nix develop /etc/nixos#tauri --impure";
+      dev-work = "nix develop /etc/nixos#work --impure";
     };
 
     history = {

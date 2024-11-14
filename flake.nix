@@ -84,6 +84,9 @@
           tauri = import ./shells/tauri.nix {
             inherit pkgs;
           };
+          work = import ./shells/work.nix {
+            inherit pkgs;
+          };
         };
     };
 

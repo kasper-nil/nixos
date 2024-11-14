@@ -6,6 +6,8 @@
 {
   system.stateVersion = "24.05";
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   nixpkgs.config = {
     allowUnfree = true;
 
@@ -58,6 +60,8 @@
     playerctl
     gcc
     pkg-config
+    direnv
+    obsidian
   ];
 
   # NixOS modules
@@ -65,7 +69,6 @@
     ../modules/nixos/bootloader.nix
     ../modules/nixos/home-manager.nix
     ../modules/nixos/desktop-environment.nix
-
     ../modules/nixos/i18n.nix
     ../modules/nixos/sound.nix
     ../modules/nixos/networking.nix
