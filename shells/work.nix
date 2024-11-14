@@ -1,15 +1,20 @@
 { pkgs }:
 pkgs.mkShell {
-  packages = with pkgs; [
+  buildInputs = with pkgs; [
     nodejs
     corepack
     pnpm
-    dotnet-aspnetcore_8
+    dotnet-sdk_8
     azure-cli
+    nuget
   ];
 
   shellHook = ''
-    export SHELL=${pkgs.zsh}/bin/zsh
-    exec ${pkgs.zsh}/bin/zsh
+    if [ "$SHELL" != "${pkgs.zsh}/bin/zsh" ]; then
+      export SHELL=${pkgs.zsh}/bin/zsh
+      exec ${pkgs.zsh}/bin/zsh
+    fi
+
+    cd ~/Documents/Work
   '';
 }

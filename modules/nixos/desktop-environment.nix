@@ -16,6 +16,16 @@
         };
       };
 
+      displayManager = {
+        lightdm = {
+          enable = true;
+          greeters.slick = {
+            enable = true;
+            theme.name = "Zukitre-dark";
+          };
+        };
+      };
+
       windowManager = {
         i3.enable = true;
       };
