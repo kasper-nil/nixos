@@ -1,9 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   home.packages = with pkgs; [
     elementary-xfce-icon-theme
     zuki-themes
   ];
+
+  home.file."${config.home.homeDirectory}/.config/xfce4/xconf/xfce-perchannel-xml" = {
+    source = ../../dotfiles/xfce;
+    recursive = true;
+  };
 
   gtk = {
     enable = true;
