@@ -24,11 +24,16 @@ set $setting_font                 pango:Source Sans Pro, Semibold 11
 set $setting_main_screen			 eDP-1
 
 ### Applications ###
+# XFCE desktop and panel boot
+exec --no-startup-id xfce4-panel --disable-wm-check
+exec_always --no-startup-id xfce4-panel -r --disable-wm-check
+# exec --no-startup-id xfdesktop --disable-wm-check
+
 # Run rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
 
 # Run polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Start a terminal emulator
 bindsym $mod+t exec --no-startup-id $setting_app_terminal
@@ -135,10 +140,6 @@ default_floating_border pixel $setting_border_size
 smart_borders on
 
 ### Miscellaneous settings ###
-# XFCE desktop and panel boot
-# exec --no-startup-id xfce4-panel --disable-wm-check
-# exec --no-startup-id xfdesktop --disable-wm-check
-
 # Set the font used for titlebars (which are hidden here)
 font $setting_font
 

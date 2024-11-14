@@ -60,6 +60,7 @@
     pkg-config
     direnv
     obsidian
+    xfce.xfce4-panel
   ];
 
   # NixOS modules

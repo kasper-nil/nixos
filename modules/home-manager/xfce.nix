@@ -5,8 +5,13 @@
     zuki-themes
   ];
 
-  home.file."${config.home.homeDirectory}/.config/xfce4/xconf/xfce-perchannel-xml" = {
-    source = ../../dotfiles/xfce;
+  # home.file."${config.home.homeDirectory}/.config/xfce4/xconf/xfce-perchannel-xml" = {
+  #   source = ../../dotfiles/xfce;
+  #   recursive = true;
+  # };
+
+  home.file."${config.home.homeDirectory}/.config/gtk-3.0" = {
+    source = ../../dotfiles/xfce/gtk-3.0;
     recursive = true;
   };
 
@@ -29,10 +34,10 @@
       '';
     };
 
-    gtk4.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
+    # gtk4.extraConfig = {
+    #   Settings = ''
+    #     gtk-application-prefer-dark-theme=1
+    #   '';
+    # };
   };
 }
