@@ -9,6 +9,7 @@
     ../modules/home-manager/i3.nix
     ../modules/home-manager/picom.nix
     ../modules/home-manager/eww.nix
+    ../modules/home-manager/npm.nix
   ];
 
   home = {

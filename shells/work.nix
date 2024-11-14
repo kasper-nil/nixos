@@ -5,7 +5,7 @@ pkgs.mkShell {
     corepack
     pnpm
     dotnet-aspnetcore_8
-    (azure-cli.withExtensions [ azure-cli.extensions.aks-preview ])
+    azure-cli
   ];
 
   shellHook = ''

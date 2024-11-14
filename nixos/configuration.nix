@@ -53,8 +53,6 @@
     arandr
     neofetch
     i3
-    alsa-utils
-    python3
     wmctrl
     starship
     playerctl
