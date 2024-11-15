@@ -11,6 +11,7 @@
     ./modules/home-manager/starship.nix
     ./modules/home-manager/gtk.nix
     ./modules/home-manager/cursor.nix
+    ./modules/home-manager/dunst.nix
   ];
 
   home.packages = with pkgs; [
@@ -31,6 +32,7 @@
     rofi
     picom
     lxappearance
+    brightnessctl
     (polybar.override {
       i3Support = true;
       alsaSupport = true;

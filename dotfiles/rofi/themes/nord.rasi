@@ -1,8 +1,8 @@
 * {
-    nord0: #2e3440;
-    nord1: #3b4252;
-    nord2: #434c5e;
-    nord3: #4c566a;
+    nord0: #2e344078;
+    nord1: #3b425278;
+    nord2: #434c5e78;
+    nord3: #4c566a78;
     nord4: #d8dee9;
     nord5: #e5e9f0;
     nord6: #eceff4;
@@ -17,17 +17,17 @@
     nord15: #b48ead;
 
     spacing: 2;
-    background-color: var(nord1);
+    background-color: var(nord0);
 
-    background: var(nord1);
+    background: var(nord0);
     foreground: var(nord4);
 
     normal-background: var(background);
     normal-foreground: var(foreground);
     alternate-normal-background: var(background);
     alternate-normal-foreground: var(foreground);
-    selected-normal-background: var(nord8);
-    selected-normal-foreground: var(background);
+    selected-normal-background: var(nord3);
+    selected-normal-foreground: var(foreground);
 
     active-background: var(background);
     active-foreground: var(nord10);
@@ -44,8 +44,8 @@
     selected-urgent-foreground: var(background);
 }
 element {
-    padding: 0px 0px 0px 7px;
-    spacing: 5px;
+    padding: 8px 16px;
+    spacing: 4px;
     border:  0;
     cursor:  pointer;
 }
@@ -59,7 +59,7 @@ element normal.urgent {
 }
 element normal.active {
     background-color: var(active-background);
-    text-color: var(active-foreground);
+    text-color: var(normal-foreground);
 }
 element selected.normal {
     background-color: var(selected-normal-background);
@@ -93,13 +93,13 @@ element-text {
 }
 element-icon {
     background-color: rgba(0, 0, 0, 0%);
+    padding: 0px 8px 0px 0px;
     size: 1.0000em;
     text-color: inherit;
     cursor: inherit;
 }
 window {
     padding: 0;
-    border: 0;
     background-color: var(background);
 }
 mainbox {
@@ -107,20 +107,21 @@ mainbox {
     border: 0;
 }
 message {
-    margin: 0px 7px;
+    margin: 0px 8px;
 }
 textbox {
     text-color: var(foreground);
 }
 listview {
-    margin: 0px 0px 5px;
+    margin: 0px 0px 4px;
     scrollbar: true;
-    spacing: 2px;
+    spacing: 4px;
     fixed-height: 0;
+    padding: 8px 0px;
 }
 scrollbar {
     padding: 0;
-    handle-width: 14px;
+    handle-width: 12px;
     border: 0;
     handle-color: var(nord3);
 }
@@ -134,16 +135,16 @@ button selected {
     text-color: var(selected-normal-foreground);
 }
 inputbar {
-    padding: 7px;
-    margin: 7px;
+    padding: 8px;
+    border: 0px 0px 1px 0px;
+    border-color: var(nord3);
     spacing: 0;
     text-color: var(normal-foreground);
-    background-color: var(nord3);
     children: [ entry ];
 }
 entry {
+    padding: 4px 8px;
     spacing: 0;
     cursor: text;
     text-color: var(normal-foreground);
-    background-color: var(nord3);
 }

@@ -49,6 +49,10 @@ bindsym $mod+l exec --no-startup-id i3lock
 # Logout
 bindsym $mod+$smod+e exec --no-startup-id i3-msg exit
 
+# Brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
 ### Workspaces ###
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
