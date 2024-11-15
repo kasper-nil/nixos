@@ -26,7 +26,7 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      nixos-configuration = ./nixos/configuration.nix;
+      nixos-configuration = ./configuration.nix;
       hardware-configuration = ./hardware-configuration.nix;
     in
     {

@@ -4,6 +4,8 @@
   ...
 }:
 {
+  nixpkgs.config.allowUnfree = true;
+
   # System packages
   environment.systemPackages = with pkgs; [
     home-manager
@@ -32,8 +34,6 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  nixpkgs.config.allowUnfree = true;
 
   programs.nix-ld = {
     enable = true;

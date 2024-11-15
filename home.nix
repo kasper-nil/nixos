@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nixpkgs, ... }:
 {
   imports = [
     ../modules/home-manager/git.nix
@@ -35,4 +35,6 @@
   programs = {
     home-manager.enable = true;
   };
+
+  nixpkgs.config.allowUnfree = true;
 }

@@ -10,7 +10,7 @@
     backupFileExtension = "backup";
 
     users = {
-      kasper = import ../../home-manager/home.nix;
+      kasper = import ../../home.nix;
     };
   };
 }

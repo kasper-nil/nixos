@@ -18,7 +18,7 @@
     ];
 
     file."${config.home.homeDirectory}/.config/polybar" = {
-      source = ../../dotfiles/polybar-nord;
+      source = ../../dotfiles/polybar;
       executable = true;
       recursive = true;
     };
