@@ -9,7 +9,6 @@
     ../modules/home-manager/i3.nix
     ../modules/home-manager/picom.nix
     ../modules/home-manager/brave.nix
-    ../modules/home-manager/steam.nix
     ../modules/home-manager/starship.nix
   ];
 

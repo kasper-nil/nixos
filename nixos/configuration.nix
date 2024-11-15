@@ -28,6 +28,7 @@
     ../modules/nixos/bluetooth.nix
     ../modules/nixos/fonts.nix
     ../modules/nixos/virtualisation.nix
+    ../modules/nixos/steam.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
