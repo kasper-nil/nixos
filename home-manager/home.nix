@@ -8,7 +8,7 @@
     ../modules/home-manager/polybar.nix
     ../modules/home-manager/i3.nix
     ../modules/home-manager/picom.nix
-    ../modules/home-manager/xfce.nix
+    # ../modules/home-manager/xfce.nix
     ../modules/home-manager/brave.nix
   ];
 

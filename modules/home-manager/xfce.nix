@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     nordic
+    papirus-nord
   ];
 
   home.file."${config.home.homeDirectory}/.config/gtk-3.0/gtk.css" = {

@@ -1,7 +1,7 @@
 {
   services = {
     displayManager = {
-      defaultSession = "xfce+i3";
+      defaultSession = "none+i3";
     };
 
     xserver = {
@@ -9,11 +9,11 @@
 
       desktopManager = {
         xterm.enable = false;
-        xfce = {
-          enable = true;
-          noDesktop = true;
-          enableXfwm = false;
-        };
+        # xfce = {
+        #   enable = true;
+        #   noDesktop = true;
+        #   enableXfwm = false;
+        # };
       };
 
       displayManager = {
