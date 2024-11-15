@@ -1,8 +1,7 @@
 { pkgs, config, ... }:
 {
   home.packages = with pkgs; [
-    elementary-xfce-icon-theme
-    zuki-themes
+    nordic
   ];
 
   # home.file."${config.home.homeDirectory}/.config/xfce4/xconf/xfce-perchannel-xml" = {
@@ -10,7 +9,7 @@
   #   recursive = true;
   # };
 
-  home.file."${config.home.homeDirectory}/.config" = {
+  home.file."${config.home.homeDirectory}" = {
     source = ../../dotfiles/xfce;
     recursive = true;
   };
@@ -19,13 +18,13 @@
     enable = true;
 
     iconTheme = {
-      name = "elementary-Xfce-dark";
-      package = pkgs.elementary-xfce-icon-theme;
+      name = "nordic-darker";
+      package = pkgs.nordic;
     };
 
     theme = {
-      name = "zukitre-dark";
-      package = pkgs.zuki-themes;
+      name = "nordic";
+      package = pkgs.nordic;
     };
 
     gtk3.extraConfig = {
