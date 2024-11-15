@@ -1,22 +1,10 @@
 {
-  pkgs,
   config,
   lib,
   ...
 }:
 {
   home = {
-    packages = with pkgs; [
-      (polybar.override {
-        i3Support = true;
-        alsaSupport = true;
-        iwSupport = true;
-        githubSupport = true;
-        pulseSupport = true;
-        mpdSupport = true;
-      })
-    ];
-
     file."${config.home.homeDirectory}/.config/polybar" = {
       source = ../../dotfiles/polybar;
       executable = true;

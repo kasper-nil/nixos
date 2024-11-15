@@ -1,9 +1,5 @@
 { config, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    i3-rounded
-  ];
-
   home.file."${config.home.homeDirectory}/.config/i3/config" = {
     source = ../../dotfiles/i3/config;
   };

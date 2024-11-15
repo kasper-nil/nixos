@@ -25,6 +25,19 @@
     playerctl
     feh
     brave
+    dconf
+    alacritty
+    rofi
+    picom
+    i3-rounded
+    (polybar.override {
+      i3Support = true;
+      alsaSupport = true;
+      iwSupport = true;
+      githubSupport = true;
+      pulseSupport = true;
+      mpdSupport = true;
+    })
   ];
 
   home = {
