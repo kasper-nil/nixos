@@ -18,6 +18,10 @@
       dev = "nix develop /etc/nixos#default";
       dev-tauri = "nix develop /etc/nixos#tauri --impure";
       dev-work = "nix develop /etc/nixos#work --impure";
+
+      # Docker
+      docker-stop-all = "docker stop $(docker ps -a -q)";
+      docker-kill-all = "docker rm $(docker ps -a -q)";
     };
 
     history = {
