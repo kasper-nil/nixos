@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ../modules/home-manager/git.nix
@@ -8,8 +8,23 @@
     ../modules/home-manager/polybar.nix
     ../modules/home-manager/i3.nix
     ../modules/home-manager/picom.nix
-    # ../modules/home-manager/xfce.nix
     ../modules/home-manager/brave.nix
+    ../modules/home-manager/steam.nix
+    ../modules/home-manager/starship.nix
+  ];
+
+  home.packages = with pkgs; [
+    vscode
+    htop
+    ranger
+    obsidian
+    discord
+    spotify
+    arandr
+    neofetch
+    wmctrl
+    playerctl
+    feh
   ];
 
   home = {

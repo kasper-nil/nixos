@@ -4,19 +4,35 @@
   ...
 }:
 {
-  system.stateVersion = "24.05";
+  # System packages
+  environment.systemPackages = with pkgs; [
+    home-manager
+    gnumake
+    nixd
+    nixfmt-rfc-style
+    gcc
+    pkg-config
+  ];
+
+  # NixOS modules
+  imports = [
+    ../modules/nixos/bootloader.nix
+    ../modules/nixos/home-manager.nix
+    ../modules/nixos/xserver.nix
+    ../modules/nixos/i18n.nix
+    ../modules/nixos/sound.nix
+    ../modules/nixos/networking.nix
+    ../modules/nixos/keyboard.nix
+    ../modules/nixos/users.nix
+    ../modules/nixos/shell.nix
+    ../modules/nixos/bluetooth.nix
+    ../modules/nixos/fonts.nix
+    ../modules/nixos/virtualisation.nix
+  ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  nixpkgs.config = {
-    allowUnfree = true;
-
-    packageOverrides = pkgs: {
-      polybar = pkgs.polybar.override {
-        i3Support = true;
-      };
-    };
-  };
+  nixpkgs.config.allowUnfree = true;
 
   programs.nix-ld = {
     enable = true;
@@ -36,53 +52,5 @@
     "flakes"
   ];
 
-  # System packages
-  environment.systemPackages = with pkgs; [
-    home-manager
-    vscode
-    htop
-    gnumake
-    nixd
-    nixfmt-rfc-style
-    ranger
-    feh
-    discord
-    spotify
-    inputs.zen-browser.packages."${system}".default
-    arandr
-    neofetch
-    i3
-    wmctrl
-    starship
-    playerctl
-    gcc
-    pkg-config
-    direnv
-    obsidian
-    xfce.xfce4-panel
-    xfce.xfce4-pulseaudio-plugin
-    xfce.xfce4-i3-workspaces-plugin
-    xfce.xfce4-cpugraph-plugin
-    xfce.xfce4-mpc-plugin
-    xfce.xfce4-fsguard-plugin
-    xfce.xfce4-genmon-plugin
-    xfce.xfce4-netload-plugin
-  ];
-
-  # NixOS modules
-  imports = [
-    ../modules/nixos/bootloader.nix
-    ../modules/nixos/home-manager.nix
-    ../modules/nixos/desktop-environment.nix
-    ../modules/nixos/i18n.nix
-    ../modules/nixos/sound.nix
-    ../modules/nixos/networking.nix
-    ../modules/nixos/keyboard.nix
-    ../modules/nixos/users.nix
-    ../modules/nixos/shell.nix
-    ../modules/nixos/bluetooth.nix
-    ../modules/nixos/fonts.nix
-    ../modules/nixos/steam.nix
-    ../modules/nixos/virtualisation.nix
-  ];
+  system.stateVersion = "24.05";
 }
