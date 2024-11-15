@@ -18,19 +18,19 @@
 
   # NixOS modules
   imports = [
-    ../modules/nixos/bootloader.nix
-    ../modules/nixos/home-manager.nix
-    ../modules/nixos/xserver.nix
-    ../modules/nixos/i18n.nix
-    ../modules/nixos/sound.nix
-    ../modules/nixos/networking.nix
-    ../modules/nixos/keyboard.nix
-    ../modules/nixos/users.nix
-    ../modules/nixos/shell.nix
-    ../modules/nixos/bluetooth.nix
-    ../modules/nixos/fonts.nix
-    ../modules/nixos/virtualisation.nix
-    ../modules/nixos/steam.nix
+    ./modules/nixos/bootloader.nix
+    ./modules/nixos/home-manager.nix
+    ./modules/nixos/xserver.nix
+    ./modules/nixos/i18n.nix
+    ./modules/nixos/sound.nix
+    ./modules/nixos/networking.nix
+    ./modules/nixos/keyboard.nix
+    ./modules/nixos/users.nix
+    ./modules/nixos/shell.nix
+    ./modules/nixos/bluetooth.nix
+    ./modules/nixos/fonts.nix
+    ./modules/nixos/virtualisation.nix
+    ./modules/nixos/steam.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;

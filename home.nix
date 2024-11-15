@@ -1,15 +1,15 @@
 { pkgs, nixpkgs, ... }:
 {
   imports = [
-    ../modules/home-manager/git.nix
-    ../modules/home-manager/zsh.nix
-    ../modules/home-manager/alacritty.nix
-    ../modules/home-manager/rofi.nix
-    ../modules/home-manager/polybar.nix
-    ../modules/home-manager/i3.nix
-    ../modules/home-manager/picom.nix
-    ../modules/home-manager/brave.nix
-    ../modules/home-manager/starship.nix
+    ./modules/home-manager/git.nix
+    ./modules/home-manager/zsh.nix
+    ./modules/home-manager/alacritty.nix
+    ./modules/home-manager/rofi.nix
+    ./modules/home-manager/polybar.nix
+    ./modules/home-manager/i3.nix
+    ./modules/home-manager/picom.nix
+    ./modules/home-manager/starship.nix
+    ./modules/home-manager/gtk.nix
   ];
 
   home.packages = with pkgs; [
@@ -24,6 +24,7 @@
     wmctrl
     playerctl
     feh
+    brave
   ];
 
   home = {
