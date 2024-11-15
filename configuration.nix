@@ -14,6 +14,8 @@
     nixfmt-rfc-style
     gcc
     pkg-config
+    i3-gaps
+    i3lock-fancy
   ];
 
   # NixOS modules

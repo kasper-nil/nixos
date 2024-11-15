@@ -43,6 +43,12 @@ exec --no-startup-id $setting_app_compositor
 # Set up background
 exec_always --no-startup-id feh --bg-scale /etc/nixos/assets/backgrounds/nord.jpg
 
+# Lock
+bindsym $mod+l exec --no-startup-id i3lock
+
+# Logout
+bindsym $mod+$smod+e exec --no-startup-id i3-msg exit
+
 ### Workspaces ###
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -130,7 +136,8 @@ workspace $ws4 output $setting_main_screen
 ### Gaps ###
 gaps inner 	$setting_gap_inner
 gaps outer 	$setting_gap_outer
-smart_gaps 	off
+gaps top 		0
+# smart_gaps 	off
 
 ### Borders ###
 default_border pixel $setting_border_size
@@ -155,6 +162,3 @@ bindsym $mod+q kill
 
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+$smod+r restart
-
-# Exit i3 (logs you out of your X session)
-bindsym $mod+$smod+e exec --no-startup-id xfce4-session-logout

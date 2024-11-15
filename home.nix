@@ -29,7 +29,6 @@
     alacritty
     rofi
     picom
-    i3-rounded
     (polybar.override {
       i3Support = true;
       alsaSupport = true;
