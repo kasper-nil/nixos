@@ -6,9 +6,9 @@
 set $mod                             Mod4
 set $smod                            Shift
 
-set $setting_gap_inner            4
+set $setting_gap_inner            8
 set $setting_gap_outer	          0
-set $setting_gap_top			  34
+set $setting_gap_top			 				0
 set $setting_border_size          2
 
 set $setting_key_left             Left
@@ -26,7 +26,7 @@ set $setting_main_screen			 eDP-1
 ### Applications ###
 # XFCE desktop and panel boot
 exec --no-startup-id xfce4-panel --disable-wm-check
-exec_always --no-startup-id xfce4-panel -r --disable-wm-check
+exec_always --no-startup-id xfce4-panel --r --disable-wm-check
 # exec --no-startup-id xfdesktop --disable-wm-check
 
 # Run rofi
@@ -132,7 +132,7 @@ workspace $ws4 output $setting_main_screen
 gaps inner 	$setting_gap_inner
 gaps outer 	$setting_gap_outer
 gaps top	$setting_gap_top
-smart_gaps 	off
+smart_gaps 	on
 
 ### Borders ###
 default_border pixel $setting_border_size

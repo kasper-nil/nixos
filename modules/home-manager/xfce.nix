@@ -10,8 +10,8 @@
   #   recursive = true;
   # };
 
-  home.file."${config.home.homeDirectory}/.config/gtk-3.0" = {
-    source = ../../dotfiles/xfce/gtk-3.0;
+  home.file."${config.home.homeDirectory}/.config" = {
+    source = ../../dotfiles/xfce;
     recursive = true;
   };
 
