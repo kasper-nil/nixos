@@ -134,9 +134,9 @@ workspace $ws3 output $setting_main_screen
 workspace $ws4 output $setting_main_screen
 
 ### Gaps ###
+gaps inner 	$setting_gap_inner
+gaps outer 	$setting_gap_outer
 gaps top 		0
-gaps inner 	10
-gaps outer 	0
 # smart_gaps 	off
 
 ### Borders ###
@@ -162,3 +162,5 @@ bindsym $mod+q kill
 
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+$smod+r restart
+
+for_window [class="^.*"] border pixel 0

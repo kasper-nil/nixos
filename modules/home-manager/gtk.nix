@@ -3,13 +3,13 @@
   gtk = {
     enable = true;
 
-    iconTheme = {
-      name = "nordic-darker";
+    theme = {
+      name = "Nordic";
       package = pkgs.nordic;
     };
 
-    theme = {
-      name = "nordic-darker";
+    iconTheme = {
+      name = "Nordic";
       package = pkgs.nordic;
     };
 

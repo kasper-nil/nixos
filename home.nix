@@ -10,6 +10,7 @@
     ./modules/home-manager/picom.nix
     ./modules/home-manager/starship.nix
     ./modules/home-manager/gtk.nix
+    ./modules/home-manager/cursor.nix
   ];
 
   home.packages = with pkgs; [
@@ -29,6 +30,7 @@
     alacritty
     rofi
     picom
+    lxappearance
     (polybar.override {
       i3Support = true;
       alsaSupport = true;
