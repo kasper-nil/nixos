@@ -25,8 +25,8 @@ set $setting_main_screen			 eDP-1
 
 ### Applications ###
 # XFCE desktop and panel boot
-exec --no-startup-id xfce4-panel --disable-wm-check
-exec_always --no-startup-id xfce4-panel --r --disable-wm-check
+exec --no-startup-id xfce4-panel
+exec_always --no-startup-id xfce4-panel --r
 # exec --no-startup-id xfdesktop --disable-wm-check
 
 # Run rofi
@@ -42,7 +42,7 @@ bindsym $mod+t exec --no-startup-id $setting_app_terminal
 exec --no-startup-id $setting_app_compositor
 
 # Set up background
-exec_always --no-startup-id feh --bg-scale /etc/nixos/assets/backgrounds/road.jpeg
+exec_always --no-startup-id feh --bg-scale /etc/nixos/assets/backgrounds/nordic.webp
 
 ### Workspaces ###
 # Define names for default workspaces for which we configure key bindings later on.

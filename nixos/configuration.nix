@@ -40,7 +40,6 @@
   environment.systemPackages = with pkgs; [
     home-manager
     vscode
-    brave
     htop
     gnumake
     nixd

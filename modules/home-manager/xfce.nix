@@ -4,11 +4,6 @@
     nordic
   ];
 
-  # home.file."${config.home.homeDirectory}/.config/xfce4/xconf/xfce-perchannel-xml" = {
-  #   source = ../../dotfiles/xfce;
-  #   recursive = true;
-  # };
-
   home.file."${config.home.homeDirectory}/.config/gtk-3.0/gtk.css" = {
     source = ../../dotfiles/xfce/gtk.css;
   };
