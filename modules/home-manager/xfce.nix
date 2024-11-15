@@ -22,7 +22,7 @@
     };
 
     theme = {
-      name = "nordic";
+      name = "nordic-darker";
       package = pkgs.nordic;
     };
 
@@ -32,10 +32,10 @@
       '';
     };
 
-    # gtk4.extraConfig = {
-    #   Settings = ''
-    #     gtk-application-prefer-dark-theme=1
-    #   '';
-    # };
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
   };
 }

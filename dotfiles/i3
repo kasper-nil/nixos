@@ -9,7 +9,7 @@ set $smod                            Shift
 set $setting_gap_inner            8
 set $setting_gap_outer	          0
 set $setting_gap_top			 				0
-set $setting_border_size          2
+set $setting_border_size          4
 
 set $setting_key_left             Left
 set $setting_key_down             Down

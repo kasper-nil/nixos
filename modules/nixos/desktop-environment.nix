@@ -17,13 +17,13 @@
       };
 
       displayManager = {
-        lightdm = {
-          enable = true;
-          greeters.slick = {
-            enable = true;
-            theme.name = "Zukitre-dark";
-          };
-        };
+        # lightdm = {
+        #   enable = true;
+        #   greeters.slick = {
+        #     enable = true;
+        #     theme.name = "Zukitre-dark";
+        #   };
+        # };
       };
 
       windowManager = {
