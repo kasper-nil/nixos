@@ -15,6 +15,7 @@
     gcc
     pkg-config
     i3-gaps
+    direnv
     i3lock-fancy
   ];
 
