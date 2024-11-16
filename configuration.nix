@@ -34,6 +34,7 @@
     ./modules/nixos/fonts.nix
     ./modules/nixos/virtualisation.nix
     ./modules/nixos/steam.nix
+    ./modules/nixos/graphics.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
