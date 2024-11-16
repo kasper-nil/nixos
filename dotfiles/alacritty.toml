@@ -11,6 +11,18 @@ decorations_theme_variant = "Dark"
 [font]
 size = 8.0
 
+normal.family = "Noto Sans Mono"
+normal.style = "Regular"
+
+bold.family = "Noto Sans Mono"
+bold.style = "Bold"
+
+italic.family = "Noto Sans Mono"
+italic.style = "Italic"
+
+bold_italic.family = "Noto Sans Mono"
+bold_italic.style = "Bold Italic"
+
 [colors.primary]
 background = "#2e3440"
 foreground = "#d8dee9"

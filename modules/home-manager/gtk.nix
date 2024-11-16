@@ -9,8 +9,14 @@
     };
 
     iconTheme = {
-      name = "Nordic";
+      name = "Nordic-bluish";
       package = pkgs.nordic;
+    };
+
+    font = {
+      name = "Noto Sans";
+      size = 14;
+      package = pkgs.noto-fonts;
     };
 
     gtk3.extraConfig = {

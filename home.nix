@@ -11,7 +11,6 @@
     ./modules/home-manager/starship.nix
     ./modules/home-manager/gtk.nix
     ./modules/home-manager/cursor.nix
-    ./modules/home-manager/dunst.nix
   ];
 
   home.packages = with pkgs; [
@@ -33,6 +32,7 @@
     picom
     lxappearance
     brightnessctl
+    pamixer
     (polybar.override {
       i3Support = true;
       alsaSupport = true;
