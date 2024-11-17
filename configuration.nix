@@ -35,9 +35,11 @@
     ./modules/nixos/virtualisation.nix
     ./modules/nixos/steam.nix
     ./modules/nixos/graphics.nix
+    ./modules/nixos/power.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  hardware.enableAllFirmware = true;
 
   programs.nix-ld = {
     enable = true;
