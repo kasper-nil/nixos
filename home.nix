@@ -31,9 +31,14 @@
     rofi
     picom
     lxappearance
+    pavucontrol
     brightnessctl
     pamixer
     powertop
+    xfce.thunar
+    xorg.xev
+    flameshot
+    gnome-disk-utility
     (polybar.override {
       i3Support = true;
       alsaSupport = true;
