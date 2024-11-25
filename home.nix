@@ -7,10 +7,11 @@
     ./modules/home-manager/rofi.nix
     ./modules/home-manager/polybar.nix
     ./modules/home-manager/i3.nix
-    # ./modules/home-manager/picom.nix
+    ./modules/home-manager/picom.nix
     ./modules/home-manager/starship.nix
     ./modules/home-manager/gtk.nix
     ./modules/home-manager/cursor.nix
+    ./modules/home-manager/pnpm.nix
   ];
 
   home.packages = with pkgs; [
@@ -39,6 +40,7 @@
     xorg.xev
     flameshot
     gnome-disk-utility
+    autorandr
     (polybar.override {
       i3Support = true;
       alsaSupport = true;

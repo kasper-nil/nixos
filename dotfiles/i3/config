@@ -24,8 +24,8 @@ set $setting_font                 pango:Source Sans Pro, Semibold 11
 # eDP-1
 # DP-1-1-6
 # DP-1-2
-set $setting_main_screen			 DP-1-1-6
-set $setting_secondary_screen	 DP-1-2
+set $setting_main_screen			 DP-3-1-6
+set $setting_secondary_screen	 DP-3-2
 
 # Run rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons

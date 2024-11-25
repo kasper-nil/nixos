@@ -12,6 +12,7 @@ pkgs.mkShell {
   shellHook = ''
     if [ "$SHELL" != "${pkgs.zsh}/bin/zsh" ]; then
       export SHELL=${pkgs.zsh}/bin/zsh
+      export PNPM_HOME=$HOME/.local/bin
       exec ${pkgs.zsh}/bin/zsh
     fi
 
