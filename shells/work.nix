@@ -3,10 +3,10 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     nodejs
     corepack
-    pnpm
     dotnet-sdk_8
     azure-cli
     nuget
+    nodePackages.pnpm
   ];
 
   shellHook = ''

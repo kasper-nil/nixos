@@ -11,7 +11,6 @@
     ./modules/home-manager/starship.nix
     ./modules/home-manager/gtk.nix
     ./modules/home-manager/cursor.nix
-    ./modules/home-manager/pnpm.nix
   ];
 
   home.packages = with pkgs; [
@@ -40,7 +39,9 @@
     xorg.xev
     flameshot
     gnome-disk-utility
+    firefox
     autorandr
+    ventoy
     (polybar.override {
       i3Support = true;
       alsaSupport = true;
