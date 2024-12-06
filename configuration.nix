@@ -36,6 +36,7 @@
     ./modules/nixos/steam.nix
     ./modules/nixos/graphics.nix
     ./modules/nixos/power.nix
+    ./modules/nixos/printing.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -69,6 +70,8 @@
 
   # Stuff for nixd LSP
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
+  services.gvfs.enable = true;
 
   # Enable experimental features
   nix.settings.experimental-features = [

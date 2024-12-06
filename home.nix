@@ -35,13 +35,14 @@
     brightnessctl
     pamixer
     powertop
-    xfce.thunar
     xorg.xev
     flameshot
     gnome-disk-utility
     firefox
     autorandr
-    ventoy
+    ventoy-full
+    nautilus
+    tmux
     (polybar.override {
       i3Support = true;
       alsaSupport = true;
