@@ -2,7 +2,6 @@
 {
   environment.systemPackages = with pkgs; [
     dxvk
-    vulkan-tools
   ];
 
   hardware.graphics = {
@@ -12,6 +11,7 @@
       intel-media-driver
     ];
   };
+
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
   };

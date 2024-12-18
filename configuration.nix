@@ -23,7 +23,7 @@
   imports = [
     ./modules/nixos/bootloader.nix
     ./modules/nixos/home-manager.nix
-    ./modules/nixos/xserver.nix
+    ./modules/nixos/desktop-environment.nix
     ./modules/nixos/i18n.nix
     ./modules/nixos/sound.nix
     ./modules/nixos/networking.nix
@@ -39,7 +39,7 @@
     ./modules/nixos/printing.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   hardware.enableAllFirmware = true;
   security.polkit.enable = true;
 

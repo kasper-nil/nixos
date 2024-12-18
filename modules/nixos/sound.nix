@@ -1,19 +1,14 @@
-{ pkgs, nixpkgs, ... }:
 {
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
-  nixpkgs.config.pulseaudio = true;
-  services.pipewire.enable = false;
+  hardware = {
+    pulseaudio = {
+      enable = true;
+      support32Bit = true;
+    };
+  };
 
-  #security.rtkit.enable = true;
-  #
-  #services.pipewire = {
-  #  enable = true;
-  #  pulse.enable = true;
-  #
-  #  alsa = {
-  #    enable = true;
-  #    support32Bit = true;
-  #  };
-  #};
+  services = {
+    pipewire.enable = true;
+  };
+
+  nixpkgs.config.pulseaudio = true;
 }
