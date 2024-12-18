@@ -48,10 +48,10 @@ exec --no-startup-id $setting_app_compositor
 exec_always --no-startup-id feh --bg-scale /etc/nixos/assets/backgrounds/nord.jpg
 
 # Lock
-bindsym $mod+l exec --no-startup-id i3lock
+bindsym $mod+l exec --no-startup-id xflock4
 
 # Logout
-bindsym $mod+$smod+e exec --no-startup-id i3-msg exit
+bindsym $mod+$smod+e exec --no-startup-id xfce4-session-logout --logout
 
 # Brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%

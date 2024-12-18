@@ -9,8 +9,8 @@
     };
 
     iconTheme = {
-      name = "Nordic-bluish";
-      package = pkgs.nordic;
+      name = "elementary-Xfce-dark";
+      package = pkgs.elementary-xfce-icon-theme;
     };
 
     font = {

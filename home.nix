@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./modules/home-manager/git.nix
@@ -20,29 +20,23 @@
     obsidian
     discord
     spotify
-    arandr
     neofetch
-    wmctrl
     playerctl
     feh
     brave
-    dconf
     alacritty
     rofi
     picom
-    lxappearance
-    pavucontrol
     brightnessctl
     pamixer
     powertop
     xorg.xev
     flameshot
-    gnome-disk-utility
     firefox
-    autorandr
-    ventoy-full
     nautilus
+    autorandr
     tmux
+    elementary-xfce-icon-theme
     (polybar.override {
       i3Support = true;
       alsaSupport = true;

@@ -7,7 +7,7 @@
   };
 
   services = {
-    pipewire.enable = true;
+    pipewire.enable = false;
   };
 
   nixpkgs.config.pulseaudio = true;

@@ -40,38 +40,13 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
+
   hardware.enableAllFirmware = true;
+
   security.polkit.enable = true;
-
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
-  };
-
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      # Add any missing dynamic libraries for unpackaged programs
-      # here, NOT in environment.systemPackages
-      luaformatter
-    ];
-  };
 
   # Stuff for nixd LSP
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-
-  services.gvfs.enable = true;
 
   # Enable experimental features
   nix.settings.experimental-features = [
