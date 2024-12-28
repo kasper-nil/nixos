@@ -28,14 +28,17 @@ set $setting_main_screen			 DP-3-2
 set $setting_secondary_screen	 DP-3-1-6
 
 # Run rofi
-bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
+# bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
+bindsym $mod+d exec --no-startup-id xfce4-appfinder
 
 # Run polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# Run xfce4 panel
+# exec_always --no-startup-id xfce4-panel
+
 # Start a terminal emulator
 bindsym $mod+t exec --no-startup-id $setting_app_terminal
-
 
 # Screenshot
 bindsym $mod+$smod+s exec --no-startup-id flameshot gui
@@ -184,3 +187,6 @@ bindsym $mod+q kill
 bindsym $mod+$smod+r restart
 
 for_window [class="^.*"] border pixel 0
+
+### XFCE4 settings ###
+for_window [title="Application Finder"] floating enable, resize set 800 600, move position center

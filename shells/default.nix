@@ -3,6 +3,13 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     nodejs_18
     corepack_18
+    jadx
+  ];
+
+  packages = [
+    (pkgs.python3.withPackages (python-pkgs: [
+      python-pkgs.pycrypto
+    ]))
   ];
 
   shellHook = ''

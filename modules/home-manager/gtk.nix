@@ -4,20 +4,26 @@
     enable = true;
 
     theme = {
-      name = "Nordic";
-      package = pkgs.nordic;
+      name = "Qogir-dark";
+      package = pkgs.qogir-theme;
     };
 
     iconTheme = {
-      name = "elementary-Xfce-dark";
-      package = pkgs.elementary-xfce-icon-theme;
+      name = "Qogir-dark";
+      package = pkgs.qogir-icon-theme;
     };
 
     font = {
-      name = "Noto Sans";
+      name = "Roboto";
       size = 14;
-      package = pkgs.noto-fonts;
+      package = pkgs.roboto;
     };
+
+    # cursorTheme = {
+    #   name = "Qogir-dark";
+    #   package = pkgs.qogir-theme;
+    #   size = 32;
+    # };
 
     gtk3.extraConfig = {
       Settings = ''
@@ -30,5 +36,12 @@
         gtk-application-prefer-dark-theme=1
       '';
     };
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    name = "Qogir-dark";
+    package = pkgs.qogir-theme;
+    size = 32;
   };
 }

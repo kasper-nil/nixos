@@ -37,6 +37,11 @@
     autorandr
     tmux
     elementary-xfce-icon-theme
+    gtk-engine-murrine
+    qogir-theme
+    qogir-icon-theme
+    sublime
+    lazydocker
     (polybar.override {
       i3Support = true;
       alsaSupport = true;

@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    zuki-themes
+    xfce.xfce4-panel
+    xfce.xfce4-i3-workspaces-plugin
+    xfce.xfce4-pulseaudio-plugin
   ];
 
   environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw
@@ -24,16 +26,6 @@
           enable = true;
           noDesktop = true;
           enableXfwm = false;
-        };
-      };
-
-      displayManager = {
-        lightdm = {
-          enable = true;
-          greeters.slick = {
-            enable = true;
-            theme.name = "Zukitre-dark";
-          };
         };
       };
 
