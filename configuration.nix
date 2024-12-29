@@ -17,6 +17,7 @@
     i3-gaps
     direnv
     i3lock-fancy
+    openssl
   ];
 
   # NixOS modules

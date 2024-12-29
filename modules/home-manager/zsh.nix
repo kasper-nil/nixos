@@ -16,9 +16,8 @@
 
       # Nix shells
       dev = "nix develop /etc/nixos#default";
-      ttslabs = "nix develop /etc/nixos#ttslabs --impure";
-      dev-tauri = "nix develop /etc/nixos#tauri --impure";
-      dev-work = "nix develop /etc/nixos#work --impure";
+      ttslabs = "nix develop /etc/nixos#ttslabs";
+      work = "nix develop /etc/nixos#work --impure";
 
       # Docker
       docker-stop-all = "docker stop $(docker ps -a -q)";
