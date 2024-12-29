@@ -19,11 +19,11 @@
       package = pkgs.roboto;
     };
 
-    # cursorTheme = {
-    #   name = "Qogir-dark";
-    #   package = pkgs.qogir-theme;
-    #   size = 32;
-    # };
+    cursorTheme = {
+      name = "Qogir-dark";
+      package = pkgs.qogir-theme;
+      size = 32;
+    };
 
     gtk3.extraConfig = {
       Settings = ''

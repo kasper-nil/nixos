@@ -15,6 +15,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    turbo = {
+      url = "github:dlip/turbo";
+    };
   };
 
   outputs =
@@ -22,12 +26,14 @@
       nixpkgs,
       home-manager,
       fenix,
+      turbo,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
       nixos-configuration = ./configuration.nix;
       hardware-configuration = ./hardware-configuration.nix;
+      overlays = [ turbo.overlay ];
     in
     {
       packages.${system}.default = fenix.packages.${system}.minimal.toolchain;
@@ -64,11 +70,14 @@
 
       devShells."${system}" =
         let
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs { inherit system overlays; };
         in
         # pkgs = nixpkgs.legacyPackages.${system};
         {
           default = import ./shells/default.nix {
+            inherit pkgs;
+          };
+          ttslabs = import ./shells/ttslabs.nix {
             inherit pkgs;
           };
           tauri = import ./shells/tauri.nix {

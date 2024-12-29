@@ -9,8 +9,12 @@
     ./modules/home-manager/i3.nix
     ./modules/home-manager/picom.nix
     ./modules/home-manager/starship.nix
-    ./modules/home-manager/gtk.nix
+    # ./modules/home-manager/gtk.nix
     ./modules/home-manager/cursor.nix
+  ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-27.3.11"
   ];
 
   home.packages = with pkgs; [

@@ -1,12 +1,16 @@
 { pkgs }:
 pkgs.mkShell {
-  buildInputs = with pkgs; [
-  ];
+  nativeBuildInputs = [ pkgs.bashInteractive ];
 
-  packages = [
+  buildInputs = with pkgs; [
+    nodejs_18
+    corepack_18
+    turbo
   ];
 
   shellHook = ''
+    export TURBO_BINARY_PATH="${pkgs.turbo}/bin/turbo"
+
     if [ "$SHELL" != "${pkgs.zsh}/bin/zsh" ]; then
       export SHELL=${pkgs.zsh}/bin/zsh
       exec ${pkgs.zsh}/bin/zsh
