@@ -13,12 +13,10 @@
     nixd
     nixfmt-rfc-style
     gcc
-    pkg-config
-    i3-gaps
-    direnv
-    i3lock-fancy
     openssl
   ];
+
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   # NixOS modules
   imports = [

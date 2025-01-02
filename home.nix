@@ -4,13 +4,13 @@
     ./modules/home-manager/git.nix
     ./modules/home-manager/zsh.nix
     ./modules/home-manager/alacritty.nix
-    ./modules/home-manager/rofi.nix
-    ./modules/home-manager/polybar.nix
-    ./modules/home-manager/i3.nix
-    ./modules/home-manager/picom.nix
     ./modules/home-manager/starship.nix
+
+    # ./modules/home-manager/i3.nix
     # ./modules/home-manager/gtk.nix
-    ./modules/home-manager/cursor.nix
+    # ./modules/home-manager/picom.nix
+    # ./modules/home-manager/rofi.nix
+    # ./modules/home-manager/polybar.nix
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -25,35 +25,13 @@
     discord
     spotify
     neofetch
-    playerctl
-    feh
     brave
     alacritty
-    rofi
-    picom
-    brightnessctl
-    pamixer
     powertop
-    xorg.xev
     flameshot
-    firefox
-    nautilus
     autorandr
     tmux
-    elementary-xfce-icon-theme
-    gtk-engine-murrine
-    qogir-theme
-    qogir-icon-theme
-    sublime
     lazydocker
-    (polybar.override {
-      i3Support = true;
-      alsaSupport = true;
-      iwSupport = true;
-      githubSupport = true;
-      pulseSupport = true;
-      mpdSupport = true;
-    })
   ];
 
   home = {
