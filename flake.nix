@@ -21,7 +21,7 @@
     let
       system = "x86_64-linux";
       nixos-configuration = ./configuration.nix;
-      hardware-configuration = ./hardware-configuration.nix;
+      hardware-configuration = ./hardware-configuration/desktop.nix;
     in
     {
       nixosConfigurations = {
