@@ -10,17 +10,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    turbo = {
-      url = "github:dlip/turbo";
-    };
   };
 
   outputs =
     {
       nixpkgs,
       home-manager,
-      turbo,
       ...
     }@inputs:
     let
