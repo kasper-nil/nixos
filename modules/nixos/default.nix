@@ -5,17 +5,15 @@
     ./bootloader.nix
     ./desktop-environment.nix
     ./fonts.nix
-    ./graphics.nix
-    ./home-manager.nix
+    ./amd-graphics.nix
     ./i18n.nix
     ./keyboard.nix
     ./networking.nix
-    ./power.nix
+    ./power-profiles.nix
     ./printing.nix
-    ./shell.nix
-    ./sound.nix
+    ./zsh.nix
+    ./pipewire.nix
     ./steam.nix
-    ./users.nix
-    ./virtualisation.nix
+    ./docker.nix
   ];
 }
