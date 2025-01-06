@@ -14,9 +14,8 @@
     nixfmt-rfc-style
     gcc
     openssl
+    openrgb-with-all-plugins
   ];
-
-  boot.initrd.kernelModules = [ "amdgpu" ];
 
   # NixOS modules
   imports = [
@@ -46,6 +45,8 @@
 
   # Stuff for nixd LSP
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
+  services.hardware.openrgb.enable = true;
 
   # Enable experimental features
   nix.settings.experimental-features = [
