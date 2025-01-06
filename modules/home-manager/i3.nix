@@ -1,14 +1,12 @@
-{ config, pkgs, ... }:
+{ config, lib, ... }:
 {
-  home.file."${config.home.homeDirectory}/.config/i3/config" = {
-    source = ../../dotfiles/i3/config;
+  options = {
+    i3.enable = lib.mkEnableOption "Enable i3";
   };
 
-  # xsession.windowManager.i3 = {
-  #   enable = true;
-  #   package = pkgs.i3;
-  #   extraConfig = ''
-  #     include "${config}";
-  #   '';
-  # };
+  config = lib.mkIf config.i3.enable {
+    home.file."${config.home.homeDirectory}/.config/i3/config" = {
+      source = ../../dotfiles/i3/config;
+    };
+  };
 }

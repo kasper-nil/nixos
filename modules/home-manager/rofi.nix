@@ -1,10 +1,16 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
-  home.file."${config.home.homeDirectory}/.config/rofi/config.rasi" = {
-    source = ../../dotfiles/rofi/config.rasi;
+  options = {
+    rofi.enable = lib.mkEnableOption "Enable rofi";
   };
 
-  home.file."${config.home.homeDirectory}/.config/rofi/themes/nord.rasi" = {
-    source = ../../dotfiles/rofi/themes/nord.rasi;
+  config = lib.mkIf config.rofi.enable {
+    home.file."${config.home.homeDirectory}/.config/rofi/config.rasi" = {
+      source = ../../dotfiles/rofi/config.rasi;
+    };
+
+    home.file."${config.home.homeDirectory}/.config/rofi/themes/nord.rasi" = {
+      source = ../../dotfiles/rofi/themes/nord.rasi;
+    };
   };
 }
