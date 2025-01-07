@@ -5,6 +5,28 @@
   ...
 }:
 {
+
+  # NixOS modules
+  imports = [
+    ./modules/nixos/default.nix
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
+  # Enable imported NixOS modules
+  amd-graphics.enable = true;
+  bluetooth.enable = true;
+  bootloader.enable = true;
+  desktop-environment.enable = true;
+  docker.enable = true;
+  fonts.enable = true;
+  i18n.enable = true;
+  keyboard.enable = true;
+  networking.enable = true;
+  pipewire.enable = true;
+  printing.enable = true;
+  steam.enable = true;
+  zsh.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 
   # System packages
@@ -18,12 +40,6 @@
     openrgb-with-all-plugins
   ];
 
-  # NixOS modules
-  imports = [
-    ./modules/nixos/default.nix
-    inputs.home-manager.nixosModules.home-manager
-  ];
-
   home-manager = {
     extraSpecialArgs = {
       inherit inputs outputs;
@@ -32,7 +48,7 @@
     backupFileExtension = "backup";
 
     users = {
-      kasper = import ../../home.nix;
+      kasper = import ./home.nix;
     };
   };
 
