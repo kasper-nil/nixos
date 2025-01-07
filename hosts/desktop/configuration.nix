@@ -8,6 +8,7 @@
 
   # NixOS modules
   imports = [
+    ./../../modules/nixos/default.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 

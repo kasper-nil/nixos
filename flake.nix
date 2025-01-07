@@ -20,22 +20,41 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      nixos-configuration = ./configuration.nix;
-      hardware-configuration = ./hardware-configuration/desktop.nix;
+      nixosModules = ./modules/nixos;
     in
     {
       nixosConfigurations = {
-        default = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
+        default =
+          let
+            configuration = ./configuration.nix;
+            hardware-configuration = ./hardware-configuration/desktop.nix;
+          in
+          nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+            };
+            modules = [
+              home-manager.nixosModules.default
+              hardware-configuration
+              configuration
+              nixosModules
+            ];
           };
-
-          modules = [
-            hardware-configuration
-            nixos-configuration
-            home-manager.nixosModules.default
-          ];
-        };
+        desktop =
+          let
+            configuration = ./hosts/desktop/configuration.nix;
+            hardware-configuration = ./hosts/desktop/hardware-configuration.nix;
+          in
+          nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+            };
+            modules = [
+              home-manager.nixosModules.default
+              configuration
+              hardware-configuration
+            ];
+          };
       };
 
       devShells."${system}" =
