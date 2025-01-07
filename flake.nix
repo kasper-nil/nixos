@@ -40,21 +40,17 @@
               nixosModules
             ];
           };
-        desktop =
-          let
-            configuration = ./hosts/desktop/configuration.nix;
-            hardware-configuration = ./hosts/desktop/hardware-configuration.nix;
-          in
-          nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs;
-            };
-            modules = [
-              home-manager.nixosModules.default
-              configuration
-              hardware-configuration
-            ];
+        desktop = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
           };
+          modules = [
+            ./hosts/desktop/configuration.nix
+            ./hosts/desktop/hardware-configuration.nix
+            home-manager.nixosModules.default
+            nixosModules
+          ];
+        };
       };
 
       devShells."${system}" =

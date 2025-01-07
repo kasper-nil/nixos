@@ -15,7 +15,8 @@
 
       shellAliases = {
         # NixOS
-        rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#default";
+        rebuild-default = "sudo nixos-rebuild switch --flake /etc/nixos#default";
+        rebuild-desktop = "sudo nixos-rebuild switch --flake /etc/nixos#desktop";
         collect-garbage = "sudo nix-collect-garbage -d";
         configure = "code /etc/nixos";
 

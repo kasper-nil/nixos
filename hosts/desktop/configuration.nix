@@ -8,9 +8,35 @@
 
   # NixOS modules
   imports = [
-    ./../../modules/nixos/default.nix
     inputs.home-manager.nixosModules.home-manager
   ];
+
+  home-manager = {
+    extraSpecialArgs = {
+      inherit inputs outputs;
+    };
+
+    backupFileExtension = "backup";
+
+    users = {
+      kasper = import ./home.nix;
+    };
+  };
+
+  users = {
+    users.kasper = {
+      shell = pkgs.zsh;
+      isNormalUser = true;
+      description = "kasper";
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "audio"
+        "docker"
+        "video"
+      ];
+    };
+  };
 
   # Enable imported NixOS modules
   amd-graphics.enable = true;
@@ -39,33 +65,6 @@
     openssl
     openrgb-with-all-plugins
   ];
-
-  home-manager = {
-    extraSpecialArgs = {
-      inherit inputs outputs;
-    };
-
-    backupFileExtension = "backup";
-
-    users = {
-      kasper = import ./home.nix;
-    };
-  };
-
-  users = {
-    users.kasper = {
-      # shell = pkgs.zsh; TODO: Might break stuff
-      isNormalUser = true;
-      description = "kasper";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "audio"
-        "docker"
-        "video"
-      ];
-    };
-  };
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
