@@ -1,5 +1,6 @@
 {
   inputs,
+  outputs,
   pkgs,
   ...
 }:
@@ -9,6 +10,18 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
+
+  home-manager = {
+    extraSpecialArgs = {
+      inherit inputs outputs;
+    };
+
+    backupFileExtension = "backup";
+
+    users = {
+      kasper = import ./home.nix;
+    };
+  };
 
   users = {
     users.kasper = {

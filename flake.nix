@@ -24,23 +24,27 @@
     in
     {
       nixosConfigurations = {
-        default =
-          let
-            configuration = ./configuration.nix;
-            hardware-configuration = ./hardware-configuration/desktop.nix;
-          in
-          nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs;
-            };
-            modules = [
-              home-manager.nixosModules.default
-              hardware-configuration
-              configuration
-              nixosModules
-            ];
-          };
         desktop = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            nixosModules
+            home-manager.nixosModules.home-manager
+            {
+              extraSpecialArgs = {
+                inherit inputs;
+              };
+              users = {
+                kasper = import ./hosts/desktop/home.nix;
+              };
+              backupFileExtension = "backup";
+            }
+            ./hosts/desktop/configuration.nix
+            ./hosts/desktop/hardware-configuration.nix
+          ];
+        };
+        work = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
           };
