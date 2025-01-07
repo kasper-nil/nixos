@@ -29,17 +29,19 @@
             inherit inputs;
           };
           modules = [
-            nixosModules
             home-manager.nixosModules.home-manager
             {
-              extraSpecialArgs = {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
                 inherit inputs;
               };
-              users = {
+              home-manager.users = {
                 kasper = import ./hosts/desktop/home.nix;
               };
-              backupFileExtension = "backup";
+              home-manager.backupFileExtension = "backup";
             }
+            nixosModules
             ./hosts/desktop/configuration.nix
             ./hosts/desktop/hardware-configuration.nix
           ];
@@ -49,10 +51,21 @@
             inherit inputs;
           };
           modules = [
-            ./hosts/desktop/configuration.nix
-            ./hosts/desktop/hardware-configuration.nix
-            home-manager.nixosModules.default
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+              };
+              home-manager.users = {
+                kasper = import ./hosts/work/home.nix;
+              };
+              home-manager.backupFileExtension = "backup";
+            }
             nixosModules
+            ./hosts/work/configuration.nix
+            ./hosts/work/hardware-configuration.nix
           ];
         };
       };

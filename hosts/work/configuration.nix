@@ -1,27 +1,12 @@
 {
   inputs,
-  outputs,
   pkgs,
   ...
 }:
 {
-
-  # NixOS modules
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
-
-  home-manager = {
-    extraSpecialArgs = {
-      inherit inputs outputs;
-    };
-
-    backupFileExtension = "backup";
-
-    users = {
-      kasper = import ./home.nix;
-    };
-  };
 
   users = {
     users.kasper = {
@@ -39,7 +24,6 @@
   };
 
   # Enable imported NixOS modules
-  amd-graphics.enable = true;
   bluetooth.enable = true;
   bootloader.enable = true;
   desktop-environment.enable = true;
@@ -51,6 +35,7 @@
   pipewire.enable = true;
   printing.enable = true;
   steam.enable = true;
+  power-profiles.enable = true;
   zsh.enable = true;
 
   nixpkgs.config.allowUnfree = true;
@@ -63,7 +48,6 @@
     nixfmt-rfc-style
     gcc
     openssl
-    openrgb-with-all-plugins
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
@@ -74,8 +58,6 @@
 
   # Stuff for nixd LSP
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-
-  services.hardware.openrgb.enable = true;
 
   # Enable experimental features
   nix.settings.experimental-features = [
