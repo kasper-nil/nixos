@@ -28,6 +28,8 @@
     # Default: ""
     theme = "gruvbox_split";
 
+    overlay.enable = true;
+
     # Configure bar layouts for monitors.
     # See 'https://hyprpanel.com/configuration/panel.html'.
     # Default: null
@@ -67,8 +69,6 @@
 
       menus.dashboard.directories.enabled = false;
       menus.dashboard.stats.enable_gpu = true;
-
-      theme.bar.transparent = true;
 
       theme.font = {
         name = "CaskaydiaCove NF";
