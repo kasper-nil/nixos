@@ -44,7 +44,7 @@
               home-manager.users = {
                 kasper = import ./hosts/desktop/home.nix;
               };
-              home-manager.backupFileExtension = "backup";
+              home-manager.backupFileExtension = "file-backup";
             }
             nixosModules
             ./hosts/desktop/configuration.nix
@@ -66,7 +66,7 @@
               home-manager.users = {
                 kasper = import ./hosts/work/home.nix;
               };
-              home-manager.backupFileExtension = "backup";
+              home-manager.backupFileExtension = "file-backup";
             }
             nixosModules
             ./hosts/work/configuration.nix

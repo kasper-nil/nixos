@@ -35,15 +35,19 @@
     # Default: null
     layout = {
       "bar.layouts" = {
-        "0" = {
+        "*" = {
           left = [
             "dashboard"
             "workspaces"
+            "windowtitle"
           ];
           middle = [ "media" ];
           right = [
-            "volume"
             "systray"
+            "volume"
+            "network"
+            "bluetooth"
+            "clock"
             "notifications"
           ];
         };
