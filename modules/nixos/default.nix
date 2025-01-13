@@ -15,5 +15,6 @@
     ./steam.nix
     ./docker.nix
     ./desktop-environment/plasma6.nix
+    ./desktop-environment/hyprland.nix
   ];
 }

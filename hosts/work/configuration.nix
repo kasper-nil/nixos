@@ -26,7 +26,6 @@
   # Enable imported NixOS modules
   bluetooth.enable = true;
   bootloader.enable = true;
-  desktop-environment.enable = true;
   docker.enable = true;
   fonts.enable = true;
   i18n.enable = true;
@@ -37,6 +36,10 @@
   steam.enable = true;
   power-profiles.enable = true;
   zsh.enable = true;
+
+  # Desktop environment
+  hyprland.enable = true;
+  plasma6.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 

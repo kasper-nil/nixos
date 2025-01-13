@@ -29,7 +29,6 @@
   amd-graphics.enable = true;
   bluetooth.enable = true;
   bootloader.enable = true;
-  desktop-environment.enable = true;
   docker.enable = true;
   fonts.enable = true;
   i18n.enable = true;
@@ -39,6 +38,9 @@
   printing.enable = true;
   steam.enable = true;
   zsh.enable = true;
+
+  # Desktop environment
+  plasma6.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
