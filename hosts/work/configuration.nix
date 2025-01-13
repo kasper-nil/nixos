@@ -38,7 +38,7 @@
   zsh.enable = true;
 
   # Desktop environment
-  plasma6.enable = true;
+  # plasma6.enable = true;
   hyprland.enable = true;
 
   nixpkgs.config.allowUnfree = true;

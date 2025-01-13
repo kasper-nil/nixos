@@ -21,6 +21,7 @@
     {
       nixpkgs,
       home-manager,
+      hyprpanel,
       ...
     }@inputs:
     let
@@ -34,6 +35,7 @@
             inherit inputs;
           };
           modules = [
+            inputs.hyprpanel.overlay
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -56,6 +58,7 @@
             inherit inputs;
           };
           modules = [
+            inputs.hyprpanel.overlay
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
