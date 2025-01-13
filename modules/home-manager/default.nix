@@ -10,5 +10,6 @@
     ./rofi.nix
     ./starship.nix
     ./zsh.nix
+    ./hyprland.nix
   ];
 }

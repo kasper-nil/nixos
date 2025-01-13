@@ -9,6 +9,7 @@
   zsh.enable = true;
   alacritty.enable = true;
   starship.enable = true;
+  hyprland.enable = true;
 
   nixpkgs.config.permittedInsecurePackages = [
     "electron-27.3.11"
