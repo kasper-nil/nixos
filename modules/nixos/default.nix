@@ -3,7 +3,6 @@
   imports = [
     ./bluetooth.nix
     ./bootloader.nix
-    ./desktop-environment.nix
     ./fonts.nix
     ./amd-graphics.nix
     ./i18n.nix
@@ -15,5 +14,6 @@
     ./pipewire.nix
     ./steam.nix
     ./docker.nix
+    ./desktop-environment/plasma6.nix
   ];
 }
