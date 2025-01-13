@@ -33,6 +33,13 @@
       # Settings
       settings = {
         "$mod" = "SUPER";
+        input = {
+          kb_layout = "no";
+        };
+        bindm = [
+          "$mod, mouse:272, movewindow"
+          "$mod, mouse:273, resizewindow, 2"
+        ];
         bind =
           [
             "$mod, F, exec, firefox"

@@ -14,6 +14,8 @@
     ./pipewire.nix
     ./steam.nix
     ./docker.nix
+
+    # Desktop environments
     ./desktop-environment/plasma6.nix
     ./desktop-environment/hyprland.nix
   ];
