@@ -10,6 +10,7 @@
     ./tofi.nix
     ./waybar.nix
     ./theme.nix
+    ./hyprlock.nix
   ];
 
   options = {
@@ -18,7 +19,24 @@
 
   config = lib.mkIf config.hyprland.enable {
     home.packages = with pkgs; [
+      nwg-displays
+      grimblast
+      hyprpicker
+      hypridle
+      hyprsunset
       pavucontrol
+      wireplumber
+      libgtop
+      bluez
+      bluez-tools
+      networkmanager
+      dart-sass
+      wl-clipboard
+      upower
+      gvfs
+      btop
+      pywal
+      hyprpolkitagent
     ];
 
     # Hint Electron apps to use Wayland:
@@ -43,11 +61,11 @@
       # Settings
       settings = {
         "$mod" = "SUPER";
-        "$mod+Shift" = "SUPER_SHIFT";
         "$drun" = "tofi-drun --drun-launch=true";
 
         exec-once = [
           "hyprpanel"
+          "systemctl --user start hyprpolkitagent"
         ];
 
         input = {
@@ -61,10 +79,15 @@
 
         bind =
           [
-            "$mod, Q, killactive"
+            # Apps
+            "$mod SHIFT, S, exec, grimblast copy area"
+            "$mod SHIFT, C, exec, hyprpicker"
             "$mod, D, exec, $drun"
-            "$mod+Shift, S, exec, grimblast copy area"
             "$mod, T, exec, alacritty"
+
+            # Window management
+            "$mod, Q, killactive"
+            "$mod, F, fullscreen"
           ]
           ++ (
             # workspaces

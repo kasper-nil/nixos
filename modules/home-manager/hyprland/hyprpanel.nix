@@ -26,7 +26,7 @@
 
     # Import a theme from './themes/*.json'.
     # Default: ""
-    theme = "gruvbox_split";
+    theme = "monochrome";
 
     overlay.enable = true;
 
@@ -41,13 +41,15 @@
             "workspaces"
             "windowtitle"
           ];
-          middle = [ "media" ];
+          middle = [ "clock" ];
           right = [
             "systray"
+            "storage"
+            "ram"
+            "cpu"
             "volume"
             "network"
             "bluetooth"
-            "clock"
             "notifications"
           ];
         };
@@ -60,23 +62,42 @@
     # See 'https://hyprpanel.com/configuration/settings.html'.
     # Default: <same as gui>
     settings = {
-      bar.launcher.autoDetectIcon = true;
-      bar.workspaces.show_icons = true;
-
-      menus.clock = {
-        time = {
-          military = true;
-          hideSeconds = true;
+      bar = {
+        launcher = {
+          autoDetectIcon = true;
         };
-        weather.unit = "metric";
+        workspaces = {
+          show_numbered = true;
+        };
       };
-
-      menus.dashboard.directories.enabled = false;
-      menus.dashboard.stats.enable_gpu = true;
-
-      theme.font = {
-        name = "CaskaydiaCove NF";
-        size = "16px";
+      menus = {
+        clock = {
+          time = {
+            military = true;
+            hideSeconds = true;
+          };
+          weather = {
+            unit = "metric";
+          };
+        };
+        dashboard = {
+          directories = {
+            enabled = false;
+          };
+          stats = {
+            enable_gpu = true;
+          };
+        };
+      };
+      theme = {
+        bar = {
+          transparent = false;
+          floating = true;
+        };
+        font = {
+          name = "CaskaydiaCove NF";
+          size = "16px";
+        };
       };
     };
   };

@@ -25,7 +25,17 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      nixosModules = ./modules/nixos;
+      sharedModules = [
+        ./modules/nixos
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+          };
+          home-manager.backupFileExtension = "file-backup";
+        }
+      ];
     in
     {
       nixosConfigurations = {
@@ -33,20 +43,12 @@
           specialArgs = {
             inherit inputs;
           };
-          modules = [
-            home-manager.nixosModules.home-manager
+          modules = sharedModules ++ [
             {
-              # home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-              };
               home-manager.users = {
                 kasper = import ./hosts/desktop/home.nix;
               };
-              home-manager.backupFileExtension = "file-backup";
             }
-            nixosModules
             ./hosts/desktop/configuration.nix
             ./hosts/desktop/hardware-configuration.nix
           ];
@@ -55,20 +57,12 @@
           specialArgs = {
             inherit inputs;
           };
-          modules = [
-            home-manager.nixosModules.home-manager
+          modules = sharedModules ++ [
             {
-              # home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-              };
               home-manager.users = {
                 kasper = import ./hosts/work/home.nix;
               };
-              home-manager.backupFileExtension = "file-backup";
             }
-            nixosModules
             ./hosts/work/configuration.nix
             ./hosts/work/hardware-configuration.nix
           ];
