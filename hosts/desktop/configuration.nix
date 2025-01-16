@@ -40,8 +40,8 @@
   zsh.enable = true;
 
   # Desktop environment
-  # plasma6.enable = true;
-  hyprland.enable = true;
+  plasma6.enable = true;
+  # hyprland.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -54,6 +54,7 @@
     gcc
     openssl
     openrgb-with-all-plugins
+    protonup-qt
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;

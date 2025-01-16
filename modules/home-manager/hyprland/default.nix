@@ -37,6 +37,7 @@
       btop
       pywal
       hyprpolkitagent
+      hyprlock
     ];
 
     # Hint Electron apps to use Wayland:

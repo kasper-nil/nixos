@@ -10,7 +10,8 @@
   alacritty.enable = true;
   starship.enable = true;
 
-  hyprland.enable = true;
+  # hyprland.enable = true;
+  # plasma6.enable = true;
 
   nixpkgs.config.permittedInsecurePackages = [
     "electron-27.3.11"
@@ -29,7 +30,6 @@
     powertop
     tmux
     lazydocker
-    dolphin
   ];
 
   home = {
