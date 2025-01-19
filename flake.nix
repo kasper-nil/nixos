@@ -10,11 +10,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprpanel = {
-      url = "github:jas-singhfsu/hyprpanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -29,11 +24,12 @@
         ./modules/nixos
         home-manager.nixosModules.home-manager
         {
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
+          home-manager = {
+            useUserPackages = true;
+            extraSpecialArgs = {
+              inherit inputs;
+            };
           };
-          home-manager.backupFileExtension = "file-backupasd";
         }
       ];
     in
@@ -45,8 +41,11 @@
           };
           modules = sharedModules ++ [
             {
-              home-manager.users = {
-                kasper = import ./hosts/desktop/home.nix;
+              home-manager = {
+                users = {
+                  kasper = import ./hosts/desktop/home.nix;
+                };
+                backupFileExtension = "desktop-backup-2";
               };
             }
             ./hosts/desktop/configuration.nix
@@ -59,8 +58,11 @@
           };
           modules = sharedModules ++ [
             {
-              home-manager.users = {
-                kasper = import ./hosts/work/home.nix;
+              home-manager = {
+                users = {
+                  kasper = import ./hosts/work/home.nix;
+                };
+                backupFileExtension = "work-backup";
               };
             }
             ./hosts/work/configuration.nix

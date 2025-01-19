@@ -6,7 +6,6 @@
 }:
 {
   imports = [
-    ./hyprpanel.nix
     ./tofi.nix
     ./waybar.nix
     ./theme.nix
