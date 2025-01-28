@@ -55,14 +55,7 @@
     openssl
     openrgb-with-all-plugins
     protonup-qt
-
-    # For phone mic stuff
-    roc-toolkit
-    pavucontrol
-    mumble
-    murmur
-    avahi
-    iproute2
+    lutris
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;

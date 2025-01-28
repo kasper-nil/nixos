@@ -45,7 +45,7 @@
                 users = {
                   kasper = import ./hosts/desktop/home.nix;
                 };
-                backupFileExtension = "desktop-backup-2";
+                backupFileExtension = "desktop-backup-5";
               };
             }
             ./hosts/desktop/configuration.nix
@@ -83,6 +83,9 @@
             inherit pkgs;
           };
           work = import ./shells/work.nix {
+            inherit pkgs;
+          };
+          cs2 = import ./shells/cs2.nix {
             inherit pkgs;
           };
         };

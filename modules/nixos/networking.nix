@@ -9,11 +9,11 @@
       hostName = "nixos";
       networkmanager.enable = true;
 
-      firewall = {
-        enable = true;
-        allowedTCPPorts = [ 64738 ];
-        allowedUDPPorts = [ 64738 ];
-      };
+      # firewall = {
+      #   enable = true;
+      #   allowedTCPPorts = [ 64738 ];
+      #   allowedUDPPorts = [ 64738 ];
+      # };
     };
   };
 }
