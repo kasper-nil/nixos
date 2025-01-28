@@ -30,6 +30,7 @@
     autorandr
     tmux
     lazydocker
+    anydesk
   ];
 
   home = {
