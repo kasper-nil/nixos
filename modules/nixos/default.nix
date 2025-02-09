@@ -18,5 +18,8 @@
     # Desktop environments
     ./desktop-environment/plasma6.nix
     ./desktop-environment/hyprland.nix
+
+    # Minecraft
+    ./minecraft/server.nix
   ];
 }

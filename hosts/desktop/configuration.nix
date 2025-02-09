@@ -56,7 +56,21 @@
     openrgb-with-all-plugins
     protonup-qt
     lutris
+    dotnet-sdk_8
+    roslyn-ls
   ];
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+    dotnet-sdk_8
+    roslyn-ls
+  ];
+
+  environment.sessionVariables = {
+    DOTNET_ROOT = "${pkgs.dotnet-sdk_8}/share/dotnet/";
+  };
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
 

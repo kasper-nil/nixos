@@ -30,6 +30,7 @@
     powertop
     tmux
     lazydocker
+    prismlauncher
   ];
 
   home = {
