@@ -38,6 +38,7 @@
   printing.enable = true;
   steam.enable = true;
   zsh.enable = true;
+  minecraft-server.enable = true;
 
   # Desktop environment
   plasma6.enable = true;
@@ -58,6 +59,8 @@
     lutris
     dotnet-sdk_8
     roslyn-ls
+    bottles
+    appimage-run
   ];
 
   programs.nix-ld.enable = true;
@@ -72,7 +75,7 @@
     DOTNET_ROOT = "${pkgs.dotnet-sdk_8}/share/dotnet/";
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   hardware.enableAllFirmware = true;
 

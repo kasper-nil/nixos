@@ -45,7 +45,7 @@
                 users = {
                   kasper = import ./hosts/desktop/home.nix;
                 };
-                backupFileExtension = "desktop-backup-7";
+                backupFileExtension = "desktop-backup-8";
               };
             }
             ./hosts/desktop/configuration.nix
