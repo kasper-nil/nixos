@@ -34,9 +34,6 @@
           pkgs = import nixpkgs { inherit system; };
         in
         {
-          default = import ./shells/default.nix {
-            inherit pkgs;
-          };
           ttslabs = import ./shells/ttslabs.nix {
             inherit pkgs;
           };

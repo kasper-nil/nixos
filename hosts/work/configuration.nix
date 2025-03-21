@@ -11,7 +11,7 @@
   ];
 
   home-manager = {
-    specialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs; };
     users = {
       "kasper" = import ./home.nix;
     };
@@ -54,7 +54,6 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
-    home-manager
     gnumake
     nixd
     nixfmt-rfc-style

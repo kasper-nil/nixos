@@ -12,7 +12,7 @@
   ];
 
   home-manager = {
-    specialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs; };
     users = {
       "kasper" = import ./home.nix;
     };
