@@ -6,10 +6,19 @@
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    ../../modules/nixos
+    ./hardware-configuration.nix
   ];
 
-  users = {
-    users.kasper = {
+  home-manager = {
+    specialArgs = { inherit inputs; };
+    users = {
+      "kasper" = import ./home.nix;
+    };
+  };
+
+  users.users = {
+    kasper = {
       shell = pkgs.zsh;
       isNormalUser = true;
       description = "kasper";

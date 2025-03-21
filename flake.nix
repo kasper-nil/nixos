@@ -13,61 +13,19 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
+    { nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
-      sharedModules = [
-        ./modules/nixos
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useUserPackages = true;
-            extraSpecialArgs = {
-              inherit inputs;
-            };
-          };
-        }
-      ];
     in
     {
       nixosConfigurations = {
         desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = sharedModules ++ [
-            {
-              home-manager = {
-                users = {
-                  kasper = import ./hosts/desktop/home.nix;
-                };
-                backupFileExtension = "desktop-backup-8";
-              };
-            }
-            ./hosts/desktop/configuration.nix
-            ./hosts/desktop/hardware-configuration.nix
-          ];
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/desktop/configuration.nix ];
         };
         work = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = sharedModules ++ [
-            {
-              home-manager = {
-                users = {
-                  kasper = import ./hosts/work/home.nix;
-                };
-                backupFileExtension = "work-backup";
-              };
-            }
-            ./hosts/work/configuration.nix
-            ./hosts/work/hardware-configuration.nix
-          ];
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/work/configuration.nix ];
         };
       };
 

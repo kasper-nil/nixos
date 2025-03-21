@@ -4,11 +4,19 @@
   ...
 }:
 {
-
   # NixOS modules
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    ../../modules/nixos
+    ./hardware-configuration.nix
   ];
+
+  home-manager = {
+    specialArgs = { inherit inputs; };
+    users = {
+      "kasper" = import ./home.nix;
+    };
+  };
 
   users = {
     users.kasper = {
