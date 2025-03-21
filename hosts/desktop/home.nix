@@ -31,6 +31,7 @@
     tmux
     lazydocker
     prismlauncher
+    firefox
   ];
 
   home = {
