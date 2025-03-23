@@ -12,6 +12,7 @@
   ];
 
   home-manager = {
+    backupFileExtension = "home-desktop";
     extraSpecialArgs = { inherit inputs; };
     users = {
       "kasper" = import ./home.nix;
@@ -56,7 +57,6 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
-    home-manager
     gnumake
     nixd
     nixfmt-rfc-style
@@ -83,7 +83,7 @@
     DOTNET_ROOT = "${pkgs.dotnet-sdk_8}/share/dotnet/";
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   hardware.enableAllFirmware = true;
 
