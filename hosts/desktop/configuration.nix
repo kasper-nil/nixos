@@ -30,6 +30,7 @@
         "audio"
         "docker"
         "video"
+        "lp"
       ];
     };
   };
@@ -69,6 +70,21 @@
     roslyn-ls
     bottles
     appimage-run
+    bluez
+    vscode
+    webcord
+    htop
+    ranger
+    obsidian
+    discord
+    spotify
+    neofetch
+    brave
+    powertop
+    tmux
+    lazydocker
+    prismlauncher
+    firefox
   ];
 
   programs.nix-ld.enable = true;

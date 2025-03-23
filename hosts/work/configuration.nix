@@ -59,6 +59,20 @@
     nixfmt-rfc-style
     gcc
     openssl
+    vscode
+    htop
+    ranger
+    obsidian
+    discord
+    spotify
+    neofetch
+    brave
+    powertop
+    flameshot
+    autorandr
+    tmux
+    lazydocker
+    anydesk
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;

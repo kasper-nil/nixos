@@ -1,21 +1,16 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }:
 {
-  options = {
-    alacritty.enable = lib.mkEnableOption "Enable alacritty";
-  };
+  alacritty.enable = true;
 
-  config = lib.mkIf config.alacritty.enable {
-    home.packages = with pkgs; [
-      alacritty
-    ];
+  home.packages = with pkgs; [
+    alacritty
+  ];
 
-    home.file."${config.home.homeDirectory}/.config/alacritty/alacritty.toml" = {
-      source = ../../dotfiles/alacritty.toml;
-    };
+  home.file."${config.home.homeDirectory}/.config/alacritty/alacritty.toml" = {
+    source = ../../dotfiles/alacritty.toml;
   };
 }
