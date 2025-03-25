@@ -98,7 +98,7 @@
     DOTNET_ROOT = "${pkgs.dotnet-sdk_8}/share/dotnet/";
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_6_11;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   hardware.enableAllFirmware = true;
 

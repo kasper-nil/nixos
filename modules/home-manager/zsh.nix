@@ -16,10 +16,10 @@
       configure = "code /etc/nixos";
 
       # Nix shells
-      dev = "nix develop /etc/nixos#default";
       ttslabs = "nix develop /etc/nixos#ttslabs";
       work = "nix develop /etc/nixos#work --impure";
       cs2 = "nix develop /etc/nixos#cs2";
+      react-native = "nix develop /etc/nixos#react-native";
 
       # Docker
       docker-stop-all = "docker stop $(docker ps -a -q)";
