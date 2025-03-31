@@ -55,6 +55,7 @@
   # hyprland.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = _: true;
 
   # System packages
   environment.systemPackages = with pkgs; [
@@ -84,7 +85,17 @@
     lazydocker
     prismlauncher
     firefox
+    floorp
+    inputs.zen-browser.packages."${system}".default
   ];
+
+  # Disable update prompt in zen browser
+  programs.firefox = {
+    enable = true;
+    policies = {
+      BlockAboutConfig = true;
+    };
+  };
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [

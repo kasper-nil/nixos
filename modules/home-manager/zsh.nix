@@ -19,7 +19,7 @@
       ttslabs = "nix develop /etc/nixos#ttslabs";
       work = "nix develop /etc/nixos#work --impure";
       cs2 = "nix develop /etc/nixos#cs2";
-      react-native = "nix develop /etc/nixos#react-native";
+      react-native = "nix develop /etc/nixos#react-native --impure";
 
       # Docker
       docker-stop-all = "docker stop $(docker ps -a -q)";

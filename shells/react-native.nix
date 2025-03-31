@@ -1,10 +1,12 @@
-{ pkgs }:
+{ pkgs, ... }:
 pkgs.mkShell {
-  nativeBuildInputs = [ pkgs.bashInteractive ];
-
   buildInputs = with pkgs; [
     nodejs_18
     corepack_18
+    watchman
+    jdk
+    eas-cli
+    android-studio-full
   ];
 
   shellHook = ''
