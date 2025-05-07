@@ -3,8 +3,8 @@ pkgs.mkShell {
   nativeBuildInputs = [ pkgs.bashInteractive ];
 
   buildInputs = with pkgs; [
-    nodejs
-    corepack
+    nodejs_18
+    corepack_18
     turbo
   ];
 
