@@ -11,6 +11,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    firefox = {
+      url = "github:nix-community/flake-firefox-nightly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
@@ -42,6 +47,9 @@
         in
         {
           ttslabs = import ./shells/ttslabs.nix {
+            inherit pkgs;
+          };
+          ttslabs-prod = import ./shells/ttslabs-prod.nix {
             inherit pkgs;
           };
           work = import ./shells/work.nix {

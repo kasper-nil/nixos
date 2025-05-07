@@ -17,6 +17,7 @@
 
       # Nix shells
       ttslabs = "nix develop /etc/nixos#ttslabs";
+      ttslabs-prod = "nix develop /etc/nixos#ttslabs-prod";
       work = "nix develop /etc/nixos#work --impure";
       cs2 = "nix develop /etc/nixos#cs2";
       react-native = "nix develop /etc/nixos#react-native --impure";
