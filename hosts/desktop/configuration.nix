@@ -49,6 +49,7 @@
   steam.enable = true;
   zsh.enable = true;
   minecraft-server.enable = true;
+  lact.enable = true;
 
   # Desktop environment
   plasma6.enable = true;
