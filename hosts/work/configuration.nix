@@ -73,11 +73,35 @@
     tmux
     lazydocker
     anydesk
+    dotnet-sdk_9
+    omnisharp-roslyn
+    openvpn
+    code-cursor
+  ];
+
+  environment.sessionVariables = {
+    DOTNET_ROOT = "${pkgs.dotnet-sdk}/share/dotnet";
+  };
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib
+    glibc
+    zlib
+    libuuid
+    icu
+    curl
+    openssl
+    # add more if needed
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   hardware.enableAllFirmware = true;
+
+  services.openssh = {
+    enable = true;
+  };
 
   # security.polkit.enable = true; TODO: This might break stuff
 
