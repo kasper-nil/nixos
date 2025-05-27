@@ -5,20 +5,25 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       # url = "github:nix-community/home-manager/release-24.05";
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    firefox = {
+      url = "github:nix-community/flake-firefox-nightly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   outputs =
-    { nixpkgs, nixos-cosmic, ... }@inputs:
+    {
+      nixpkgs,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
     in
@@ -27,13 +32,6 @@
         desktop = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
-            {
-              nix.settings = {
-                substituters = [ "https://cosmic.cachix.org/" ];
-                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-              };
-            }
-            nixos-cosmic.nixosModules.default
             ./hosts/desktop/configuration.nix
           ];
         };
@@ -49,6 +47,9 @@
         in
         {
           ttslabs = import ./shells/ttslabs.nix {
+            inherit pkgs;
+          };
+          ttslabs-prod = import ./shells/ttslabs-prod.nix {
             inherit pkgs;
           };
           work = import ./shells/work.nix {

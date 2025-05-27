@@ -49,12 +49,16 @@
   steam.enable = true;
   zsh.enable = true;
   minecraft-server.enable = true;
+  lact.enable = true;
 
   # Desktop environment
   plasma6.enable = true;
   # hyprland.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    config.allowUnfreePredicate = _: true;
+  };
 
   # System packages
   environment.systemPackages = with pkgs; [
@@ -83,8 +87,20 @@
     tmux
     lazydocker
     prismlauncher
-    firefox
+    floorp
+    libreoffice
+
+    # firefox
+    inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
   ];
+
+  # Disable update prompt in zen browser
+  # programs.firefox = {
+  #   enable = true;
+  #   policies = {
+  #     BlockAboutConfig = true;
+  #   };
+  # };
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -98,7 +114,7 @@
     DOTNET_ROOT = "${pkgs.dotnet-sdk_8}/share/dotnet/";
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
 
   hardware.enableAllFirmware = true;
 
