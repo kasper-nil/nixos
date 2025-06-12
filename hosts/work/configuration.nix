@@ -73,7 +73,6 @@
     tmux
     lazydocker
     anydesk
-    dotnet-sdk_9
     omnisharp-roslyn
     openvpn
     code-cursor

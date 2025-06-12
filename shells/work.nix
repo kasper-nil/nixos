@@ -3,10 +3,11 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     nodejs
     corepack
-    dotnet-sdk_9
+    dotnet-sdk_8
     azure-cli
     nuget
     nodePackages.pnpm
+    tailwindcss
   ];
 
   shellHook = ''
