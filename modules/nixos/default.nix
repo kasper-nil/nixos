@@ -14,6 +14,7 @@
     ./pipewire.nix
     ./steam.nix
     ./docker.nix
+    ./lact.nix
 
     # Desktop environments
     ./desktop-environment/plasma6.nix

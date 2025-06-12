@@ -56,8 +56,13 @@
   # hyprland.enable = true;
 
   nixpkgs = {
-    config.allowUnfree = true;
-    config.allowUnfreePredicate = _: true;
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+      permittedInsecurePackages = [
+        "ventoy-1.1.05"
+      ];
+    };
   };
 
   # System packages
@@ -70,7 +75,7 @@
     openrgb-with-all-plugins
     protonup-qt
     lutris
-    dotnet-sdk_8
+    dotnet-sdk_9
     roslyn-ls
     bottles
     appimage-run
@@ -89,6 +94,22 @@
     prismlauncher
     floorp
     libreoffice
+    openvpn
+    ventoy
+    ffmpeg-full
+
+    # Add unity hub with a fix
+    # This is needed because unity hub does not save preferences otherwise
+    (pkgs.buildFHSUserEnv {
+      name = "unityhub-fixed";
+      targetPkgs = pkgs: [ pkgs.unityhub ];
+      runScript = "unityhub";
+      extraBwrapArgs = [
+        "--setenv"
+        "HOME"
+        "$HOME"
+      ];
+    })
 
     # firefox
     inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
@@ -102,6 +123,8 @@
   #   };
   # };
 
+  services.desktopManager.cosmic.enable = true;
+
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     # Add any missing dynamic libraries for unpackaged programs
@@ -114,7 +137,10 @@
     DOTNET_ROOT = "${pkgs.dotnet-sdk_8}/share/dotnet/";
   };
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+  boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+    kernelParams = [ "amdgpu.sg_display=0" ];
+  };
 
   hardware.enableAllFirmware = true;
 
