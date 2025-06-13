@@ -3,6 +3,6 @@
 }:
 {
   home.file.".config/hypr/hyprland.conf" = {
-    source = ./hyprland.conf;
+    source = ../../dotfiles/hyprland.conf;
   };
 }

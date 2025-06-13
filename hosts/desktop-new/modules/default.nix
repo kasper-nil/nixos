@@ -12,7 +12,7 @@
     ./pipewire.nix
     ./steam.nix
     ./hyprland.nix
-
+    ./plasma6.nix
     # Minecraft
     ./minecraft/server.nix
   ];
