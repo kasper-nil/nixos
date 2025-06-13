@@ -2,7 +2,7 @@
 {
   imports = [
     ./alacritty
-    ./hyprland
+    ./hypr
     ./git.nix
     ./starship.nix
     ./zsh.nix
