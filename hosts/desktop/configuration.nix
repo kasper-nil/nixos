@@ -64,6 +64,7 @@
     openrgb-with-all-plugins
     inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
     xarchiver
+    alacritty
 
     # gaming
     prismlauncher

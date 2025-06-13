@@ -58,6 +58,7 @@
     omnisharp-roslyn
     openvpn
     code-cursor
+    alacritty
   ];
 
   environment.sessionVariables = {
