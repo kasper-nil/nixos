@@ -4,7 +4,6 @@
     ./bluetooth.nix
     ./bootloader.nix
     ./fonts.nix
-    ./amd-graphics.nix
     ./i18n.nix
     ./keyboard.nix
     ./networking.nix
@@ -12,15 +11,7 @@
     ./printing.nix
     ./zsh.nix
     ./pipewire.nix
-    ./steam.nix
     ./docker.nix
-    ./lact.nix
-
-    # Desktop environments
-    ./desktop-environment/plasma6.nix
-    ./desktop-environment/hyprland.nix
-
-    # Minecraft
-    ./minecraft/server.nix
+    ./plasma6.nix
   ];
 }

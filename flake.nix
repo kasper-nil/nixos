@@ -16,7 +16,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    hyprpanel = {
+      url = "github:jas-singhfsu/hyprpanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -33,12 +36,6 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/desktop/configuration.nix
-          ];
-        };
-        desktop-new = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/desktop-new/configuration.nix
           ];
         };
         work = nixpkgs.lib.nixosSystem {

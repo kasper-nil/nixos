@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./../../modules/home-manager/default.nix
+    ../../home-manager
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
