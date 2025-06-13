@@ -5,7 +5,7 @@
   programs.alacritty.enable = true;
 
   home.file.".config/alacritty" = {
-    source = ./dotfiles; # directory right next to this file
+    source = ../../dotfiles/alacritty; # directory right next to this file
     recursive = true;
   };
 }
