@@ -63,6 +63,7 @@
     spotify
     openrgb-with-all-plugins
     inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
+    xarchiver
 
     # gaming
     prismlauncher
