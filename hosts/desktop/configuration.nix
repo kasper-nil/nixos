@@ -55,6 +55,8 @@
     tmux
     openvpn
     fastfetch
+    starship
+    zsh
 
     # software
     vscode
@@ -65,15 +67,22 @@
     inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
     xarchiver
     alacritty
+    rofi
 
     # gaming
     prismlauncher
     lutris
 
-    # other
-    rofi
+    # hyprland
     hyprpaper
+
+    # other
+    # rofi
   ];
+
+  programs = {
+    thunar.enable = true;
+  };
 
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
