@@ -1,10 +1,10 @@
 { ... }:
 {
   imports = [
-    ./alacritty/alacritty.nix
+    ./alacritty
+    ./hyprland
     ./git.nix
     ./starship.nix
     ./zsh.nix
-    ./hyprland.nix
   ];
 }
