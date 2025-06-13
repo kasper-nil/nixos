@@ -15,4 +15,12 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  home.file.".config/rofi/config.rasi" = {
+    source = ../../dotfiles/rofi/config.rasi;
+  };
+
+  home.file.".config/rofi/themes/mocha.rasi" = {
+    source = ../../dotfiles/rofi/themes/mocha.rasi;
+  };
 }

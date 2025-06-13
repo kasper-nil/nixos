@@ -68,6 +68,10 @@
     # gaming
     prismlauncher
     lutris
+
+    # other
+    rofi
+    hyprpaper
   ];
 
   boot = {
