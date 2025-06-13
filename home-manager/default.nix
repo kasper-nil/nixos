@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./alacritty.nix
+    ./alacritty
     ./git.nix
     ./starship.nix
     ./zsh.nix
