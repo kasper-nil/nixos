@@ -12,6 +12,7 @@
     ./pipewire.nix
     ./steam.nix
     ./hyprland.nix
+
     # Minecraft
     ./minecraft/server.nix
   ];

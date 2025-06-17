@@ -1,11 +1,27 @@
-{ ... }:
+{ inputs, pkgs, ... }:
 {
-  # enable Hyprland
-  programs.hyprland.enable = true;
+  imports = [
+    inputs.catppuccin.nixosModules.catppuccin
+  ];
 
-  # Optional, hint Electron apps to use Wayland:
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  programs.hyprland = {
+    enable = true;
+  };
 
-  # Configure PAM to allow hyprlock to perform auth
-  security.pam.services.hyprlock = { };
+  services.displayManager = {
+    enable = true;
+    sddm = {
+      enable = true;
+      package = pkgs.kdePackages.sddm;
+    };
+  };
+
+  catppuccin = {
+    enable = true;
+
+    sddm = {
+      enable = true;
+      assertQt6Sddm = true;
+    };
+  };
 }

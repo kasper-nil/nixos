@@ -12,10 +12,75 @@
   ];
 
   home-manager = {
-    backupFileExtension = "home-desktop";
+    backupFileExtension = "home";
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "kasper" = import ./home.nix;
+      "kasper" =
+        { ... }:
+        {
+          imports = [
+            ../../home-manager
+          ];
+          home = {
+            username = "kasper";
+            homeDirectory = "/home/kasper";
+            stateVersion = "24.05";
+          };
+        };
+    };
+  };
+
+  programs = {
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
+
+    thunar.enable = true;
+
+    hyprland = {
+      enable = true;
+    };
+  };
+
+  # System packages
+  environment.systemPackages = with pkgs; [
+    nixd
+    nixfmt-rfc-style
+    protonup-qt
+    ffmpeg-full
+
+    # cli tools
+    ranger
+    htop
+    tmux
+    openvpn
+    fastfetch
+
+    # software
+    vscode
+    libreoffice
+    webcord
+    spotify
+    openrgb-with-all-plugins
+    inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
+    xarchiver
+    qbittorrent
+    wdisplays
+    pamixer
+    pavucontrol
+
+    # gaming
+    prismlauncher
+    lutris
+
+    wine-wayland
+  ];
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
     };
   };
 
@@ -35,62 +100,11 @@
     };
   };
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
-  };
-
-  # System packages
-  environment.systemPackages = with pkgs; [
-    nixd
-    nixfmt-rfc-style
-    protonup-qt
-    ffmpeg-full
-
-    # cli tools
-    ranger
-    htop
-    tmux
-    openvpn
-    fastfetch
-    starship
-    zsh
-
-    # software
-    vscode
-    libreoffice
-    webcord
-    spotify
-    openrgb-with-all-plugins
-    inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
-    xarchiver
-    alacritty
-    rofi
-
-    # gaming
-    prismlauncher
-    lutris
-
-    # hyprland
-    hyprpaper
-
-    # other
-    # rofi
-  ];
-
-  programs = {
-    thunar.enable = true;
-  };
-
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
   };
 
   hardware.enableAllFirmware = true;
-
-  # security.polkit.enable = true; TODO: This might break stuff
 
   # Stuff for nixd LSP
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
