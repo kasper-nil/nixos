@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}:
+{ inputs, pkgs, ... }:
 {
   # NixOS modules
   imports = [
@@ -18,9 +14,8 @@
       "kasper" =
         { ... }:
         {
-          imports = [
-            ../../home-manager
-          ];
+          nixpkgs.config.allowUnfree = true;
+          imports = [ ../../home-manager ];
           home = {
             username = "kasper";
             homeDirectory = "/home/kasper";
@@ -46,7 +41,9 @@
   # System packages
   environment.systemPackages = with pkgs; [
     nixd
+    nil
     nixfmt-rfc-style
+
     protonup-qt
     ffmpeg-full
 
@@ -60,8 +57,6 @@
     # software
     vscode
     libreoffice
-    webcord
-    spotify
     openrgb-with-all-plugins
     inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
     xarchiver
@@ -74,7 +69,7 @@
     prismlauncher
     lutris
 
-    wine-wayland
+    playerctl
   ];
 
   nixpkgs = {

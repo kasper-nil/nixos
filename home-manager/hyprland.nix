@@ -23,11 +23,6 @@
         "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
       ];
 
-      env = [
-        # "XCURSOR_SIZE,24"
-        # "HYPRCURSOR_SIZE,24"
-      ];
-
       general = {
         gaps_in = 5;
         gaps_out = "0, 10, 10, 10";

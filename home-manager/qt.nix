@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     libsForQt5.qt5ct # palette/icon GUI for Qt5
     libsForQt5.qtstyleplugin-kvantum

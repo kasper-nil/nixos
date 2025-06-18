@@ -12,5 +12,9 @@
     ./qt.nix
     ./pointer.nix
     ./alacritty.nix
+    ./nixcord.nix
+    ./hyprlock.nix
+    ./spicetify.nix
+    ./hyprpaper.nix
   ];
 }

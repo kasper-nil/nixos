@@ -24,13 +24,18 @@
     catppuccin = {
       url = "github:catppuccin/nix";
     };
+
+    nixcord = {
+      url = "github:kaylorben/nixcord";
+    };
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+    };
   };
 
   outputs =
-    {
-      nixpkgs,
-      ...
-    }@inputs:
+    { nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
     in
@@ -38,9 +43,7 @@
       nixosConfigurations = {
         desktop = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/desktop/configuration.nix
-          ];
+          modules = [ ./hosts/desktop/configuration.nix ];
         };
         work = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
@@ -51,23 +54,14 @@
       devShells."${system}" =
         let
           pkgs = import nixpkgs { inherit system; };
+
         in
         {
-          ttslabs = import ./shells/ttslabs.nix {
-            inherit pkgs;
-          };
-          ttslabs-prod = import ./shells/ttslabs-prod.nix {
-            inherit pkgs;
-          };
-          work = import ./shells/work.nix {
-            inherit pkgs;
-          };
-          cs2 = import ./shells/cs2.nix {
-            inherit pkgs;
-          };
-          react-native = import ./shells/react-native.nix {
-            inherit pkgs;
-          };
+          ttslabs = import ./shells/ttslabs.nix { inherit pkgs; };
+          ttslabs-prod = import ./shells/ttslabs-prod.nix { inherit pkgs; };
+          work = import ./shells/work.nix { inherit pkgs; };
+          cs2 = import ./shells/cs2.nix { inherit pkgs; };
+          react-native = import ./shells/react-native.nix { inherit pkgs; };
         };
     };
 
