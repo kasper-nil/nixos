@@ -12,5 +12,6 @@
     ./zsh.nix
     ./pipewire.nix
     ./docker.nix
+    ./hyprland.nix
   ];
 }

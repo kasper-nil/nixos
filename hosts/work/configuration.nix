@@ -83,12 +83,12 @@
     htop
     ranger
     fastfetch
-    autorandr
     tmux
     lazydocker
     omnisharp-roslyn
     powertop
     openvpn
+    playerctl
   ];
 
   environment.sessionVariables = {
@@ -99,8 +99,10 @@
 
   hardware.enableAllFirmware = true;
 
-  services.openssh = {
-    enable = true;
+  services = {
+    openssh = {
+      enable = true;
+    };
   };
 
   # security.polkit.enable = true; TODO: This might break stuff

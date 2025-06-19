@@ -6,7 +6,15 @@
     systemd.variables = [ "all" ];
 
     settings = {
-      "monitor" = "DP-2, 2560x1440@165,auto,auto";
+      # Improve this so that each host can specify its monitor
+      # "monitor" = [
+      #   # Main
+      #   "DP-8, 2560x1440@75, auto, 1"
+      #   # Vertical
+      #   "DP-7, 2560x1440@75, auto, 1, transform, 1"
+      #   # Laptop
+      #   "eDP-1, preferred, auto, 1"
+      # ];
 
       "$mod" = "SUPER";
 
@@ -22,6 +30,20 @@
 
       exec = [
         "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
+      ];
+
+      workspace = [
+        "11, monitor:eDP-1"
+        "10, monitor:DP-7"
+        "1, monitor:DP-8"
+        "2, monitor:DP-8"
+        "3, monitor:DP-8"
+        "4, monitor:DP-8"
+        "5, monitor:DP-8"
+        "6, monitor:DP-8"
+        "7, monitor:DP-8"
+        "8, monitor:DP-8"
+        "9, monitor:DP-8"
       ];
 
       general = {
