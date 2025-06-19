@@ -55,7 +55,14 @@
           modules = [ ./hosts/work/configuration.nix ];
         };
         server = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+            extraInstallerPackages = pkgs: [
+              pkgs.dosfstools
+              pkgs.mtools
+            ];
+          };
           modules = [ ./hosts/server/configuration.nix ];
         };
       };
