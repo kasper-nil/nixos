@@ -12,6 +12,5 @@
     ./zsh.nix
     ./pipewire.nix
     ./docker.nix
-    ./plasma6.nix
   ];
 }

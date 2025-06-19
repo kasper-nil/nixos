@@ -13,7 +13,17 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "kasper" = import ./home.nix;
+      "kasper" =
+        { ... }:
+        {
+          nixpkgs.config.allowUnfree = true;
+          imports = [ ../../home-manager ];
+          home = {
+            username = "kasper";
+            homeDirectory = "/home/kasper";
+            stateVersion = "24.05";
+          };
+        };
     };
   };
 
@@ -32,50 +42,58 @@
     };
   };
 
+  programs = {
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
+
+    thunar.enable = true;
+
+    hyprland = {
+      enable = true;
+    };
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   # System packages
   environment.systemPackages = with pkgs; [
-    gnumake
+    # Nix LSP
     nixd
     nixfmt-rfc-style
+
+    # Software
+    vscode
+    libreoffice
+    openrgb-with-all-plugins
+    inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
+    xarchiver
+    wdisplays
+    pamixer
+    obsidian
+    pavucontrol
+    flameshot
+    brave
+
+    # CLI
+    gnumake
     gcc
     openssl
-    vscode
     htop
     ranger
-    obsidian
-    discord
-    spotify
-    neofetch
-    brave
-    powertop
-    flameshot
+    fastfetch
     autorandr
     tmux
     lazydocker
-    anydesk
     omnisharp-roslyn
+    powertop
     openvpn
-    code-cursor
-    alacritty
   ];
 
   environment.sessionVariables = {
     DOTNET_ROOT = "${pkgs.dotnet-sdk}/share/dotnet";
   };
-
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc.lib
-    glibc
-    zlib
-    libuuid
-    icu
-    curl
-    openssl
-    # add more if needed
-  ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
