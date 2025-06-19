@@ -12,7 +12,12 @@
     };
 
     firefox = {
-      url = "github:nix-community/flake-firefox-nightly";
+      url = "github:nix-community/flake-firefox-nightly?rev=0addf9b5249f6183f3193aff337cd3961b4cf57d";
+      #  inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    disko = {
+      url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -48,6 +53,10 @@
         work = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [ ./hosts/work/configuration.nix ];
+        };
+        server = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/server/configuration.nix ];
         };
       };
 

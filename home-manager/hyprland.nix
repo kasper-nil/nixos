@@ -16,6 +16,10 @@
       #   "eDP-1, preferred, auto, 1"
       # ];
 
+      "monitor" = [
+        "DP-2, preferred, auto, 1"
+      ];
+
       "$mod" = "SUPER";
 
       "$terminal" = "alacritty";
