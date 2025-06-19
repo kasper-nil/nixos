@@ -41,7 +41,6 @@
   # System packages
   environment.systemPackages = with pkgs; [
     nixd
-    nil
     nixfmt-rfc-style
 
     protonup-qt
