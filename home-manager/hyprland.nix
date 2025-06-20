@@ -17,7 +17,7 @@
       # ];
 
       "monitor" = [
-        "DP-2, preferred, auto, 1"
+        "DP-2, 2560x1440@165, auto, 1"
       ];
 
       "$mod" = "SUPER";

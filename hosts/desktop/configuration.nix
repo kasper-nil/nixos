@@ -36,6 +36,14 @@
     hyprland = {
       enable = true;
     };
+
+    nix-ld = {
+      enable = true;
+    };
+  };
+
+  services = {
+    hardware.openrgb.enable = true;
   };
 
   # System packages
@@ -71,13 +79,6 @@
     playerctl
   ];
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
-  };
-
   users = {
     users.kasper = {
       shell = pkgs.zsh;
@@ -100,16 +101,28 @@
 
   hardware.enableAllFirmware = true;
 
-  # Stuff for nixd LSP
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  nix = {
+    # Stuff for nixd LSP
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
-  services.hardware.openrgb.enable = true;
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      trusted-users = [
+        "root"
+        "server"
+      ];
+    };
+  };
 
-  # Enable experimental features
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
 
   system.stateVersion = "24.05";
 }

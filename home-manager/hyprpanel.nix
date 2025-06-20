@@ -81,8 +81,7 @@
 
         dashboard = {
           directories.enabled = false;
-          stats.enable_gpu = true;
-          shortcuts.enabled = false;
+          shortcuts.enabled = true;
         };
       };
 

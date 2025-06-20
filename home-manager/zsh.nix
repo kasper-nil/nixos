@@ -12,6 +12,7 @@
       # NixOS
       rebuild-desktop = "sudo nixos-rebuild switch --flake /etc/nixos#desktop";
       rebuild-work = "sudo nixos-rebuild switch --flake /etc/nixos#work";
+      rebuild-server = "nixos-rebuild switch --flake /etc/nixos#server --target-host root@192.168.0.216";
       collect-garbage = "sudo nix-collect-garbage -d";
       configure = "code /etc/nixos";
 
