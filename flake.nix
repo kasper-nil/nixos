@@ -13,7 +13,7 @@
 
     firefox = {
       url = "github:nix-community/flake-firefox-nightly?rev=0addf9b5249f6183f3193aff337cd3961b4cf57d";
-      #  inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     disko = {
@@ -22,8 +22,8 @@
     };
 
     hyprpanel = {
-      url = "github:jas-singhfsu/hyprpanel";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:jas-singhfsu/hyprpanel?rev=0c2bcb773cdd55d385e68d59c8d43a066c029895";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     catppuccin = {
@@ -50,12 +50,15 @@
           specialArgs = { inherit inputs; };
           modules = [ ./hosts/desktop/configuration.nix ];
         };
+
         work = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [ ./hosts/work/configuration.nix ];
         };
+
         server = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+
           specialArgs = {
             inherit inputs;
             extraInstallerPackages = pkgs: [
@@ -63,6 +66,7 @@
               pkgs.mtools
             ];
           };
+
           modules = [ ./hosts/server/configuration.nix ];
         };
       };

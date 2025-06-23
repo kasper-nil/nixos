@@ -16,5 +16,6 @@
     ./hyprlock.nix
     ./spicetify.nix
     ./hyprpaper.nix
+    ./gearlever.nix
   ];
 }
