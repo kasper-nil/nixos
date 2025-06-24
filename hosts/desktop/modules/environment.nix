@@ -2,7 +2,7 @@
 {
   environment = {
     sessionVariables = {
-      DOTNET_ROOT = "${pkgs.dotnet-sdk}/share/dotnet";
+      DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet";
     };
 
     systemPackages = with pkgs; [
@@ -32,7 +32,9 @@
       pavucontrol
       networkmanager-openvpn
 
-      omnisharp-roslyn
+      # Dotnet stuff
+      dotnet-sdk_9
+      dotnet-runtime_9
 
       # gaming
       prismlauncher
@@ -41,6 +43,8 @@
       playerctl
 
       lact
+
+      obsidian
     ];
   };
 }

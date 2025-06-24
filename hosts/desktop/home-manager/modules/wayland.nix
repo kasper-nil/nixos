@@ -31,6 +31,7 @@
             "hyprpanel"
             "hyprpaper"
             "nm-applet --indicator"
+            "dbus-update-activation-environment --systemd --all"
           ];
 
           exec = [
