@@ -30,6 +30,7 @@
               "volume"
               "cpu"
               "ram"
+              "hyprsunset"
               "bluetooth"
               "network"
               "dashboard"
@@ -66,6 +67,12 @@
         customModules = {
           ram = {
             labelType = "used/total";
+          };
+          hyprsunset = {
+            temperature = "4500k"; # colour when you click “On”
+            pollingInterval = 2000; # ms
+            onIcon = "󱩌";
+            offIcon = "󰛨";
           };
         };
       };
