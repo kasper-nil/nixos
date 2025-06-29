@@ -2,28 +2,24 @@
   inputs = {
     nixpkgs = {
       # url = "github:nixos/nixpkgs/nixos-24.05";
-      url = "github:nixos/nixpkgs/nixos-25.05";
+      url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
     home-manager = {
       # url = "github:nix-community/home-manager/release-24.05";
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     firefox = {
-      url = "github:nix-community/flake-firefox-nightly?rev=0addf9b5249f6183f3193aff337cd3961b4cf57d";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      # url = "github:nix-community/flake-firefox-nightly?rev=0addf9b5249f6183f3193aff337cd3961b4cf57d";
+      url = "github:nix-community/flake-firefox-nightly";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprpanel = {
-      url = "github:jas-singhfsu/hyprpanel?rev=0c2bcb773cdd55d385e68d59c8d43a066c029895";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     catppuccin = {
