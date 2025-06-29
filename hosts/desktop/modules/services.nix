@@ -1,7 +1,10 @@
 { pkgs, ... }:
 {
-
   services = {
+    openssh = {
+      enable = true;
+    };
+
     minecraft-server = {
       enable = false;
       eula = true;

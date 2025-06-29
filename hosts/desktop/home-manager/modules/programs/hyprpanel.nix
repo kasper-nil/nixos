@@ -69,7 +69,8 @@
             labelType = "used/total";
           };
           hyprsunset = {
-            temperature = "4500k"; # colour when you click “On”
+            label = false;
+            temperature = "3500k"; # colour when you click “On”
             pollingInterval = 2000; # ms
             onIcon = "󱩌";
             offIcon = "󰛨";
