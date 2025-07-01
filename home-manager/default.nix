@@ -5,7 +5,7 @@
     ./git.nix
     ./gtk.nix
     ./hyprland.nix
-    ./hyprpanel.nix
+    # ./hyprpanel.nix
     ./rofi.nix
     ./starship.nix
     ./zsh.nix

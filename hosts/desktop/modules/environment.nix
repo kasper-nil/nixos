@@ -45,6 +45,8 @@
       lact
 
       obsidian
+
+      gh
     ];
   };
 }
