@@ -35,6 +35,7 @@
       # Dotnet stuff
       dotnet-sdk_9
       dotnet-runtime_9
+      csharpier
 
       # gaming
       prismlauncher
@@ -47,6 +48,7 @@
       obsidian
 
       gh
+
     ];
   };
 }

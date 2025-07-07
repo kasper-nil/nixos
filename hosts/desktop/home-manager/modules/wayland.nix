@@ -213,6 +213,24 @@
             "suppressevent maximize, class:.*"
             "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
           ];
+
+          windowrulev2 = [
+            # Attempt on fixing Awakened Trade Macro overlay
+            # "tag +poe, title:(Path of Exile)"
+            # "tag +poe, class:(steam_app_238960)"
+            # "float, tag:poe"
+
+            # "tag +apt, title:(Awakened PoE Trade)"
+            # "float, tag:apt "
+            # "noblur, tag:apt"
+            # "nofocus, tag:apt # Disable auto-focus"
+            # "noshadow, tag:apt"
+            # "noborder, tag:apt"
+            # "pin, tag:apt"
+            # "renderunfocused, tag:apt"
+            # "size 100% 100%, tag:apt"
+            # "center, tag:apt"
+          ];
         };
       };
     };
