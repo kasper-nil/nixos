@@ -52,6 +52,11 @@
           modules = [ ./hosts/work/configuration.nix ];
         };
 
+        laptop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/laptop/configuration.nix ];
+        };
+
         server = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
 
