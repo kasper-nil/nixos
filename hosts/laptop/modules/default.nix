@@ -22,5 +22,6 @@
     ./systemd.nix
     ./time.nix
     ./users.nix
+    ./powerManagement.nix
   ];
 }
