@@ -1,6 +1,20 @@
 { pkgs, ... }:
 {
   services = {
+    auto-cpufreq = {
+      enable = true;
+      settings = {
+        battery = {
+          governor = "powersave";
+          turbo = "never";
+        };
+        charger = {
+          governor = "schedutil";
+          turbo = "auto";
+        };
+      };
+    };
+
     udev = {
       packages = with pkgs; [
         game-devices-udev-rules

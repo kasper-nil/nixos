@@ -23,5 +23,6 @@
     ./time.nix
     ./users.nix
     ./powerManagement.nix
+    ./zramSwap.nix
   ];
 }
