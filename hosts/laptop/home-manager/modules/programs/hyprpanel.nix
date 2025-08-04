@@ -24,6 +24,7 @@
               "hyprsunset"
               "bluetooth"
               "network"
+              "battery"
               "dashboard"
             ];
           };
