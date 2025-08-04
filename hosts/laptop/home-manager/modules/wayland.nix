@@ -18,7 +18,7 @@
           #   "eDP-1, preferred, auto, 1"
           # ];
 
-          "monitor" = "DP-2, 2560x1440@165, auto, 1";
+          "monitor" = ", 1920x1080@60, auto, 1";
 
           "$mod" = "SUPER";
 
@@ -200,7 +200,7 @@
 
             force_no_accel = 0;
 
-            sensitivity = 0.35;
+            sensitivity = 0.15;
 
             touchpad = {
               natural_scroll = false;

@@ -15,11 +15,8 @@
         serviceConfig = {
           Type = "oneshot";
           ExecStart = ''
-            # kernel module
             modprobe acpi_call
-            # 0x0013B001  → Battery-Saving
             echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0013B001' > /proc/acpi/call
-            # enable Conservation (charge stops at 60 %)
             echo '\_SB.PCI0.LPC0.EC0.VPC0.SBMC 0x03' > /proc/acpi/call
           '';
         };
