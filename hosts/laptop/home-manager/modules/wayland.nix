@@ -199,7 +199,9 @@
 
             follow_mouse = 1;
 
-            sensitivity = -0.5;
+            force_no_accel = 0;
+
+            sensitivity = 0.35;
 
             touchpad = {
               natural_scroll = false;
