@@ -1,11 +1,6 @@
 { pkgs, ... }:
 {
   services = {
-    zramSwap = {
-      enable = true;
-      memoryPercent = 50; # ~4 GB virtual swap
-    };
-
     udev = {
       packages = with pkgs; [
         game-devices-udev-rules
