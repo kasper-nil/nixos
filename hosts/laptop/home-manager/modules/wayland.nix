@@ -200,7 +200,7 @@
 
             force_no_accel = 0;
 
-            sensitivity = 0.15;
+            sensitivity = 0.05;
 
             touchpad = {
               natural_scroll = false;

@@ -6,7 +6,7 @@
       settings = {
         battery = {
           governor = "powersave";
-          turbo = "never";
+          turbo = "auto";
         };
         charger = {
           governor = "schedutil";
