@@ -10,17 +10,6 @@
       lactd = {
         wantedBy = [ "multi-user.target" ];
       };
-      lenovo-platform-profile = {
-        wantedBy = [ "multi-user.target" ];
-        serviceConfig = {
-          Type = "oneshot";
-          ExecStart = ''
-            modprobe acpi_call
-            echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0013B001' > /proc/acpi/call
-            echo '\_SB.PCI0.LPC0.EC0.VPC0.SBMC 0x03' > /proc/acpi/call
-          '';
-        };
-      };
     };
 
     tmpfiles.rules = [
