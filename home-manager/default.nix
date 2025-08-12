@@ -14,7 +14,7 @@
     ./alacritty.nix
     ./nixcord.nix
     ./hyprlock.nix
-    ./spicetify.nix
+    # ./spicetify.nix
     ./hyprpaper.nix
     ./gearlever.nix
   ];

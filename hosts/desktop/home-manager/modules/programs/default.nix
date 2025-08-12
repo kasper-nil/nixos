@@ -12,7 +12,7 @@
     ./mangohud.nix
     ./nixcord.nix
     ./rofi.nix
-    ./spicetify.nix
+    # ./spicetify.nix
     ./starship.nix
     ./zsh.nix
   ];

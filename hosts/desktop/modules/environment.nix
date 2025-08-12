@@ -46,6 +46,8 @@
       gh
       vlc
       godot
+
+      spotify
     ];
   };
 }
