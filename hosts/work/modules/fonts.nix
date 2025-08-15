@@ -5,10 +5,8 @@
 {
   fonts = {
     packages = with pkgs; [
-      noto-fonts
-      noto-fonts-emoji
-      noto-fonts-cjk-sans
-      nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
+      # nerd-fonts.cascadia-code
     ];
   };
 }

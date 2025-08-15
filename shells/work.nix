@@ -3,7 +3,7 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     nodejs
     corepack
-    dotnet-sdk_8
+    dotnet-sdk_9
     azure-cli
     nuget
     nodePackages.pnpm

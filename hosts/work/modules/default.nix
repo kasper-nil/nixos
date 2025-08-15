@@ -1,17 +1,27 @@
-{ ... }:
+{ lib, ... }:
 {
+  # imports = lib.filter (p: lib.hasSuffix ".nix" (toString p) && p != ./default.nix) (
+  #   lib.filesystem.listFilesRecursive ./.
+  # );
+
   imports = [
-    ./bluetooth.nix
-    ./bootloader.nix
+    ./programs
+    ./boot.nix
+    ./catppuccin.nix
+    ./console.nix
+    ./environment.nix
     ./fonts.nix
+    ./hardware.nix
     ./i18n.nix
-    ./keyboard.nix
     ./networking.nix
-    ./power-profiles.nix
-    ./printing.nix
-    ./zsh.nix
-    ./pipewire.nix
-    ./docker.nix
-    ./hyprland.nix
+    ./nix.nix
+    ./nixpkgs.nix
+    ./security.nix
+    ./services.nix
+    ./system.nix
+    ./systemd.nix
+    ./time.nix
+    ./users.nix
+    ./virtualisation.nix
   ];
 }
