@@ -48,6 +48,8 @@
       godot
 
       spotify
+
+      easyeffects
     ];
   };
 }

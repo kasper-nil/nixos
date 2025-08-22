@@ -18,7 +18,16 @@
           #   "eDP-1, preferred, auto, 1"
           # ];
 
-          "monitor" = "DP-2, 2560x1440@165, auto, 1";
+          "monitor" = [
+            # Laptop
+            "eDP-1, 2560x1600@90, 0x0, 1"
+
+            # Main screen
+            "DP-8, 2560x1440@75, 0x-1440, 1"
+
+            # Left screen
+            "DP-7, 2560x1440@75, -1440x-2560, 1, transform, 1"
+          ];
 
           "$mod" = "SUPER";
 
@@ -38,47 +47,46 @@
             "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
           ];
 
-          bind =
-            [
-              ", Print, exec, grimblast copy area"
+          bind = [
+            ", Print, exec, grimblast copy area"
 
-              "$mod, T, exec, $terminal"
-              "$mod, Q, killactive,"
-              "$mod, V, togglefloating,"
-              "$mod, D, exec, $menu"
-              "$mod, L, exec, $lock"
+            "$mod, T, exec, $terminal"
+            "$mod, Q, killactive,"
+            "$mod, V, togglefloating,"
+            "$mod, D, exec, $menu"
+            "$mod, L, exec, $lock"
 
-              "$mod, F, fullscreen"
-              "$mod, Tab, cyclenext,"
-              "$mod, Tab, bringactivetotop,"
-              "$mod SHIFT, P, exec, hyprctl dispatch pin"
+            "$mod, F, fullscreen"
+            "$mod, Tab, cyclenext,"
+            "$mod, Tab, bringactivetotop,"
+            "$mod SHIFT, P, exec, hyprctl dispatch pin"
 
-              # Move focus with mainMod + arrow keys
-              "$mod, left, movefocus, l"
-              "$mod, right, movefocus, r"
-              "$mod, up, movefocus, u"
-              "$mod, down, movefocus, d"
+            # Move focus with mainMod + arrow keys
+            "$mod, left, movefocus, l"
+            "$mod, right, movefocus, r"
+            "$mod, up, movefocus, u"
+            "$mod, down, movefocus, d"
 
-              "$mod SHIFT, s, exec, hyprshot -m region --clipboard-only"
+            "$mod SHIFT, s, exec, hyprshot -m region --clipboard-only"
 
-              "$mod SHIFT, c, exec, hyprpicker"
-            ]
-            ++ (
-              # workspaces
-              # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-              builtins.concatLists (
-                builtins.genList (
-                  i:
-                  let
-                    ws = i + 1;
-                  in
-                  [
-                    "$mod, code:1${toString i}, workspace, ${toString ws}"
-                    "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-                  ]
-                ) 9
-              )
-            );
+            "$mod SHIFT, c, exec, hyprpicker"
+          ]
+          ++ (
+            # workspaces
+            # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+            builtins.concatLists (
+              builtins.genList (
+                i:
+                let
+                  ws = i + 1;
+                in
+                [
+                  "$mod, code:1${toString i}, workspace, ${toString ws}"
+                  "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+                ]
+              ) 9
+            )
+          );
 
           bindm = [
             "$mod, mouse:272, movewindow"
