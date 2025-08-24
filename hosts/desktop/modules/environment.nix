@@ -32,8 +32,8 @@
       pavucontrol
 
       # Dotnet stuff
-      dotnet-sdk_9
-      dotnet-runtime_9
+      dotnet-sdk_8
+      dotnet-runtime_8
       csharpier
 
       # gaming
@@ -48,6 +48,12 @@
       godot
 
       spotify
+
+      logmein-hamachi
+
+      easyeffects
+
+      steamcmd
     ];
   };
 }
