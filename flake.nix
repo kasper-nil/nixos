@@ -33,6 +33,10 @@
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
     };
+
+    nixhub = {
+      url = "github:nilssen98/nixhub";
+    };
   };
 
   outputs =
@@ -45,6 +49,11 @@
         desktop = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [ ./hosts/desktop/configuration.nix ];
+        };
+
+        desktoptest = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/desktoptest/configuration.nix ];
         };
 
         work = nixpkgs.lib.nixosSystem {
