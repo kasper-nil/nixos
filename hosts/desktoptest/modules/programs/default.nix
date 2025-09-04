@@ -6,11 +6,9 @@
 
   imports = [
     ./appimage.nix
-    ./hyprland.nix
     ./nix-ld.nix
     ./nm-applet.nix
     ./steam.nix
-    ./thunar.nix
     ./zsh.nix
   ];
 }
