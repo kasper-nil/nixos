@@ -1,12 +1,11 @@
-{ ... }:
+{ inputs, ... }:
 {
   # imports = lib.filter (p: lib.hasSuffix ".nix" (toString p) && p != ./default.nix) (
   #   lib.filesystem.listFilesRecursive ./.
   # );
 
-  desktop-environment.hyprland.enable = true;
-
   imports = [
+    inputs.nixhub.nixosModules.hyprland
     ./programs
     ./boot.nix
     ./console.nix
@@ -25,4 +24,6 @@
     ./users.nix
     ./virtualisation.nix
   ];
+
+  desktop-environment.hyprland.enable = true;
 }
