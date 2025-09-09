@@ -17,5 +17,6 @@
     ./time.nix
     ./users.nix
     ./virtualisation.nix
+    ./nixhub.nix
   ];
 }
