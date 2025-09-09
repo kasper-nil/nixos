@@ -1,6 +1,0 @@
-{ ... }:
-{
-  security = {
-    rtkit.enable = true;
-  };
-}

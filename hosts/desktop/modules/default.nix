@@ -1,13 +1,9 @@
-{ lib, ... }:
+{ inputs, ... }:
 {
-  # imports = lib.filter (p: lib.hasSuffix ".nix" (toString p) && p != ./default.nix) (
-  #   lib.filesystem.listFilesRecursive ./.
-  # );
-
   imports = [
+    inputs.nixhub.nixosModules.hyprland
     ./programs
     ./boot.nix
-    ./catppuccin.nix
     ./console.nix
     ./environment.nix
     ./fonts.nix

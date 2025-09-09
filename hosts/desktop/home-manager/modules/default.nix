@@ -1,17 +1,13 @@
-{ lib, ... }:
+{ inputs, ... }:
 {
-  #imports = lib.filter (p: lib.hasSuffix ".nix" (toString p) && p != ./default.nix) (
-  #  lib.filesystem.listFilesRecursive ./.
-  #);
-
   imports = [
+    inputs.nixhub.homeModules.hyprland
     ./programs
-    ./catppuccin.nix
-    ./gtk.nix
     ./home.nix
     ./nixpkgs.nix
-    ./qt.nix
-    ./services.nix
-    ./wayland.nix
+  ];
+
+  nixhub.hyprland.monitor = [
+    "DP-2, 2560x1440@165, auto, 1"
   ];
 }

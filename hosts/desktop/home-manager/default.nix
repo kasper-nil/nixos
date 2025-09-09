@@ -13,7 +13,9 @@
       "kasper" =
         { ... }:
         {
-          imports = [ ./modules ];
+          imports = [
+            ./modules
+          ];
         };
     };
   };
