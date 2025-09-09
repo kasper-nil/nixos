@@ -22,18 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin = {
-      url = "github:catppuccin/nix";
-    };
-
-    nixcord = {
-      url = "github:kaylorben/nixcord";
-    };
-
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-    };
-
     nixhub = {
       url = "github:nilssen98/nixhub";
     };
