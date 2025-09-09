@@ -5,6 +5,6 @@
 
     ./modules
 
-    ./home-manager
+    ./home-manager.nix
   ];
 }

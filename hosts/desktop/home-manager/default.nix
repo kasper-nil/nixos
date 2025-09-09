@@ -1,22 +1,13 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
+    inputs.nixhub.homeModules.hyprland
+    ./programs
+    ./home.nix
+    ./nixpkgs.nix
   ];
 
-  home-manager = {
-    backupFileExtension = "home";
-
-    extraSpecialArgs = { inherit inputs; };
-
-    users = {
-      "kasper" =
-        { ... }:
-        {
-          imports = [
-            ./modules
-          ];
-        };
-    };
-  };
+  nixhub.hyprland.monitor = [
+    "DP-2, 2560x1440@165, auto, 1"
+  ];
 }
