@@ -1,12 +1,10 @@
-{ inputs, ... }:
+{ ... }:
 {
   imports = [
-    inputs.nixhub.nixosModules.hyprland
     ./programs
     ./boot.nix
     ./console.nix
     ./environment.nix
-    ./fonts.nix
     ./hardware.nix
     ./i18n.nix
     ./networking.nix

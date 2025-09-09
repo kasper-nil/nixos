@@ -1,6 +1,8 @@
-{ ... }:
+{ inputs, ... }:
 {
   imports = [
+    inputs.nixhub.nixosModules.hyprland
+
     ./hardware-configuration.nix
 
     ./modules

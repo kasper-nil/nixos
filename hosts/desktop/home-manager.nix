@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    inputs.nixhub.nixosModules.hyprland
   ];
 
   home-manager = {
@@ -15,6 +16,10 @@
         {
           imports = [
             ./home-manager
+          ];
+
+          nixhub.hyprland.monitor = [
+            "DP-2, 2560x1440@165, auto, 1"
           ];
         };
     };

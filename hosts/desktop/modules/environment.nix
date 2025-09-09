@@ -47,8 +47,6 @@
       vlc
       godot
 
-      spotify
-
       logmein-hamachi
 
       easyeffects
