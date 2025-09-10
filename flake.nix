@@ -12,7 +12,6 @@
     };
 
     firefox = {
-      # url = "github:nix-community/flake-firefox-nightly?rev=0addf9b5249f6183f3193aff337cd3961b4cf57d";
       url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -24,14 +23,6 @@
 
     nixhub = {
       url = "github:nilssen98/nixhub";
-    };
-
-    catppuccin = {
-      url = "github:catppuccin/nix";
-    };
-
-    nixcord = {
-      url = "github:kaylorben/nixcord";
     };
   };
 
