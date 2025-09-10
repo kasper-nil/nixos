@@ -1,10 +1,10 @@
 { ... }:
 {
   imports = [
+    ./modules
+
     ./hardware-configuration.nix
 
-    ./home-manager
-
-    ./modules
+    ./home-manager.nix
   ];
 }

@@ -1,20 +1,9 @@
-{ inputs, ... }:
+{ ... }:
 {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
+    ./programs
+    ./home.nix
+    ./nixpkgs.nix
+    ./nixhub.nix
   ];
-
-  home-manager = {
-    backupFileExtension = "home";
-
-    extraSpecialArgs = { inherit inputs; };
-
-    users = {
-      "kasper" =
-        { ... }:
-        {
-          imports = [ ./modules ];
-        };
-    };
-  };
 }

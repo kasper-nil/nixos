@@ -1,16 +1,10 @@
-{ lib, ... }:
+{ ... }:
 {
-  # imports = lib.filter (p: lib.hasSuffix ".nix" (toString p) && p != ./default.nix) (
-  #   lib.filesystem.listFilesRecursive ./.
-  # );
-
   imports = [
     ./programs
     ./boot.nix
-    ./catppuccin.nix
     ./console.nix
     ./environment.nix
-    ./fonts.nix
     ./hardware.nix
     ./i18n.nix
     ./networking.nix
@@ -23,5 +17,6 @@
     ./time.nix
     ./users.nix
     ./virtualisation.nix
+    ./nixhub.nix
   ];
 }
