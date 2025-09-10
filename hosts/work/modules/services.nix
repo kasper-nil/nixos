@@ -42,8 +42,6 @@
     xserver = {
       enable = true;
 
-      # videoDrivers = [ "amdgpu" ];
-
       xkb = {
         layout = "no";
         variant = "nodeadkeys";

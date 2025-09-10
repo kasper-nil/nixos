@@ -1,7 +1,6 @@
 { inputs, ... }:
 {
   nix = {
-    # Stuff for nixd LSP
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
     settings = {
