@@ -18,15 +18,15 @@
       ];
 
       workspace = [
-        "workspace=1, monitor:DP-8"
-        "workspace=2, monitor:DP-8"
-        "workspace=3, monitor:DP-8"
-        "workspace=4, monitor:DP-8"
-        "workspace=5, monitor:DP-8"
-        "workspace=6, monitor:DP-8"
-        "workspace=7, monitor:DP-8"
-        "workspace=8, monitor:DP-7"
-        "workspace=9, monitor:DP-eDP-1"
+        "1, monitor:DP-8"
+        "2, monitor:DP-8"
+        "3, monitor:DP-8"
+        "4, monitor:DP-8"
+        "5, monitor:DP-8"
+        "6, monitor:DP-8"
+        "7, monitor:DP-8"
+        "8, monitor:DP-7"
+        "9, monitor:DP-eDP-1"
       ];
     };
   };
