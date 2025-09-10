@@ -38,11 +38,6 @@
           modules = [ ./hosts/desktop/configuration.nix ];
         };
 
-        desktoptest = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [ ./hosts/desktoptest/configuration.nix ];
-        };
-
         work = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [ ./hosts/work/configuration.nix ];

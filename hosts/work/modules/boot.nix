@@ -5,7 +5,7 @@
 
     initrd = {
       kernelModules = [
-        "amdgpu"
+        # "amdgpu"
         "hid_playstation"
       ];
     };

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   hardware = {
     enableAllFirmware = true;
@@ -8,15 +8,15 @@
     graphics = {
       enable = true;
 
-      extraPackages = with pkgs; [
-        amdvlk
-      ];
+      # extraPackages = with pkgs; [
+      #   amdvlk
+      # ];
 
-      # For 32 bit applications
-      enable32Bit = true; # For 32 bit applications
-      extraPackages32 = with pkgs; [
-        driversi686Linux.amdvlk
-      ];
+      # # For 32 bit applications
+      # enable32Bit = true; # For 32 bit applications
+      # extraPackages32 = with pkgs; [
+      #   driversi686Linux.amdvlk
+      # ];
     };
 
     bluetooth = {

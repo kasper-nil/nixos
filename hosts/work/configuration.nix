@@ -1,9 +1,9 @@
 { ... }:
 {
   imports = [
-    ./modules
-
     ./hardware-configuration.nix
+
+    ./modules
 
     ./home-manager.nix
   ];

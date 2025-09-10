@@ -42,7 +42,7 @@
     xserver = {
       enable = true;
 
-      videoDrivers = [ "amdgpu" ];
+      # videoDrivers = [ "amdgpu" ];
 
       xkb = {
         layout = "no";
