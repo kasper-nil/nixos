@@ -25,6 +25,14 @@
     nixhub = {
       url = "github:nilssen98/nixhub";
     };
+
+    catppuccin = {
+      url = "github:catppuccin/nix";
+    };
+
+    nixcord = {
+      url = "github:kaylorben/nixcord";
+    };
   };
 
   outputs =
