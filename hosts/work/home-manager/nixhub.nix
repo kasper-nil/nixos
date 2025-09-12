@@ -26,7 +26,7 @@
         "6, monitor:DP-8"
         "7, monitor:DP-8"
         "8, monitor:DP-7"
-        "9, monitor:DP-eDP-1"
+        "9, monitor:eDP-1"
       ];
     };
   };
