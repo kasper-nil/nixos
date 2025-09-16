@@ -7,8 +7,8 @@
   nixhub = {
     hyprland = {
       monitor = [
-        "DP-2, 2560x1440@165, auto, 1, vrr, 1"
-        "HDMI-A-1, 1920x1080@180, -1080x-480, 1, transform, 1"
+        "DP-2, 2560x1440@165, auto, 1"
+        "DP-1, 2560x1440@165, -1440x-480, 1, transform, 1"
       ];
 
       workspace = [
