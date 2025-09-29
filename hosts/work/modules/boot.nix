@@ -4,9 +4,6 @@
     kernelPackages = pkgs.linuxPackages_latest;
 
     initrd = {
-      kernelModules = [
-        "hid_playstation"
-      ];
     };
 
     loader = {
