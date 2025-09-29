@@ -22,7 +22,11 @@
     };
 
     nixhub = {
-      url = "github:nilssen98/nixhub";
+      url = "github:kasper-nil/nixhub";
+    };
+
+    nixman = {
+      url = "github:kasper-nil/nixman";
     };
   };
 
