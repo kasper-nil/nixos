@@ -52,6 +52,15 @@
       easyeffects
 
       steamcmd
+
+      woeusb-ng
+
+      ntfs3g
+
+      osu-lazer-bin
+
+      go
+      gopls
     ];
   };
 }
