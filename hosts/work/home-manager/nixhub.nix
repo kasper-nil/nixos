@@ -10,11 +10,11 @@
         # Laptop
         "eDP-1, 2560x1600@90, 0x0, 1"
 
-        # Main screen
-        "DP-8, 2560x1440@75, 0x-1440, 1"
-
         # Left screen
-        "DP-7, 2560x1440@75, -1440x-2560, 1, transform, 1"
+        "DP-8, 2560x1440@75, -2560x0, 1"
+
+        # Left left screen
+        "DP-7, 2560x1440@75, -4000x-400, 1, transform, 1"
       ];
 
       workspace = [
