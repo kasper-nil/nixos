@@ -1,6 +1,6 @@
 { ... }:
 {
   console = {
-    keyMap = "no";
+    useXkbConfig = true;
   };
 }
