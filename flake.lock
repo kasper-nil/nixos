@@ -233,11 +233,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1759172842,
-        "narHash": "sha256-LXsOFP3cBo4Jzb2evXEeU+roJUzK/w6Q4NvnahAfUBo=",
+        "lastModified": 1759174276,
+        "narHash": "sha256-Qyx8A5USO9+bRCvV3yk0/DjhcnX0fko4/WxV26VDobo=",
         "owner": "kasper-nil",
         "repo": "nixman",
-        "rev": "da05ff623a61b771ad934b1a90d668e2347013b9",
+        "rev": "30dec4bcd9d0b569d95320cefe372bc47020acac",
         "type": "github"
       },
       "original": {
