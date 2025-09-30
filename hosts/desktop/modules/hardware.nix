@@ -19,6 +19,12 @@
       ];
     };
 
+    keyboard = {
+      zsa = {
+        enable = true;
+      };
+    };
+
     bluetooth = {
       enable = true;
       powerOnBoot = true;
