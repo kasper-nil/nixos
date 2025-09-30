@@ -4,6 +4,7 @@
     udev = {
       packages = with pkgs; [
         game-devices-udev-rules
+        zsa-udev-rules
       ];
     };
 
@@ -47,6 +48,7 @@
       xkb = {
         layout = "no";
         variant = "nodeadkeys";
+        options = "";
       };
     };
 
