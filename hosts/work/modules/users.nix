@@ -14,6 +14,7 @@
         "docker"
         "video"
         "lp"
+	"nixadmins"	
       ];
     };
   };
