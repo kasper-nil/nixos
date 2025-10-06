@@ -2,7 +2,7 @@
 {
   programs.git = {
     enable = true;
-    userEmail = "kasper.nilssen1@gmail.com";
+    userEmail = "kasper.nilssen@horizonsoftware.no";
     userName = "Kasper Nilssen";
     extraConfig = {
       init.defaultBranch = "main";
