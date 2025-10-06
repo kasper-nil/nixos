@@ -27,7 +27,6 @@
       pavucontrol
       dotnet-sdk_8
       dotnet-runtime_8
-      csharpier
       # gaming
       prismlauncher
       lutris
@@ -45,6 +44,10 @@
       go
       gopls
       keymapp
+
+      nodejs
+      corepack
+      turbo
     ];
   };
 }
