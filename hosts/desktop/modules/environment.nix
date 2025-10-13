@@ -16,7 +16,7 @@
       openvpn
       fastfetch
       xwayland-run
-      vscode
+      #vscode
       libreoffice
       openrgb-with-all-plugins
       inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
@@ -25,8 +25,9 @@
       wdisplays
       pamixer
       pavucontrol
-      dotnet-sdk_8
-      dotnet-runtime_8
+      dotnet-sdk_9
+      dotnet-runtime_9
+      roslyn-ls
       # gaming
       prismlauncher
       lutris
