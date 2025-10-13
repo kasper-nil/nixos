@@ -27,7 +27,6 @@ in
       xwayland-run
 
       # software
-      vscode.fhs
       libreoffice
       openrgb-with-all-plugins
       inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
