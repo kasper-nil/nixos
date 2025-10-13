@@ -1,4 +1,10 @@
 { inputs, pkgs, ... }:
+let
+  dotnets = pkgs.dotnetCorePackages.combinePackages [
+    pkgs.dotnetCorePackages.sdk_8_0
+    pkgs.dotnetCorePackages.sdk_9_0
+  ];
+in
 {
   environment = {
     sessionVariables = {
@@ -21,7 +27,6 @@
       xwayland-run
 
       # software
-      vscode
       libreoffice
       openrgb-with-all-plugins
       inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
@@ -32,10 +37,10 @@
       pavucontrol
 
       # Dotnet stuff
-      dotnet-sdk_9
-      dotnet-runtime_9
+      dotnets
+      dotnetCorePackages.runtime_9_0
+      dotnetCorePackages.runtime_8_0
       roslyn-ls
-      # dotnet-sdk_8
       # dotnet-runtime_8
       nodejs
       corepack
