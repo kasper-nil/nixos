@@ -138,11 +138,9 @@
           "chat.commandCenter.enabled" = false;
           "remote.SSH.experimental.chat" = false;
 
-          "codeium" = {
-            "enableConfig" = {
-              "*" = true;
-              "aspnetcorerazor" = true;
-            };
+          "codeium.enableConfig" = {
+            "*" = true;
+            "aspnetcorerazor" = true;
           };
         };
       };
