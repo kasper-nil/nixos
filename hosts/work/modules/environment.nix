@@ -25,6 +25,7 @@ in
       openvpn
       fastfetch
       xwayland-run
+      lsof
 
       # software
       libreoffice
@@ -44,10 +45,13 @@ in
       # dotnet-runtime_8
       nodejs
       corepack
+      yarn
+      nx-libs
       # azure-cli
       nuget
       nodePackages.pnpm
       tailwindcss
+      powershell
 
       # gaming
       prismlauncher
