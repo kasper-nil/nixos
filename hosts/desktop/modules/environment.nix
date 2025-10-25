@@ -49,6 +49,7 @@
       nodejs
       corepack
       turbo
+      python314
     ];
   };
 }
