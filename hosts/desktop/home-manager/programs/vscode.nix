@@ -6,7 +6,6 @@
     profiles = {
       default = {
         userSettings = {
-
           "editor.formatOnSave" = true;
           "editor.detectIndentation" = false;
           "editor.acceptSuggestionOnCommitCharacter" = false;
@@ -14,7 +13,6 @@
 
           "nix.serverPath" = "nixd";
           "nix.enableLanguageServer" = true;
-
           "nix.serverSettings" = {
             "nil" = {
               "formatting" = {
@@ -57,10 +55,53 @@
           "explorer.compactFolders" = false;
 
           "typescript.updateImportsOnFileMove.enabled" = "always";
+
           "javascript.updateImportsOnFileMove.enabled" = "always";
+
           "git.confirmSync" = false;
           "git.autofetch" = true;
+
           "diffEditor.ignoreTrimWhitespace" = false;
+
+          "eslint.format.enable" = true;
+          "eslint.validate" = [
+            "javascript"
+            "javascriptreact"
+            "typescript"
+            "typescriptreact"
+          ];
+
+          # --- Prettier off for C#/Razor ---
+          "prettier.disableLanguages" = [
+            "csharp"
+            "razor"
+            "aspnetcorerazor"
+          ];
+
+          # --- UI & misc preferences ---
+          "telemetry.telemetryLevel" = "off";
+          "telemetry.feedback.enabled" = false;
+
+          "extensions.autoUpdate" = false;
+          "extensions.ignoreRecommendations" = true;
+
+          # Theme & icon theme — requires Catppuccin extensions installed
+          "workbench.colorTheme" = "Catppuccin Mocha";
+          "workbench.iconTheme" = "catppuccin-mocha";
+          "workbench.enableExperiments" = false;
+
+          # Chat features off
+          "chat.agent.enabled" = false;
+          "chat.commandCenter.enabled" = false;
+
+          "remote.SSH.experimental.chat" = false;
+
+          "codeium.enableConfig" = {
+            "*" = true;
+            "aspnetcorerazor" = true;
+          };
+
+          "python.analysis.typeCheckingMode" = "off";
 
           # --- Language-specific formatters ---
           "[csharp]" = {
@@ -113,34 +154,6 @@
           };
           "[xml]" = {
             "editor.defaultFormatter" = "redhat.vscode-xml";
-          };
-
-          # --- Prettier off for C#/Razor ---
-          "prettier.disableLanguages" = [
-            "csharp"
-            "razor"
-            "aspnetcorerazor"
-          ];
-
-          # --- UI & misc preferences ---
-          "telemetry.telemetryLevel" = "off";
-          "telemetry.feedback.enabled" = false;
-          "workbench.enableExperiments" = false;
-          "extensions.autoUpdate" = false;
-          "extensions.ignoreRecommendations" = true;
-
-          # Theme & icon theme — requires Catppuccin extensions installed
-          "workbench.colorTheme" = "Catppuccin Mocha";
-          "workbench.iconTheme" = "catppuccin-mocha";
-
-          # Chat features off
-          "chat.agent.enabled" = false;
-          "chat.commandCenter.enabled" = false;
-          "remote.SSH.experimental.chat" = false;
-
-          "codeium.enableConfig" = {
-            "*" = true;
-            "aspnetcorerazor" = true;
           };
         };
       };
