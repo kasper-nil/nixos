@@ -2,9 +2,12 @@
 {
   programs.git = {
     enable = true;
-    userEmail = "kasper.nilssen@horizonsoftware.no";
-    userName = "Kasper Nilssen";
-    extraConfig = {
+    settings = {
+      user = {
+        email = "kasper.nilssen@horizonsoftware.no";
+        name = "Kasper Nilssen";
+      };
+      
       init.defaultBranch = "main";
       safe.directory = "/etc/nixos";
     };
