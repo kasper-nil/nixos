@@ -24,10 +24,6 @@
     nixhub = {
       url = "github:kasper-nil/nixhub";
     };
-
-    nixman = {
-      url = "github:kasper-nil/nixman";
-    };
   };
 
   outputs =
