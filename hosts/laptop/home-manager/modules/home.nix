@@ -18,7 +18,7 @@
 
       libsForQt5.qt5ct # palette/icon GUI for Qt5
       libsForQt5.qtstyleplugin-kvantum
-      qt6ct # palette/icon GUI for Qt6
+      qt6Packages.qt6ct # palette/icon GUI for Qt6
       qt6Packages.qtstyleplugin-kvantum
 
       # input-remapper
