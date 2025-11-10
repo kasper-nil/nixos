@@ -72,7 +72,7 @@
           ];
 
           # --- UI & misc preferences ---
-          "telemetry.telemetryLevel" = "off";
+          "telemetry.telemetryLevel" = "all";
           "telemetry.feedback.enabled" = false;
 
           "extensions.autoUpdate" = false;
