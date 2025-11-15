@@ -63,18 +63,18 @@
         };
       };
 
-      devShells."${system}" =
-        let
-          pkgs = import nixpkgs { inherit system; };
+      # devShells."${system}" =
+      #   let
+      #     pkgs = import nixpkgs { inherit system; };
 
-        in
-        {
-          ttslabs = import ./shells/ttslabs.nix { inherit pkgs; };
-          ttslabs-prod = import ./shells/ttslabs-prod.nix { inherit pkgs; };
-          work = import ./shells/work.nix { inherit pkgs; };
-          cs2 = import ./shells/cs2.nix { inherit pkgs; };
-          react-native = import ./shells/react-native.nix { inherit pkgs; };
-        };
+      #   in
+      #   {
+      #     ttslabs = import ./shells/ttslabs.nix { inherit pkgs; };
+      #     ttslabs-prod = import ./shells/ttslabs-prod.nix { inherit pkgs; };
+      #     work = import ./shells/work.nix { inherit pkgs; };
+      #     cs2 = import ./shells/cs2.nix { inherit pkgs; };
+      #     react-native = import ./shells/react-native.nix { inherit pkgs; };
+      #   };
     };
 
 }

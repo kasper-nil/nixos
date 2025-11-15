@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.nixhub.homeModules.hyprland
+    # inputs.nixhub.nixosModules.niri
   ];
 
   nixhub = {

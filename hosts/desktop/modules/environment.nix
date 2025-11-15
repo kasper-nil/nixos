@@ -48,8 +48,9 @@
 
       nodejs
       corepack
-      turbo
+      # turbo
       python314
+      clamav
     ];
   };
 }
