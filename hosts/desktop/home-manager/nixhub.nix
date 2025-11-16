@@ -2,11 +2,17 @@
 {
   imports = [
     inputs.nixhub.homeModules.hyprland
-    # inputs.nixhub.nixosModules.niri
+    # inputs.nixhub.homeModules.niri
   ];
 
   nixhub = {
+    # niri = {
+    #   enable = false;
+    # };
+
     hyprland = {
+      enable = true;
+
       monitor = [
         "DP-1, 2560x1440@165, auto, 1"
         "DP-2, 2560x1440@165, -1440x-480, 1, transform, 1"
