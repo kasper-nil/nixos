@@ -1,14 +1,13 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.nixhub.nixosModules.hyprland
-    # inputs.nixhub.nixosModules.niri
+    inputs.nixhub.nixosModules.default
   ];
 
   nixhub = {
-    # niri = {
-    #   enable = false;
-    # };
+    niri = {
+      enable = false;
+    };
 
     hyprland = {
       enable = true;

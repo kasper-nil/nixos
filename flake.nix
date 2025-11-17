@@ -1,12 +1,8 @@
 {
   inputs = {
-    nixpkgs = {
-      # url = "github:nixos/nixpkgs/nixos-24.05";
-      url = "github:NixOS/nixpkgs/nixos-unstable";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
-      # url = "github:nix-community/home-manager/release-24.05";
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -27,30 +23,24 @@
   };
 
   outputs =
-    { nixpkgs, ... }@inputs:
+    { self, nixpkgs, ... }@inputs:
     let
-      system = "x86_64-linux";
+      mkSystem =
+        hostname:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/${hostname}/configuration.nix ];
+        };
     in
     {
       nixosConfigurations = {
-        desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [ ./hosts/desktop/configuration.nix ];
-        };
+        desktop = mkSystem "desktop";
+        work = mkSystem "work";
+        laptop = mkSystem "laptop";
 
-        work = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [ ./hosts/work/configuration.nix ];
-        };
-
-        laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [ ./hosts/laptop/configuration.nix ];
-        };
-
+        # Server with custom config
         server = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-
           specialArgs = {
             inherit inputs;
             extraInstallerPackages = pkgs: [
@@ -58,15 +48,13 @@
               pkgs.mtools
             ];
           };
-
           modules = [ ./hosts/server/configuration.nix ];
         };
       };
 
-      # devShells."${system}" =
+      # devShells.x86_64-linux =
       #   let
-      #     pkgs = import nixpkgs { inherit system; };
-
+      #     pkgs = import nixpkgs { system = "x86_64-linux"; };
       #   in
       #   {
       #     ttslabs = import ./shells/ttslabs.nix { inherit pkgs; };
@@ -76,5 +64,4 @@
       #     react-native = import ./shells/react-native.nix { inherit pkgs; };
       #   };
     };
-
 }
