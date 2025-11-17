@@ -8,6 +8,23 @@
 
     syntaxHighlighting.enable = true;
 
+    initContent = ''
+      # Newer HM puts it here:
+      if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
+        . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+      fi
+
+      # Some setups use the per-user profile under /etc:
+      if [ -f "/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh" ]; then
+        . "/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
+      fi
+
+      # Ensure ~/.dotnet/tools is on path for every interactive zsh
+      path+=("$HOME/.dotnet/tools")
+      typeset -U path     # de-dup
+      rehash
+    '';
+
     shellAliases = {
       # NixOS
       rebuild-desktop = "sudo nixos-rebuild switch --flake /etc/nixos#desktop";

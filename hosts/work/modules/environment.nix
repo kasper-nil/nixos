@@ -8,7 +8,7 @@ in
 {
   environment = {
     sessionVariables = {
-      DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet";
+      DOTNET_ROOT = "${pkgs.dotnetCorePackages.sdk_9_0}/share/dotnet";
     };
 
     systemPackages = with pkgs; [

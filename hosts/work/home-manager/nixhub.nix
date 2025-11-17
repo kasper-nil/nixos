@@ -1,11 +1,12 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.nixhub.homeModules.hyprland
+    inputs.nixhub.homeModules.default
   ];
 
   nixhub = {
     hyprland = {
+      enable = true;
       monitor = [
         # Laptop
         "eDP-1, 2560x1600@90, 0x0, 1"

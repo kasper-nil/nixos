@@ -5,6 +5,8 @@
     homeDirectory = "/home/kasper";
     stateVersion = "24.05";
 
+    sessionPath = [ "$HOME/.dotnet/tools" ];
+
     packages = with pkgs; [
       gearlever
       grim
