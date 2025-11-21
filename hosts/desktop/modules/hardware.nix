@@ -7,9 +7,11 @@
 
     graphics = {
       enable = true;
-
-      # For 32 bit applications
       enable32Bit = true; # For 32 bit applications
+
+      extraPackages = with pkgs; [
+        libva-utils
+      ];
     };
 
     keyboard = {

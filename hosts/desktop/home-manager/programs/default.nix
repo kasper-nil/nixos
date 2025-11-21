@@ -7,5 +7,6 @@
     ./starship.nix
     ./zsh.nix
     ./vscode.nix
+    ./firefox.nix
   ];
 }

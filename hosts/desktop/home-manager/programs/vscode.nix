@@ -96,6 +96,8 @@
 
           "python.analysis.typeCheckingMode" = "off";
 
+          "qt-qml.qmlls.useQmlImportPathEnvVar" = true;
+
           # --- Language-specific formatters ---
           "[csharp]" = {
             "editor.defaultFormatter" = "JetBrains.resharper-code";
