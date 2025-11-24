@@ -149,7 +149,7 @@
     "home-manager_2": {
       "inputs": {
         "nixpkgs": [
-          "nixhub",
+          "nilhub",
           "nixpkgs"
         ]
       },
@@ -186,6 +186,25 @@
         "type": "github"
       }
     },
+    "nilhub": {
+      "inputs": {
+        "catppuccin": "catppuccin",
+        "home-manager": "home-manager_2",
+        "nixcord": "nixcord",
+        "nixpkgs": "nixpkgs_3",
+        "spicetify-nix": "spicetify-nix"
+      },
+      "locked": {
+        "lastModified": 1763977803,
+        "narHash": "sha256-jxjntz8jIV0dzSu9HGwI2J3AsCi6Ej1x0XhPL1nPEq4=",
+        "path": "/home/kasper/Documents/Projects/nilhub/",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/kasper/Documents/Projects/nilhub/",
+        "type": "path"
+      }
+    },
     "nixcord": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -204,25 +223,6 @@
         "owner": "kaylorben",
         "repo": "nixcord",
         "type": "github"
-      }
-    },
-    "nixhub": {
-      "inputs": {
-        "catppuccin": "catppuccin",
-        "home-manager": "home-manager_2",
-        "nixcord": "nixcord",
-        "nixpkgs": "nixpkgs_3",
-        "spicetify-nix": "spicetify-nix"
-      },
-      "locked": {
-        "lastModified": 1763974007,
-        "narHash": "sha256-jwmzUP0pcp3q+3bYOBa9szDdDJ4LyWd7UFTKN/feU3c=",
-        "path": "/home/kasper/Documents/Projects/nixhub/",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/kasper/Documents/Projects/nixhub/",
-        "type": "path"
       }
     },
     "nixpkgs": {
@@ -340,7 +340,7 @@
         "disko": "disko",
         "firefox": "firefox",
         "home-manager": "home-manager",
-        "nixhub": "nixhub",
+        "nilhub": "nilhub",
         "nixpkgs": "nixpkgs_5"
       }
     },
