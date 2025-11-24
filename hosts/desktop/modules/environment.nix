@@ -10,31 +10,16 @@
       nixfmt-rfc-style
       protonup-qt
       ffmpeg-full
-      ranger
-      htop
-      tmux
-      openvpn
-      fastfetch
       xwayland-run
-      #vscode
-      libreoffice
       openrgb-with-all-plugins
-      xarchiver
       qbittorrent
-      wdisplays
       pamixer
-      pavucontrol
       dotnet-sdk_9
       dotnet-runtime_9
       roslyn-ls
-      # gaming
       prismlauncher
-      lutris
       playerctl
-      lact
       obsidian
-      gh
-      vlc
       godot
       logmein-hamachi
       easyeffects
@@ -44,13 +29,12 @@
       go
       gopls
       keymapp
-
       nodejs
       corepack
-      # turbo
       python314
       clamav
       qt6.qtdeclarative
+      firefox
     ];
   };
 }

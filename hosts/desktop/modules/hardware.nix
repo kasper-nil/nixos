@@ -11,6 +11,7 @@
 
       extraPackages = with pkgs; [
         libva-utils
+        libvdpau-va-gl
       ];
     };
 

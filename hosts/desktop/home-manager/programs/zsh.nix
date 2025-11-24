@@ -29,8 +29,8 @@
     };
 
     history = {
-      size = 10000;
-      path = "${config.home.homeDirectory}/zsh/history";
+      size = 1000000;
+      path = "${config.home.homeDirectory}/.config/zsh/history";
     };
 
     oh-my-zsh = {

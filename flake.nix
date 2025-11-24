@@ -51,17 +51,5 @@
           modules = [ ./hosts/server/configuration.nix ];
         };
       };
-
-      # devShells.x86_64-linux =
-      #   let
-      #     pkgs = import nixpkgs { system = "x86_64-linux"; };
-      #   in
-      #   {
-      #     ttslabs = import ./shells/ttslabs.nix { inherit pkgs; };
-      #     ttslabs-prod = import ./shells/ttslabs-prod.nix { inherit pkgs; };
-      #     work = import ./shells/work.nix { inherit pkgs; };
-      #     cs2 = import ./shells/cs2.nix { inherit pkgs; };
-      #     react-native = import ./shells/react-native.nix { inherit pkgs; };
-      #   };
     };
 }
