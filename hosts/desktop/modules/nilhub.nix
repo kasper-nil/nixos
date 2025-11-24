@@ -1,10 +1,10 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.nixhub.nixosModules.default
+    inputs.nilhub.nixosModules.default
   ];
 
-  nixhub = {
+  nilhub = {
     niri = {
       enable = false;
     };

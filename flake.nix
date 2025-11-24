@@ -17,9 +17,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixhub = {
-      # url = "github:kasper-nil/nixhub";
-      url = "path:/home/kasper/Documents/Projects/nixhub/";
+    nilhub = {
+      # url = "github:kasper-nil/nilhub";
+      url = "path:/home/kasper/Documents/Projects/nilhub/";
     };
   };
 
