@@ -18,7 +18,8 @@
     };
 
     nixhub = {
-      url = "github:kasper-nil/nixhub";
+      # url = "github:kasper-nil/nixhub";
+      url = "path:/home/kasper/Documents/Projects/nixhub/";
     };
   };
 

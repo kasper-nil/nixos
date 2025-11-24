@@ -291,17 +291,14 @@
         "spicetify-nix": "spicetify-nix"
       },
       "locked": {
-        "lastModified": 1763949333,
-        "narHash": "sha256-RHrncueJabGT/NIut7DoWzwf/MkE+IqT1cUohW+UgDY=",
-        "owner": "kasper-nil",
-        "repo": "nixhub",
-        "rev": "f24cdaf211549101249af735d42ce0e2b2070489",
-        "type": "github"
+        "lastModified": 1763973492,
+        "narHash": "sha256-+8gRWNbQjruUhw7cHrfkPvPpW5g0uR8ljHXzC50OheM=",
+        "path": "/home/kasper/Documents/Projects/nixhub/",
+        "type": "path"
       },
       "original": {
-        "owner": "kasper-nil",
-        "repo": "nixhub",
-        "type": "github"
+        "path": "/home/kasper/Documents/Projects/nixhub/",
+        "type": "path"
       }
     },
     "nixpkgs": {
