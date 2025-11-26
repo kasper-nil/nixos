@@ -35,6 +35,7 @@
       clamav
       qt6.qtdeclarative
       firefox
+      brave
     ];
   };
 }
