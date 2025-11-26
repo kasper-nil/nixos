@@ -48,11 +48,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1763948030,
-        "narHash": "sha256-OrulxYjEYQmmvZmhY9dFGEESXQnFVY0TmT5NX0VA8r4=",
+        "lastModified": 1763987998,
+        "narHash": "sha256-fd/G97eHhJ6nNY3YiL7pZUHiY/NBI62OyMbVL/11auQ=",
         "owner": "nix-community",
         "repo": "flake-firefox-nightly",
-        "rev": "d37419b10236b85af32456832ac11f120d5dcb84",
+        "rev": "ceb3e9d733679c70696802bb96f4625373a10930",
         "type": "github"
       },
       "original": {
@@ -133,11 +133,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1763963090,
-        "narHash": "sha256-zR7uDZdQUUC+gBOi4byefMvIZuSBeMC6GswGNsTgQlM=",
+        "lastModified": 1763992752,
+        "narHash": "sha256-iinKiBTAx7F9EkMqKFSqaWTCaay463toAPtQiA8RRyc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7702d14879e8f0148fa168e38f3eaa2650fa0d85",
+        "rev": "55af952c5612190c3e7862f4e2504048c50841aa",
         "type": "github"
       },
       "original": {
@@ -195,8 +195,8 @@
         "spicetify-nix": "spicetify-nix"
       },
       "locked": {
-        "lastModified": 1763977803,
-        "narHash": "sha256-jxjntz8jIV0dzSu9HGwI2J3AsCi6Ej1x0XhPL1nPEq4=",
+        "lastModified": 1763995404,
+        "narHash": "sha256-XFWooSndFLuyFbav74/Hs15pySxSUsIJkkHLekzUl2U=",
         "path": "/home/kasper/Documents/Projects/nilhub/",
         "type": "path"
       },
