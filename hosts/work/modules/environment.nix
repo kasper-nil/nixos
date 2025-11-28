@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 let
   dotnets = pkgs.dotnetCorePackages.combinePackages [
     pkgs.dotnetCorePackages.sdk_8_0
@@ -14,7 +14,6 @@ in
     systemPackages = with pkgs; [
       nixd
       nixfmt-rfc-style
-
       protonup-qt
       ffmpeg-full
 
@@ -30,7 +29,6 @@ in
       # software
       libreoffice
       openrgb-with-all-plugins
-      inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
       xarchiver
       qbittorrent
       wdisplays
@@ -67,6 +65,7 @@ in
       spotify
 
       easyeffects
+      firefox
     ];
   };
 }

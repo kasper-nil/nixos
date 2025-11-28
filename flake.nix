@@ -18,8 +18,8 @@
     };
 
     nilhub = {
-      # url = "github:kasper-nil/nilhub";
-      url = "path:/home/kasper/Documents/Projects/nilhub/";
+      url = "github:kasper-nil/nilhub";
+      # url = "path:/home/kasper/Documents/Projects/nilhub/";
     };
   };
 

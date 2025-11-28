@@ -4,6 +4,6 @@
     ./programs
     ./home.nix
     ./nixpkgs.nix
-    ./nixhub.nix
+    ./nilhub.nix
   ];
 }
