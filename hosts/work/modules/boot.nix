@@ -25,6 +25,12 @@
       };
     };
 
+    kernel.sysctl = {
+      "fs.inotify.max_user_instances" = 65536;
+      "fs.inotify.max_user_watches" = 2097152;
+      "fs.inotify.max_queued_events" = 1048576;
+    };
+
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
