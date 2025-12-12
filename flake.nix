@@ -24,8 +24,14 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      ...
+    }@inputs:
     let
+      system = "x86_64-linux";
+
       mkSystem =
         hostname:
         nixpkgs.lib.nixosSystem {
@@ -51,6 +57,10 @@
           };
           modules = [ ./hosts/server/configuration.nix ];
         };
+      };
+
+      devShells.${system} = {
+        tauri = import ./shells/tauri.nix;
       };
     };
 }

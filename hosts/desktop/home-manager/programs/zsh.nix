@@ -22,6 +22,7 @@
       work = "nix develop /etc/nixos#work --impure";
       cs2 = "nix develop /etc/nixos#cs2";
       react-native = "nix develop /etc/nixos#react-native --impure";
+      tauri = "nix develop /etc/nixos#tauri --impure";
 
       # Docker
       docker-stop-all = "docker stop $(docker ps -a -q)";
