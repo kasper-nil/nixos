@@ -71,15 +71,8 @@
             "typescriptreact"
           ];
 
-          # --- Prettier off for C#/Razor ---
-          "prettier.disableLanguages" = [
-            "csharp"
-            "razor"
-            "aspnetcorerazor"
-          ];
-
           # --- UI & misc preferences ---
-          "telemetry.telemetryLevel" = "off";
+          "telemetry.telemetryLevel" = "all";
           "telemetry.feedback.enabled" = false;
 
           "extensions.autoUpdate" = false;
@@ -103,6 +96,8 @@
 
           "python.analysis.typeCheckingMode" = "off";
 
+          "qt-qml.qmlls.useQmlImportPathEnvVar" = true;
+
           # --- Language-specific formatters ---
           "[csharp]" = {
             "editor.defaultFormatter" = "JetBrains.resharper-code";
@@ -119,9 +114,6 @@
           "[nix]" = {
             "editor.defaultFormatter" = "jnoortheen.nix-ide";
           };
-          "[vue]" = {
-            "editor.defaultFormatter" = "esbenp.prettier-vscode";
-          };
           "[typescript]" = {
             "editor.defaultFormatter" = "dbaeumer.vscode-eslint";
           };
@@ -133,21 +125,6 @@
           };
           "[javascriptreact]" = {
             "editor.defaultFormatter" = "dbaeumer.vscode-eslint";
-          };
-          "[json]" = {
-            "editor.defaultFormatter" = "esbenp.prettier-vscode";
-          };
-          "[jsonc]" = {
-            "editor.defaultFormatter" = "esbenp.prettier-vscode";
-          };
-          "[markdown]" = {
-            "editor.defaultFormatter" = "esbenp.prettier-vscode";
-          };
-          "[yaml]" = {
-            "editor.defaultFormatter" = "esbenp.prettier-vscode";
-          };
-          "[dockercompose]" = {
-            "editor.defaultFormatter" = "esbenp.prettier-vscode";
           };
           "[css]" = {
             "editor.defaultFormatter" = "vscode.css-language-features";

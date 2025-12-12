@@ -201,8 +201,9 @@
         "type": "path"
       },
       "original": {
-        "path": "/home/kasper/Documents/Projects/nilhub/",
-        "type": "path"
+        "owner": "kasper-nil",
+        "repo": "nilhub",
+        "type": "github"
       }
     },
     "nixcord": {
