@@ -5,10 +5,6 @@
     homeDirectory = "/home/kasper";
     stateVersion = "24.05";
 
-    packages = with pkgs; [
-      gearlever
-    ];
-
     sessionVariables = {
       LIBVA_DRIVER_NAME = "radeonsi";
       MOZ_DISABLE_RDD_SANDBOX = "1";

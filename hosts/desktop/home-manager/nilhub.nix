@@ -30,12 +30,11 @@
       ];
 
       hyprpanel = {
-        monitor = [ "DP-1" ];
+        monitor = [
+          "DP-1"
+          "DP-3"
+        ];
       };
-    };
-
-    i3 = {
-      enable = false;
     };
   };
 }

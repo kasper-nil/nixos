@@ -12,9 +12,5 @@
     hyprland = {
       enable = true;
     };
-
-    i3 = {
-      enable = false;
-    };
   };
 }
