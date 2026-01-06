@@ -80,9 +80,5 @@
         }
       ];
     };
-
-    blueman = {
-      enable = true;
-    };
   };
 }

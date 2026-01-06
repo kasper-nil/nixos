@@ -9,8 +9,12 @@
       enable = false;
     };
 
-    hyprland = {
+    plasma6 = {
       enable = true;
+    };
+
+    hyprland = {
+      enable = false;
 
       monitor = [
         "DP-1, 2560x1440@165, auto, 1"

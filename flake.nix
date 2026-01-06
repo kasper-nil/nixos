@@ -1,7 +1,8 @@
 {
   inputs = {
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+      #url = "github:NixOS/nixpkgs/nixos-unstable";
+      url = "github:nixos/nixpkgs/pull/476347/head";
     };
 
     home-manager = {
@@ -15,8 +16,8 @@
     };
 
     nilhub = {
-      url = "github:kasper-nil/nilhub";
-      # url = "path:/home/kasper/Documents/Projects/nilhub/";
+      #url = "github:kasper-nil/nilhub";
+      url = "path:/home/kasper/Documents/Projects/nilhub/";
     };
   };
 

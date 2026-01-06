@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
   environment = {
     sessionVariables = {
@@ -34,8 +34,7 @@
       python314
       clamav
       qt6.qtdeclarative
-      firefox
-      brave
+      airshipper
     ];
   };
 }

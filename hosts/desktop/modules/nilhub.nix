@@ -10,6 +10,10 @@
     };
 
     hyprland = {
+      enable = false;
+    };
+
+    plasma6 = {
       enable = true;
     };
   };

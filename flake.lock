@@ -78,11 +78,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766980997,
-        "narHash": "sha256-oegDNAvyQwaG3GqSi4U5jpKM7SYHGESGVIuKMRV/lbw=",
+        "lastModified": 1767702900,
+        "narHash": "sha256-xMzHmNytl7JgFRov2jHf2GYsLVp/sAfYO0JvbZt0uDo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7a7b43c7231a439d248179ba8d561dd6cd81799b",
+        "rev": "38e187fd2f9efac197e03be0c25f3ee215974144",
         "type": "github"
       },
       "original": {
@@ -119,20 +119,18 @@
         "home-manager": "home-manager_2",
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs_3",
+        "plasma-manager": "plasma-manager",
         "spicetify-nix": "spicetify-nix"
       },
       "locked": {
-        "lastModified": 1767015027,
-        "narHash": "sha256-GTv3my95ZiUvGxWv8FemKSvqNr799KYEkSzFG3PsJoA=",
-        "owner": "kasper-nil",
-        "repo": "nilhub",
-        "rev": "fafd5c96d4b47141d9520f099c004abde941a3cc",
-        "type": "github"
+        "lastModified": 1767729335,
+        "narHash": "sha256-lVGtVmce8cYH7DMPVC9ETkUZs6mu/+txo3GOJAskQq0=",
+        "path": "/home/kasper/Documents/Projects/nilhub/",
+        "type": "path"
       },
       "original": {
-        "owner": "kasper-nil",
-        "repo": "nilhub",
-        "type": "github"
+        "path": "/home/kasper/Documents/Projects/nilhub/",
+        "type": "path"
       }
     },
     "nixcord": {
@@ -236,17 +234,42 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1766902085,
-        "narHash": "sha256-coBu0ONtFzlwwVBzmjacUQwj3G+lybcZ1oeNSQkgC0M=",
-        "owner": "NixOS",
+        "lastModified": 1767388185,
+        "narHash": "sha256-bmDUBlqgpIAXQ0QFn1fWpurlc+j2sI+B5941PWsic3M=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c0b0e0fddf73fd517c3471e546c0df87a42d53f4",
+        "rev": "2e21f6c5797fcccfc1e8eced873aea8401a71135",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
+        "owner": "nixos",
+        "ref": "pull/476347/head",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "plasma-manager": {
+      "inputs": {
+        "home-manager": [
+          "nilhub",
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nilhub",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1767662275,
+        "narHash": "sha256-d5Q1GmQ+sW1Bt8cgDE0vOihzLaswsm8cSdg8124EqXE=",
+        "owner": "nix-community",
+        "repo": "plasma-manager",
+        "rev": "51816be33a1ff0d4b22427de83222d5bfa96d30e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "plasma-manager",
         "type": "github"
       }
     },
