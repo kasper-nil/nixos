@@ -13,8 +13,12 @@
       enable = false;
     };
 
-    plasma6 = {
+    cosmic = {
       enable = true;
+    };
+
+    plasma6 = {
+      enable = false;
     };
   };
 }
