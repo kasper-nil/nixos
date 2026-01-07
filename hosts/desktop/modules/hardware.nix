@@ -2,8 +2,15 @@
 {
   hardware = {
     enableAllFirmware = true;
+    enableRedistributableFirmware = true;
 
     uinput.enable = true;
+
+    cpu = {
+      amd = {
+        updateMicrocode = true;
+      };
+    };
 
     graphics = {
       enable = true;

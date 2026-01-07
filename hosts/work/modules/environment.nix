@@ -13,7 +13,7 @@ in
 
     systemPackages = with pkgs; [
       nixd
-      nixfmt-rfc-style
+      nixfmt
       protonup-qt
       ffmpeg-full
 

@@ -6,6 +6,8 @@
     profiles = {
       default = {
         userSettings = {
+          "editor.fontFamily" = "'JetBrains Mono', 'monospace', monospace";
+          "editor.fontSize" = 12;
           "editor.formatOnSave" = true;
           "editor.detectIndentation" = false;
           "editor.acceptSuggestionOnCommitCharacter" = false;
@@ -45,6 +47,7 @@
             "*.conf" = "ini";
             "*.config" = "ini";
           };
+
           "files.autoSave" = "afterDelay";
           "files.exclude" = {
             "**/.git" = false;
