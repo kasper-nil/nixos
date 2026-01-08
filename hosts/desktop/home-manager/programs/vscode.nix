@@ -2,9 +2,17 @@
 {
   programs.vscode = {
     enable = true;
+
     package = pkgs.vscodium;
+
     profiles = {
       default = {
+        extensions = with pkgs.vscode-extensions; [
+          continue.continue
+          catppuccin.catppuccin-vsc
+          jnoortheen.nix-ide
+        ];
+
         userSettings = {
           "editor.formatOnSave" = true;
           "editor.detectIndentation" = false;
@@ -49,6 +57,9 @@
           "files.exclude" = {
             "**/.git" = false;
           };
+
+          "continue.manuallyRunningServer" = true;
+          "continue.serverUrl" = "http://localhost:11434";
 
           "explorer.confirmDragAndDrop" = false;
           "explorer.confirmDelete" = false;

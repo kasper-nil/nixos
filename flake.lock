@@ -78,11 +78,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767864335,
-        "narHash": "sha256-2L1hc/V2oHMVsAKxyCoSD0q5lL2ap7MR8pk9U2YB9gs=",
+        "lastModified": 1767893475,
+        "narHash": "sha256-yNpAuNVCDcR299BKjaT5PuoJclEBukmC5nj3L98UE3E=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "af7f14ddf770e269bb67cea19708198e618b5c75",
+        "rev": "3351348827926935b407d1cfbb7dd814c30da107",
         "type": "github"
       },
       "original": {
@@ -123,8 +123,8 @@
         "spicetify-nix": "spicetify-nix"
       },
       "locked": {
-        "lastModified": 1767876509,
-        "narHash": "sha256-2fBfyYA4kHJIsOEdQlvP+BEW60tNdvROZGUuUA8n92U=",
+        "lastModified": 1767882668,
+        "narHash": "sha256-W+/sARP0OScKiAESRBxSbmSxemWTXUceKH46qqt9CWY=",
         "path": "/home/kasper/Documents/Projects/nilhub/",
         "type": "path"
       },
