@@ -11,6 +11,8 @@
           continue.continue
           catppuccin.catppuccin-vsc
           jnoortheen.nix-ide
+          dbaeumer.vscode-eslint
+          prettier.prettier-vscode
         ];
 
         userSettings = {
@@ -126,19 +128,19 @@
             "editor.defaultFormatter" = "jnoortheen.nix-ide";
           };
           "[typescript]" = {
-            "editor.defaultFormatter" = "dbaeumer.vscode-eslint";
+            "editor.defaultFormatter" = "prettier.prettier-vscode";
           };
           "[typescriptreact]" = {
-            "editor.defaultFormatter" = "dbaeumer.vscode-eslint";
+            "editor.defaultFormatter" = "prettier.prettier-vscode";
           };
           "[javascript]" = {
-            "editor.defaultFormatter" = "dbaeumer.vscode-eslint";
+            "editor.defaultFormatter" = "prettier.prettier-vscode";
           };
           "[javascriptreact]" = {
-            "editor.defaultFormatter" = "dbaeumer.vscode-eslint";
+            "editor.defaultFormatter" = "prettier.prettier-vscode";
           };
           "[css]" = {
-            "editor.defaultFormatter" = "vscode.css-language-features";
+            "editor.defaultFormatter" = "prettier.prettier-vscode";
           };
           "[xml]" = {
             "editor.defaultFormatter" = "redhat.vscode-xml";

@@ -6,7 +6,19 @@
       lact
     ];
 
-    services.lactd.wantedBy = [ "multi-user.target" ];
+    services = {
+      # Automatically configure flatpak
+      flatpak-repo = {
+        wantedBy = [ "multi-user.target" ];
+        path = [ pkgs.flatpak ];
+        script = ''
+          flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        '';
+      };
+      lactd = {
+        wantedBy = [ "multi-user.target" ];
+      };
+    };
 
     user.services.mpris-proxy = {
       description = "Mpris proxy";

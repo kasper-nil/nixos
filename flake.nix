@@ -59,6 +59,7 @@
 
       devShells.${system} = {
         tauri = import ./shells/tauri.nix;
+        tts = import ./shells/tts.nix;
       };
     };
 }

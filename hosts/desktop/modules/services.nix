@@ -21,14 +21,37 @@
       package = pkgs.mullvad-vpn;
     };
 
+    flatpak = {
+      enable = true;
+    };
+
     ollama = {
       enable = true;
       package = pkgs.ollama-rocm;
-      # Optional: preload models, see https://ollama.com/library
-      loadModels = [
-        "qwen2.5-coder:14b"
-      ];
+
+      host = "127.0.0.1";
+      port = 11434;
+      openFirewall = true;
     };
+
+    # open-webui = {
+    #   enable = true;
+    #   host = "127.0.0.1";
+    #   port = 11435;
+
+    #   environment = {
+    #     # Tell Open WebUI how to reach Ollama
+    #     OLLAMA_BASE_URL = "http://127.0.0.1:11434";
+
+    #     # Optional privacy defaults (module already sets similar ones)
+    #     ANONYMIZED_TELEMETRY = "False";
+    #     DO_NOT_TRACK = "True";
+    #     SCARF_NO_ANALYTICS = "True";
+
+    #     # Optional: skip login/account screen (only if you trust your machine/network)
+    #     WEBUI_AUTH = "False";
+    #   };
+    # };
 
     xserver = {
       enable = true;

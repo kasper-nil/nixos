@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   hardware = {
     enableAllFirmware = true;
@@ -12,14 +12,11 @@
       };
     };
 
+    amdgpu.opencl.enable = true;
+
     graphics = {
       enable = true;
       enable32Bit = true; # For 32 bit applications
-
-      extraPackages = with pkgs; [
-        libva-utils
-        libvdpau-va-gl
-      ];
     };
 
     keyboard = {
