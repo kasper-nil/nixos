@@ -8,6 +8,7 @@ pkgs.mkShell {
     nuget
     nodePackages.pnpm
     tailwindcss
+    pnpm
 
     # Needed by Microsoft.CognitiveServices.Speech native runtime on NixOS
     openssl_1_1
@@ -35,7 +36,7 @@ pkgs.mkShell {
     }:''${LD_LIBRARY_PATH:-}"
 
     # Usually not needed inside mkShell, but harmless; uncomment if you hit SDK lookup issues
-    # export DOTNET_ROOT="${pkgs.dotnet-sdk_10}/share/dotnet"
+    export DOTNET_ROOT="${pkgs.dotnet-sdk_10}/share/dotnet"
 
     if [ "$SHELL" != "${pkgs.zsh}/bin/zsh" ]; then
       export SHELL=${pkgs.zsh}/bin/zsh

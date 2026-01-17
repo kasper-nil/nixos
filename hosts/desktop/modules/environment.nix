@@ -5,8 +5,8 @@
       nixd
       nixfmt
       ffmpeg-full
-      # dotnet-sdk_9
-      # dotnet-runtime_9
+      dotnet-sdk_10
+      dotnet-runtime_10
       roslyn-ls
       steamcmd
       rocmPackages.rocm-runtime

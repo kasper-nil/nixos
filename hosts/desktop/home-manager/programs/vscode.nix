@@ -12,7 +12,8 @@
           catppuccin.catppuccin-vsc
           jnoortheen.nix-ide
           dbaeumer.vscode-eslint
-          prettier.prettier-vscode
+          esbenp.prettier-vscode
+          bradlc.vscode-tailwindcss
         ];
 
         userSettings = {

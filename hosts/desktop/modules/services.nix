@@ -25,14 +25,14 @@
       enable = true;
     };
 
-    ollama = {
-      enable = true;
-      package = pkgs.ollama-rocm;
+    # ollama = {
+    #   enable = true;
+    #   package = pkgs.ollama-rocm;
 
-      host = "127.0.0.1";
-      port = 11434;
-      openFirewall = true;
-    };
+    #   host = "127.0.0.1";
+    #   port = 11434;
+    #   openFirewall = true;
+    # };
 
     # open-webui = {
     #   enable = true;

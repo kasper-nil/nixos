@@ -1,12 +1,14 @@
 {
   inputs = {
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
-      #url = "github:nixos/nixpkgs/pull/476347/head";
+      # url = "github:NixOS/nixpkgs/nixos-unstable";
+      url = "github:NixOS/nixpkgs/nixos-25.11";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      # url = "github:nix-community/home-manager/master";
+      # url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -16,8 +18,9 @@
     };
 
     nilhub = {
-      #url = "github:kasper-nil/nilhub";
+      # url = "github:kasper-nil/nilhub";
       url = "path:/home/kasper/Documents/Projects/nilhub/";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -57,9 +60,16 @@
         };
       };
 
-      devShells.${system} = {
-        tauri = import ./shells/tauri.nix;
-        tts = import ./shells/tts.nix;
-      };
+      devShells.${system} =
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
+          };
+        in
+        {
+          tauri = import ./shells/tauri.nix { inherit pkgs; };
+          tts = import ./shells/tts.nix { inherit pkgs; };
+        };
     };
 }
