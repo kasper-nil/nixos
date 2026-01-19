@@ -14,7 +14,7 @@
       rebuild-work = "sudo nixos-rebuild switch --flake /etc/nixos#work";
       rebuild-server = "nixos-rebuild switch --flake /etc/nixos#server --target-host root@192.168.0.216";
       collect-garbage = "sudo nix-collect-garbage -d";
-      configure = "codium /etc/nixos";
+      configure = "code /etc/nixos";
 
       # Nix shells
       ttslabs = "nix develop /etc/nixos#ttslabs";

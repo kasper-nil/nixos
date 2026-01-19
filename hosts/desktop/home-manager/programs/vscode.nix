@@ -3,17 +3,20 @@
   programs.vscode = {
     enable = true;
 
-    package = pkgs.vscodium;
+    # package = pkgs.vscodium;
 
     profiles = {
       default = {
         extensions = with pkgs.vscode-extensions; [
-          continue.continue
+          # continue.continue
           catppuccin.catppuccin-vsc
           jnoortheen.nix-ide
           dbaeumer.vscode-eslint
           esbenp.prettier-vscode
           bradlc.vscode-tailwindcss
+          ms-dotnettools.csharp
+          ms-dotnettools.csdevkit
+          ms-dotnettools.vscode-dotnet-runtime
         ];
 
         userSettings = {
@@ -70,6 +73,10 @@
           "git.confirmSync" = false;
           "git.autofetch" = true;
 
+          "github.copilot.enable" = {
+            "*" = false;
+          };
+
           "diffEditor.ignoreTrimWhitespace" = false;
 
           "eslint.format.enable" = true;
@@ -108,15 +115,15 @@
 
           # --- Language-specific formatters ---
           "[csharp]" = {
-            "editor.defaultFormatter" = "JetBrains.resharper-code";
+            "editor.defaultFormatter" = "ms-dotnettools.csharp";
             "editor.formatOnSave" = true;
           };
           "[razor]" = {
-            "editor.defaultFormatter" = "JetBrains.resharper-code";
+            "editor.defaultFormatter" = "ms-dotnettools.csharp";
             "editor.formatOnSave" = true;
           };
           "[aspnetcorerazor]" = {
-            "editor.defaultFormatter" = "JetBrains.resharper-code";
+            "editor.defaultFormatter" = "ms-dotnettools.csharp";
             "editor.formatOnSave" = true;
           };
           "[nix]" = {
