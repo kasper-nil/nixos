@@ -4,14 +4,16 @@
     defaultUserShell = pkgs.zsh;
 
     users.kasper = {
-      shell = pkgs.zsh;
       isNormalUser = true;
+
       description = "kasper";
+
       extraGroups = [
         "networkmanager"
         "wheel"
-        "audio"
-        "docker"
+        "input" # For input-remapper, uinput devices
+        "plugdev" # For ZSA keyboard flashing (Wally/Keymapp)
+        "docker" # (or remove if not using)
         "video"
         "lp"
       ];

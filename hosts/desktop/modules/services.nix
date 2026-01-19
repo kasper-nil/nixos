@@ -12,10 +12,6 @@
       enable = true;
     };
 
-    openssh = {
-      enable = true;
-    };
-
     mullvad-vpn = {
       enable = true;
       package = pkgs.mullvad-vpn;
@@ -61,7 +57,6 @@
       xkb = {
         layout = "no";
         variant = "nodeadkeys";
-        options = "";
       };
     };
 

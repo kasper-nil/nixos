@@ -25,11 +25,6 @@
           "nix.serverPath" = "nixd";
           "nix.enableLanguageServer" = true;
           "nix.serverSettings" = {
-            "nil" = {
-              "formatting" = {
-                "command" = [ "nixfmt" ];
-              };
-            };
             "nixd" = {
               "formatting" = {
                 "command" = [ "nixfmt" ];
@@ -86,8 +81,7 @@
           ];
 
           # --- UI & misc preferences ---
-          "telemetry.telemetryLevel" = "all";
-          "telemetry.feedback.enabled" = false;
+          "telemetry.telemetryLevel" = "off";
 
           "extensions.autoUpdate" = false;
           "extensions.ignoreRecommendations" = true;

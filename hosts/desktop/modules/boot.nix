@@ -4,7 +4,8 @@
     kernelPackages = pkgs.linuxPackages_zen;
 
     kernelParams = [
-      "amd_pstate=guided"
+      "amd_pstate=active"
+      "split_lock_detect=off"
     ];
 
     initrd = {

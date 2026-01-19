@@ -2,7 +2,6 @@
 {
   hardware = {
     enableAllFirmware = true;
-    enableRedistributableFirmware = true;
 
     uinput.enable = true;
 
@@ -12,7 +11,9 @@
       };
     };
 
-    amdgpu.opencl.enable = true;
+    amdgpu = {
+      opencl.enable = true;
+    };
 
     graphics = {
       enable = true;
