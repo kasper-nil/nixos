@@ -37,12 +37,18 @@
         "9, monitor:DP-3"
       ];
 
-      hyprpanel = {
-        monitor = [
-          "DP-1"
-          "DP-3"
-        ];
-      };
+      #   noctalia = {
+      #     bar = {
+      #       monitor = [ "DP-1" ];
+      #     };
+      #   };
+
+      # hyprpanel = {
+      #   monitor = [
+      #     "DP-1"
+      #     # "DP-3"
+      #   ];
+      # };
     };
   };
 }

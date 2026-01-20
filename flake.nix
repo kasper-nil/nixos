@@ -1,13 +1,13 @@
 {
   inputs = {
     nixpkgs = {
-      # url = "github:NixOS/nixpkgs/nixos-unstable";
-      url = "github:NixOS/nixpkgs/nixos-25.11";
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+      # url = "github:NixOS/nixpkgs/nixos-25.11";
     };
 
     home-manager = {
-      # url = "github:nix-community/home-manager/master";
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/master";
+      # url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -18,7 +18,7 @@
 
     nilhub = {
       # url = "github:kasper-nil/nilhub";
-      url = "path:/home/kasper/Documents/Projects/nilhub/";
+      url = "path:/home/kasper/Documents/Projects/nilhub";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
