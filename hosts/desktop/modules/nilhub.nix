@@ -10,11 +10,11 @@
     };
 
     hyprland = {
-      enable = false;
+      enable = true;
     };
 
     cosmic = {
-      enable = true;
+      enable = false;
     };
 
     plasma6 = {

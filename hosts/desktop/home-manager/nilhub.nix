@@ -10,7 +10,7 @@
     };
 
     cosmic = {
-      enable = true;
+      enable = false;
     };
 
     plasma6 = {
@@ -18,7 +18,7 @@
     };
 
     hyprland = {
-      enable = false;
+      enable = true;
 
       monitor = [
         "DP-1, 2560x1440@165, auto, 1"

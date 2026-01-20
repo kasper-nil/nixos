@@ -6,6 +6,8 @@
     networkmanager = {
       enable = true;
 
+      dns = "systemd-resolved";
+
       wifi = {
         powersave = false;
       };
@@ -13,11 +15,6 @@
       plugins = with pkgs; [
         networkmanager-openvpn
       ];
-    };
-
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [ ];
     };
   };
 }

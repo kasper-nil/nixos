@@ -1,9 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.vscode = {
     enable = true;
 
-    # package = pkgs.vscodium;
+    mutableExtensionsDir = true;
+
+    package = pkgs.vscodium.fhs;
 
     profiles = {
       default = {
@@ -14,9 +16,6 @@
           dbaeumer.vscode-eslint
           esbenp.prettier-vscode
           bradlc.vscode-tailwindcss
-          ms-dotnettools.csharp
-          ms-dotnettools.csdevkit
-          ms-dotnettools.vscode-dotnet-runtime
         ];
 
         userSettings = {
@@ -113,10 +112,16 @@
 
           "qt-qml.qmlls.useQmlImportPathEnvVar" = true;
 
+          #   "dotnetAcquisitionExtension.sharedExistingDotnetPath" = "/run/current-system/sw/bin/dotnet";
+          #   "dotnet.autoSdkDownload" = false;
+
           # --- Language-specific formatters ---
           "[csharp]" = {
-            "editor.defaultFormatter" = "ms-dotnettools.csharp";
+            "editor.defaultFormatter" = "JetBrains.resharper-code";
             "editor.formatOnSave" = true;
+            "editor.tabSize" = 2;
+            "editor.insertSpaces" = true;
+            "editor.detectIndentation" = false;
           };
           "[razor]" = {
             "editor.defaultFormatter" = "ms-dotnettools.csharp";

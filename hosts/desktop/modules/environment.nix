@@ -1,13 +1,20 @@
 { pkgs, ... }:
 {
   environment = {
+    sessionVariables = {
+    };
+
     systemPackages = with pkgs; [
+      (
+        with dotnetCorePackages;
+        combinePackages [
+          sdk_9_0
+          sdk_10_0
+        ]
+      )
       nixd
       nixfmt
       ffmpeg-full
-      dotnet-sdk_10
-      dotnet-runtime_10
-      roslyn-ls
       steamcmd
       rocmPackages.rocm-runtime
       rocmPackages.rocm-smi

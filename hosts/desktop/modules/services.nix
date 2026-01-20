@@ -49,6 +49,8 @@
     #   };
     # };
 
+    resolved.enable = true;
+
     xserver = {
       enable = true;
 
