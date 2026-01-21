@@ -127,8 +127,8 @@
         "spicetify-nix": "spicetify-nix"
       },
       "locked": {
-        "lastModified": 1769003708,
-        "narHash": "sha256-CbS1HhImDNmviV7wPVyyVFefhJpmc8OM9fsS05GMhaw=",
+        "lastModified": 1769003768,
+        "narHash": "sha256-0v6kQGJsC+ZLVjzqFhUBCT+k4Q17fpYm8Z+Vid+T5iE=",
         "path": "/home/kasper/Documents/Projects/nilhub",
         "type": "path"
       },
