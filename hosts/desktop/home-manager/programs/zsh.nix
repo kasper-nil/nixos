@@ -25,6 +25,8 @@
       tauri = "nix develop /etc/nixos#tauri --impure";
       tts = "nix develop /etc/nixos#tts --impure";
 
+      update = ''nix flake update --option access-tokens "github.com=$(gh auth token)"'';
+
       # Docker
       docker-stop-all = "docker stop $(docker ps -a -q)";
       docker-kill-all = "docker rm $(docker ps -a -q)";

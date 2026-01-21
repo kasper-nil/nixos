@@ -5,12 +5,12 @@
   ];
 
   nilhub = {
-    niri = {
-      enable = false;
-    };
-
     hyprland = {
       enable = true;
+    };
+
+    niri = {
+      enable = false;
     };
 
     cosmic = {
