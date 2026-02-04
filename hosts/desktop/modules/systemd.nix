@@ -5,7 +5,9 @@
     packages = [ pkgs.lact ];
 
     services = {
-      lactd.wantedBy = [ "multi-user.target" ];
+      lactd = {
+        wantedBy = [ "multi-user.target" ];
+      };
     };
 
     # Bluetooth media controls

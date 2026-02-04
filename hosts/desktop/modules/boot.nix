@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages;
 
     kernelParams = [
       "amd_pstate=active"
@@ -18,7 +18,10 @@
     loader = {
       systemd-boot = {
         enable = true;
+        configurationLimit = 10;
       };
+
+      timeout = 2;
 
       efi.canTouchEfiVariables = true;
     };

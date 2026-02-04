@@ -16,6 +16,8 @@
       collect-garbage = "sudo nix-collect-garbage -d";
       configure = "code /etc/nixos";
 
+      windows = "sudo systemctl reboot --boot-loader-entry=auto-windows";
+
       # Nix shells
       ttslabs = "nix develop /etc/nixos#ttslabs";
       ttslabs-prod = "nix develop /etc/nixos#ttslabs-prod";
